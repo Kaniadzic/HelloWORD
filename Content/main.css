@@ -1,0 +1,32 @@
+﻿.navbar {
+    background-color: #69940d;
+    min-height: 8vh;
+}
+
+.menu-item > a {
+    color: #ffffff;
+    transition: color .1s ease-in;
+}
+
+.menu-item > a:hover {
+    text-decoration: none;
+    color: #bbbbbb;
+}
+
+.footer-link {
+    color: #6c757d;
+    transition: color .1s ease-in;
+}
+
+.footer-link:hover {
+    text-decoration: none;
+    color: #3a424a;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #bbbbbb;
+}

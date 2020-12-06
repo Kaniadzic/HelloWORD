@@ -1,40 +1,89 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - HelloWORD</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/main.css")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nazwa aplikacji", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Informacje", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+    <nav class="navbar navbar-dark navbar-expand-lg">
+        <div>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="main-menu">
+                <ul class="navbar-nav">
+                    <li class="mx-3 my-2 menu-item nav-item">@Html.ActionLink("START", "Index", "Home")</li>
+
+                    <li class="mx-3 menu-item nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu-questions1"> 1 PYTANIE </a>
+                        <div class="dropdown-menu" aria-labelledby="submenu-questions1">
+                            @Html.ActionLink("Kat. A", "Quiz", "Exam", new { category = "A", questions = 1}, new { @class = "dropdown-item"})
+                            @Html.ActionLink("Kat. B", "Quiz", "Exam", new { category = "B", questions = 1 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. C", "Quiz", "Exam", new { category = "C", questions = 1 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. D", "Quiz", "Exam", new { category = "D", questions = 1 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. T", "Quiz", "Exam", new { category = "T", questions = 1 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kodeks", "Quiz", "Exam", new { category = "Kodeks", questions = 1 }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+
+                    <li class="mx-3 menu-item nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu-questions40"> 40 PYTAŃ </a>
+                        <div class="dropdown-menu" aria-labelledby="submenu-questions40">
+                            @Html.ActionLink("Kat. A", "Quiz", "Exam", new { category = "A", questions = 40 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. B", "Quiz", "Exam", new { category = "B", questions = 40 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. C", "Quiz", "Exam", new { category = "C", questions = 40 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. D", "Quiz", "Exam", new { category = "D", questions = 40 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. T", "Quiz", "Exam", new { category = "T", questions = 40 }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kodeks", "Quiz", "Exam", new { category = "Kodeks", questions = 40 }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+
+                    <li class="mx-3 menu-item nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu-exam"> EGZAMIN </a>
+                        <div class="dropdown-menu" aria-labelledby="submenu-exam">
+                            @Html.ActionLink("Kat. A", "Exam", "Exam", new { category = "A" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. B", "Exam", "Exam", new { category = "B" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. C", "Exam", "Exam", new { category = "C" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. D", "Exam", "Exam", new { category = "D" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. T", "Exam", "Exam", new { category = "T" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kodeks", "Exam", "Exam", new { category = "Kodeks" }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+
+                    <li class="mx-3 nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu-learn"> NAUKA </a>
+                        <div class="dropdown-menu" aria-labelledby="submenu-learn">                        
+                            @Html.ActionLink("Kat. A", "Study", "Learn", new { category = "A" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. B", "Study", "Learn", new { category = "B" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. C", "Study", "Learn", new { category = "C" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. D", "Study", "Learn", new { category = "D" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kat. T", "Study", "Learn", new { category = "T" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Kodeks", "Study", "Learn", new { category = "Kodeks" }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+
+                    <li class="mx-3  my-2 menu-item nav-item">@Html.ActionLink("INFORMACJE", "About", "Home")</li>
+                    <li class="mx-3  my-2 menu-item nav-item">@Html.ActionLink("KONTAKT", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Moja aplikacja ASP.NET</p>
-        </footer>
+
     </div>
+    <footer class="d-flex flex-column">
+        <p class="text-center text-muted ml-3">&copy; @DateTime.Now.Year - Szymon Kania, Uniwersytet Ekonomiczny w Katowicach</p>
+        <p class="text-center text-muted mr-3">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "footer-link" }) | @Html.ActionLink("Regulamin", "ToS", "Home", new { @class = "footer-link" })</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

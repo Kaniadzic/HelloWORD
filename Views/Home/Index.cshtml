@@ -2,3 +2,130 @@
     ViewBag.Title = "Start";
 }
 
+<main class="index-main">
+    <section class="index-section">
+        <div class="m-0 row d-flex flex-column justify-content-start align-items-center">
+            <h1 class="mt-md-4">HelloWORD</h1>
+            <h2 class="h4 mt-md-4 text-center"><span class="HelloWORD">HelloWORD</span> jest darmową aplikacją, która powstała żebym zdał licencjata</h2>
+
+            <p class="mt-md-4 mx-5 px-5 text-about text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Cras lobortis, mi laoreet commodo fringilla, urna urna porttitor lectus, tincidunt pulvinar elit libero
+                non elit. Etiam nisl ante, condimentum a tincidunt vel, dapibus commodo mi. Mauris nunc erat, vestibulum
+                a eleifend at, tempor sit amet odio. Donec convallis diam ac enim fermentum volutpat. Maecenas consectetur
+                consectetur lorem at molestie.
+            </p>
+
+            <h3 class="h4 mt-md-4 text-center text-about-bold d-none d-md-block">Już teraz sprawdź swoją wiedzę!</h3>
+        </div>
+        <div class="d-none d-md-flex align-items-center m-0 row w-100 category-slider-container mt-3">
+            <div class="category-slider d-flex justify-content-around">
+                @Html.ActionLink("Kat. A", "Exam", "Exam", new { category = "A" }, new { @class = "category-slider-a category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. B", "Exam", "Exam", new { category = "B" }, new { @class = "category-slider-b category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. C", "Exam", "Exam", new { category = "C" }, new { @class = "category-slider-c category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. D", "Exam", "Exam", new { category = "D" }, new { @class = "category-slider-d category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. T", "Exam", "Exam", new { category = "T" }, new { @class = "category-slider-t category-slider-element d-flex align-items-center justify-content-center" })
+            </div>
+        </div>
+    </section>
+
+    <section class="index-section">
+        <div class="content-upper d-md-flex">
+            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-3 mt-md-2">
+                <h3 class="text-center">Nauka</h3>
+                <p class="text-center px-4 pt-3"><span class="HelloWORD">HelloWORD</span> umożliwia naukę na każdą kategorię prawa jazdy oraz naukę kodeksu drogowego. Przekonaj się, że nauka na prawo jazdy może być przyjemna!</p>
+
+                @Html.ActionLink("O nauce", "LearnInfo", "Home", new { @class = "btn btn-contact mt-3" })
+            </div>
+            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-3 mt-md-2">
+                <h3 class="text-center">Kursy</h3>
+                <p class="text-center px-4 pt-3">Jesteś właścicielem szkoły jazdy? Załóż konto i stwórz kurs dla swoich podopiecznych. Dzięki <span class="HelloWORD">HelloWORD</span> możesz za darmo założyć kurs, sprawdzać postępy uczniów oraz przeprowadzić egzamin wewnętrzny!</p>
+
+                @Html.ActionLink("Załóż darmowe konto!", "", "", new { @class = "btn btn-contact mt-3" })
+            </div>
+            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-3 mt-md-2">
+                <h3 class="text-center">Testy</h3>
+                <p class="text-center px-4 pt-3">Przed wypełnieniem egzaminu warto sprawdzić swoją wiedzę w mniej zobowiązujący sposób. Wybierz kategorię i spokojnie wypełnij test czterdziestu pytań.</p>
+
+                @Html.ActionLink("O testach", "QuizInfo", "Home", new { @class = "btn btn-contact mt-3" })
+            </div>
+        </div>
+        <div class="content-lower d-none d-md-flex">
+
+        </div>
+    </section>
+
+    <section class="index-section d-flex">
+        <div class="col-md-10 p-0 m-0">
+            <div class="info-row d-flex align-items-center justify-content-center flex-column">
+                <h4 class="m-0 p-0 text-center"><span class="HelloWORD">HelloWORD</span> zostało stworzone przez jednego studenta w ramach pracy licencjackiej</h4>
+                <p class="info-text mt-2 text-center">Chcesz zgłosić błąd lub skontaktować się ze mną? Jeśli tak napisz do mnie na <span class="email">szymon.kania@edu.uekat.pl</span> albo użyj formularza kontatkowego</p>
+
+                @Html.ActionLink("Skontaktuj się!", "Contact", "Home", new { @class = "btn btn-contact mt-3" })             
+            </div>
+            <div class="info-row d-flex align-items-center justify-content-center flex-column">
+                <h4 class="m-0 p-0 text-center">W mojej aplikacji możesz także znaleźć cenne informacje o egzaminie</h4>
+                <p class="info-text mt-2 text-center">Podchodzisz do egzaminu pierwszy raz i boisz się nieznanego? A może zdajesz na kolejną kategorię po kilkunastu latach? Bez obaw, kliknij w poniższy przycisk aby uzyskać wszystkie aktualne informacje o przebiegu egzaminu.</p>
+
+                @Html.ActionLink("O egzaminie", "About", "Home", new { @class = "btn btn-contact mt-3" })
+            </div>
+            <div class="info-row d-md-flex d-block align-items-center justify-content-center">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <h4 class="text-center">Polecane książki pomagające w nauce </h4>
+                </div>
+                <div class="col-md-6 d-flex justify-content-around">
+                    <div class="book mx-2">
+                        <a href="#">
+                            <img src="~/Content/images/placeholder.jpg">
+                        </a>
+                    </div>
+                    <div class="book mx-2">
+                        <a href="#">
+                            <img src="~/Content/images/placeholder.jpg">
+                        </a>                    
+                    </div>
+                    <div class="book mx-2">
+                        <a href="#">
+                            <img src="~/Content/images/placeholder.jpg">
+                        </a>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-flex col-md-2 align-items-center flex-column justify-content-center">
+            <div>
+                <h5>Egzaminy</h5>
+                <ul>
+                    <li>@Html.ActionLink("Kat. A", "Exam", "Exam", new { category = "A" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. B", "Exam", "Exam", new { category = "B" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. C", "Exam", "Exam", new { category = "C" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. D", "Exam", "Exam", new { category = "D" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. T", "Exam", "Exam", new { category = "T" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kodeks", "Exam", "Exam", new { category = "Kodeks" }, new { @class = "contact-link" })</li>
+                </ul>
+            </div>
+            <div>
+                <h5>Nauka</h5>
+                <ul>
+                    <li>@Html.ActionLink("Kat. A", "Study", "Learn", new { category = "A" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. B", "Study", "Learn", new { category = "B" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. C", "Study", "Learn", new { category = "C" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. D", "Study", "Learn", new { category = "D" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. T", "Study", "Learn", new { category = "T" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kodeks", "Study", "Learn", new { category = "Kodeks" }, new { @class = "contact-link" })</li>
+                </ul>
+            </div>
+            <div>
+                <h5>40 pytań</h5>
+                <ul>
+                    <li>@Html.ActionLink("Kat. A", "Quiz", "Exam", new { category = "A", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. B", "Quiz", "Exam", new { category = "B", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. C", "Quiz", "Exam", new { category = "C", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. D", "Quiz", "Exam", new { category = "D", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. T", "Quiz", "Exam", new { category = "T", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kodeks", "Quiz", "Exam", new { category = "kodeks", questions = 40 }, new { @class = "contact-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>

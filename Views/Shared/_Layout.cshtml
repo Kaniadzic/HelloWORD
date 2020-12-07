@@ -8,6 +8,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/main.css")
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg">
@@ -75,14 +77,14 @@
         </div>
     </nav>
 
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
         <hr />
 
     </div>
-    <footer class="d-flex flex-column">
+    <footer class="d-flex flex-column main-footer">
         <p class="text-center text-muted ml-3">&copy; @DateTime.Now.Year - Szymon Kania, Uniwersytet Ekonomiczny w Katowicach</p>
-        <p class="text-center text-muted mr-3">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "footer-link" }) | @Html.ActionLink("Regulamin", "ToS", "Home", new { @class = "footer-link" })</p>
+        <p class="text-center text-muted mr-3">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "contact-link" }) | @Html.ActionLink("Regulamin", "ToS", "Home", new { @class = "contact-link" }) | <a class="contact-link" href="#">Facebook</a></p>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

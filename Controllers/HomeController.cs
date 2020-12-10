@@ -26,5 +26,15 @@ namespace HelloWORD.Controllers
 
             return View();
         }
+
+        public ActionResult LearnInfo()
+        {
+            return View();
+        }
+
+        public ActionResult QuizInfo()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Egzamin";
+}
+
+<main>
+    <section class="d-flex flex-column align-items-center justify-content-center">
+        <h2 class="h3 text-center mt-3 mt-md-5"><span class="HelloWORD">HelloWORD</span> pozwala robić egzaminy takie same jak w ośrodku</h2>
+        <p class="text-center px-5">
+            Lorem sed stet stet erat ea diam accumsan consetetur volutpat sed dolores amet accusam voluptua nonumy
+            euismod sit et amet velit vero magna erat sed erat diam invidunt ipsum consequat eos vel facilisis tempor
+            ut dolores at et adipiscing accusam amet velit vero magna erat sed erat
+        </p>
+        <p class="text-center h4">
+            Sprawdź swoją wiedzę w egzaminie!
+        </p>
+    </section>
+    <section class="d-block d-md-flex my-5 justify-content-center">
+        <div class="col-md-2 mx-3 pt-3">
+            @Html.ActionLink("Kat. A", "Exam", "Exam", new { category = "A" }, new { @class = "category-slider-a info-learn-element d-flex align-items-center justify-content-center" })
+        </div>
+        <div class="col-md-2 mx-3 pt-3">
+            @Html.ActionLink("Kat. B", "Exam", "Exam", new { category = "B" }, new { @class = "category-slider-b info-learn-element d-flex align-items-center justify-content-center" })
+        </div>
+        <div class="col-md-2  mx-3 pt-3">
+            @Html.ActionLink("Kat. C", "Exam", "Exam", new { category = "C" }, new { @class = "category-slider-c info-learn-element d-flex align-items-center justify-content-center" })
+        </div>
+        <div class="col-md-2 mx-3 pt-3">
+            @Html.ActionLink("Kat. D", "Exam", "Exam", new { category = "D" }, new { @class = "category-slider-d info-learn-element d-flex align-items-center justify-content-center" })
+        </div>
+        <div class="col-md-2 mx-3 pt-3">
+            @Html.ActionLink("Kat. T", "Exam", "Exam", new { category = "T" }, new { @class = "category-slider-t info-learn-element d-flex align-items-center justify-content-center" })
+        </div>
+    </section>
+</main>

@@ -1,17 +1,36 @@
 ﻿@{
     ViewBag.Title = "Kontakt";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<main>
+    <section class="d-flex flex-column align-items-center justify-content-center">
+        <h2 class="h3 text-center mt-3 mt-md-5">Formularz kontaktowy</h2>
+        <p class="text-center px-5">
+            Chcesz zadać pytanie lub zgłosić błąd? A może masz sugestię dotyczącą mojej aplikacji? Nie czekaj, napisz do mnie
+            wiadomość a odpowiem gdy tylko znajdę chwilę czasu lub chęci (nigdy). Dolores magna et te labore ea nisl dolore diam accusam justo erat te aliquyam lorem
+        </p>
+    </section>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <section class="d-flex flex-column align-items-center justify-content-center mt-4">
+        <form method="post" action="Contact" class="d-flex flex-column text-center">
+            <div class="d-flex">
+                <div>
+                    <label for="name"> Imię </label>
+                    <input class="form-control mr-2" type="text" name="name" id="name" />
+                </div>
+                <div>
+                    <label for="email"> Adres e-mail </label>
+                    <input class="form-control ml-2" type="email" name="from" id="email" />
+                </div>
+            </div>
+            <div class="mt-2">
+                <label for="message"> Twoja wiadomość </label>
+                <textarea name="message" id="message" class="form-control contact-textarea"></textarea>
+            </div>
+
+            <div>
+                <input class="btn btn-contact mt-3 mb-5" type="submit" value="Wyślij" />
+            </div>
+        </form>
+    </section>
+</main>

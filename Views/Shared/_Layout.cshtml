@@ -84,7 +84,7 @@
     </div>
     <footer class="d-flex flex-column main-footer">
         <p class="text-center text-muted ml-3">&copy; @DateTime.Now.Year - Szymon Kania, Uniwersytet Ekonomiczny w Katowicach</p>
-        <p class="text-center text-muted mr-3">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "contact-link" }) | @Html.ActionLink("Regulamin", "ToS", "Home", new { @class = "contact-link" }) | <a class="contact-link" href="#">Facebook</a></p>
+        <p class="text-center text-muted mr-3">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "contact-link" }) | @Html.ActionLink("Regulamin", "ToS", "Home", new { area = "Home"}, new { @class = "contact-link" }) | <a class="contact-link" href="#">Facebook</a></p>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

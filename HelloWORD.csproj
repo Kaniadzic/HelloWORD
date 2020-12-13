@@ -127,14 +127,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\ContactEmail.cs" />
     <Compile Include="Models\Entity\Information.cs" />
+    <Compile Include="Models\Entity\Question.cs" />
     <Compile Include="Models\Logic\InformationContext.cs" />
     <Compile Include="Models\Logic\InformationLogic.cs" />
+    <Compile Include="Models\Logic\QuestionContext.cs" />
+    <Compile Include="Models\Logic\QuestionLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,10 +195,10 @@
     <Content Include="Views\Home\LearnInfo.cshtml" />
     <Content Include="Views\Home\QuizInfo.cshtml" />
     <Content Include="Views\Home\ToS.cshtml" />
+    <Content Include="Views\Exam\Quiz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Email\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

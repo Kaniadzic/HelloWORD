@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HelloWORD.Models.Entity.Questions>
+
+@{
+    ViewBag.Title = "Quiz";
+}
+
+<main>
+    <section class="d-flex flex-column align-items-center justify-content-center">
+        <h2 class="h3 text-center mt-3 mt-md-5">Quiz @Model.Count() pytań</h2>
+        <p class="text-center px-5">
+            Powodzenia!
+        </p>
+    </section>
+    <section class="d-flex flex-column align-items-center justify-content-center">
+        <form method="post" class="d-flex flex-column form-quiz align-items-center">
+
+            @foreach (var que in Model)
+            {
+                <div class="d-flex flex-column align-items-center justify-content-start quiz-element my-4">
+                    @Html.HiddenFor(q => que.Number)
+                    <div class="quiz-question d-flex text-left">
+                        <h5 class="pl-1 pt-1">@que.Question</h5>
+                    </div>
+
+                    @if (que.Picture != "unset")
+                    {
+                        <div class="quiz-picture">
+                            <img src="~/Content/images/@que.Picture" class="quiz-picture">
+                        </div>
+                    }
+
+                    <div class="quiz-answers d-flex align-items-center justify-content-start flex-column mt-2">
+                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
+                            <input type="radio" name="[0].@que.Number" value="A" id="@String.Concat("AnswerA", que.Number)">
+                            <label for="@String.Concat("AnswerA", que.Number)" class="ml-1">@que.AnswerA</label>
+                        </div>
+                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
+                            <input type="radio" name="[0].@que.Number" value="B" id="@String.Concat("AnswerB", que.Number)">
+                            <label for="@String.Concat("AnswerB", que.Number)" class="ml-1">@que.AnswerB</label>
+                        </div>
+                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
+                            <input type="radio" name="[0].@que.Number" value="C" id="@String.Concat("AnswerC", que.Number)">
+                            <label for="@String.Concat("AnswerC", que.Number)" class="ml-1">@que.AnswerC</label>
+                        </div>
+                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
+                            <input type="radio" name="[0].@que.Number" value="D" id="@String.Concat("AnswerD", que.Number)">
+                            <label for="@String.Concat("AnswerD", que.Number)" class="ml-1">@que.AnswerD</label>
+                        </div>
+                    </div>
+                </div>
+            }
+            <input type="submit" class="btn btn-contact mt-4 mb-3" value="Zakończ test">
+        </form>
+    </section>
+</main>

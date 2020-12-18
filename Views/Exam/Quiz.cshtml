@@ -6,7 +6,16 @@
 
 <main>
     <section class="d-flex flex-column align-items-center justify-content-center">
-        <h2 class="h3 text-center mt-3 mt-md-5">Quiz @Model.Count() pytań</h2>
+        @if (Model.Count() == 1)
+        {
+            <h2 class="h3 text-center mt-3 mt-md-5">Oto jedno pytanie</h2>
+        }
+        else
+        {
+            <h2 class="h3 text-center mt-3 mt-md-5">Quiz @Model.Count() pytań</h2>
+        }
+
+
         <p class="text-center px-5">
             Powodzenia!
         </p>
@@ -49,7 +58,21 @@
                     </div>
                 </div>
             }
-            <input type="submit" class="btn btn-contact mt-4 mb-3" value="Zakończ test">
+            @if (Model.Count() == 1)
+            {
+                <input type="submit" class="btn btn-contact mt-4 mb-3" value="Zatwierdź">
+            }
+            else
+            {
+                <input type="submit" class="btn btn-contact mt-4 mb-3" value="Zakończ test">
+            }
+
         </form>
+
+        @if (Model.Count() == 1)
+        {
+            var quiz = Model.ElementAt(0);
+            @Html.ActionLink("Wylosuj inne", "Quiz", "Exam", new { category = quiz.Category, questions = 1 }, new { @class = "btn btn-warning mt-4 mb-3" })
+        }
     </section>
 </main>

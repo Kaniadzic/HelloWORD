@@ -12,7 +12,7 @@
     </section>
 
     <section class="d-flex flex-column align-items-center justify-content-center mt-4">
-        <form method="post" action="Contact" class="d-flex flex-column text-center">
+        <form method="post" action="Contact" class="d-flex flex-column text-center" id="form-contact">
             <div class="d-flex">
                 <div>
                     <label for="name"> Imię </label>
@@ -32,5 +32,8 @@
                 <input class="btn btn-contact mt-3 mb-5" type="submit" value="Wyślij" />
             </div>
         </form>
+        <div class="contact-email-message d-flex justify-content-center">
+            <p class="d-none">Pomyślnie wysłano wiadomość! Dziękuję!</p>
+        </div>
     </section>
 </main>

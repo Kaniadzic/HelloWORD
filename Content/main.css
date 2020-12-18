@@ -219,9 +219,12 @@ body {
     width: 100%;
 }
 
+.contact-email-message {
+    height: 60px;
+    width: 100%;
+}
 
 /* ----------- QUIZ 1 i 40 pytań ----------- */
-
 .form-quiz {
     width: 100%;
 }

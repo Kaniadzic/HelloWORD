@@ -22,38 +22,37 @@
     </section>
     <section class="d-flex flex-column align-items-center justify-content-center">
         <form method="post" class="d-flex flex-column form-quiz align-items-center">
-
-            @foreach (var que in Model)
+            @for (int i = 0; i < Model.Count(); i++)
             {
                 <div class="d-flex flex-column align-items-center justify-content-start quiz-element my-4">
-                    @Html.HiddenFor(q => que.Number)
+                    <input type="hidden" name="userAnswersList[@i].Number" value="@Model.ElementAt(i).Number">
                     <div class="quiz-question d-flex text-left">
-                        <h5 class="pl-1 pt-1">@que.Question</h5>
+                        <h5 class="pl-1 pt-1">@Model.ElementAt(i).Question</h5>
                     </div>
 
-                    @if (que.Picture != "unset")
+                    @if (Model.ElementAt(i).Picture != "unset")
                     {
                         <div class="quiz-picture">
-                            <img src="~/Content/images/@que.Picture" class="quiz-picture">
+                            <img src="~/Content/images/@Model.ElementAt(i).Picture" class="quiz-picture">
                         </div>
                     }
 
                     <div class="quiz-answers d-flex align-items-center justify-content-start flex-column mt-2">
                         <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="[0].@que.Number" value="A" id="@String.Concat("AnswerA", que.Number)">
-                            <label for="@String.Concat("AnswerA", que.Number)" class="ml-1">@que.AnswerA</label>
+                            <input type="radio" name="userAnswersList[@i].Answer" value="A" id="@String.Concat("AnswerA", Model.ElementAt(i).Number)">
+                            <label for="@String.Concat("AnswerA", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerA</label>
                         </div>
                         <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="[0].@que.Number" value="B" id="@String.Concat("AnswerB", que.Number)">
-                            <label for="@String.Concat("AnswerB", que.Number)" class="ml-1">@que.AnswerB</label>
+                            <input type="radio" name="userAnswersList[@i].Answer" value="B" id="@String.Concat("AnswerB", Model.ElementAt(i).Number)">
+                            <label for="@String.Concat("AnswerB", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerB</label>
                         </div>
                         <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="[0].@que.Number" value="C" id="@String.Concat("AnswerC", que.Number)">
-                            <label for="@String.Concat("AnswerC", que.Number)" class="ml-1">@que.AnswerC</label>
+                            <input type="radio" name="userAnswersList[@i].Answer" value="C" id="@String.Concat("AnswerC", Model.ElementAt(i).Number)">
+                            <label for="@String.Concat("AnswerC", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerC</label>
                         </div>
                         <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="[0].@que.Number" value="D" id="@String.Concat("AnswerD", que.Number)">
-                            <label for="@String.Concat("AnswerD", que.Number)" class="ml-1">@que.AnswerD</label>
+                            <input type="radio" name="userAnswersList[@i].Answer" value="D" id="@String.Concat("AnswerD", Model.ElementAt(i).Number)">
+                            <label for="@String.Concat("AnswerD", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerD</label>
                         </div>
                     </div>
                 </div>
@@ -66,7 +65,6 @@
             {
                 <input type="submit" class="btn btn-contact mt-4 mb-3" value="Zakończ test">
             }
-
         </form>
 
         @if (Model.Count() == 1)

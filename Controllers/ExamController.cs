@@ -22,7 +22,7 @@ namespace HelloWORD.Controllers
         }
 
         [HttpPost]
-        public ActionResult Quiz(List<Questions> questions)
+        public ActionResult Quiz(UserAnswersList userAnswers)
         {
             return RedirectToAction("Result", "Quiz", new { result = 0});
         }

@@ -133,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\ContactEmail.cs" />
+    <Compile Include="Models\Logic\Gmailer.cs" />
     <Compile Include="Models\Entity\Information.cs" />
     <Compile Include="Models\Entity\Question.cs" />
     <Compile Include="Models\Logic\InformationContext.cs" />

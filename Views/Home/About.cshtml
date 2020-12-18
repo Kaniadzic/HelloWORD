@@ -20,14 +20,22 @@
     <hr class="mx-4">
 
     <section>
-        @foreach (Information inf in Model)
+        @if (Model.Count() == 0)
         {
             <div class="d-flex flex-column align-items-center justify-content-center text-center my-5 mx-2 mx-md-4">
-                <h3 class="list-unstyled h4">@inf.Header </h3>
-                <p class="list-unstyled"> @inf.Content </p>
+                <h3 class="list-unstyled h4">Nic tu jeszcze nie ma!</h3>
             </div>
-            <hr class="mx-5">
         }
-
+        else
+        {
+            foreach (Information inf in Model)
+            {
+                <div class="d-flex flex-column align-items-center justify-content-center text-center my-5 mx-2 mx-md-4">
+                    <h3 class="list-unstyled h4">@inf.Header </h3>
+                    <p class="list-unstyled"> @inf.Content </p>
+                </div>
+                <hr class="mx-5">
+            }
+        }
     </section>
 </main>

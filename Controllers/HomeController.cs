@@ -34,7 +34,19 @@ namespace HelloWORD.Controllers
         [HttpPost]
         public ActionResult Contact(ContactEmail contactEmail)
         {
-            // @TODO wysłanie emaila lub zapis wiadomości do bazy
+            GMailer.GmailUsername = "licencjathelloword@gmail.com";
+
+            // hasło do konta
+            {
+                GMailer.GmailPassword = "/a12Uil?09wwE";
+            }
+
+            GMailer mailer = new GMailer();
+            mailer.ToEmail = "licencjathelloword@gmail.com";
+            mailer.Subject = "A message from " + contactEmail.name;
+            mailer.Body = "From: " + contactEmail.from + " " + contactEmail.message;
+            mailer.IsHtml = true;
+            mailer.Send();
 
             return View();
         }

@@ -16,16 +16,16 @@
             <div class="d-flex">
                 <div>
                     <label for="name"> Imię </label>
-                    <input class="form-control mr-2" type="text" name="name" id="name" />
+                    <input class="form-control mr-2" type="text" name="name" id="name" required />
                 </div>
                 <div>
                     <label for="email"> Adres e-mail </label>
-                    <input class="form-control ml-2" type="email" name="from" id="email" />
+                    <input class="form-control ml-2" type="email" name="from" id="email" required/>
                 </div>
             </div>
             <div class="mt-2">
                 <label for="message"> Twoja wiadomość </label>
-                <textarea name="message" id="message" class="form-control contact-textarea"></textarea>
+                <textarea name="message" id="message" class="form-control contact-textarea" required></textarea>
             </div>
 
             <div>
@@ -33,7 +33,7 @@
             </div>
         </form>
         <div class="contact-email-message d-flex justify-content-center">
-            <p class="d-none">Pomyślnie wysłano wiadomość! Dziękuję!</p>
+            <p>@ViewBag.Message</p>
         </div>
     </section>
 </main>

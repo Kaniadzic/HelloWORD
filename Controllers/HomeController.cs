@@ -48,6 +48,7 @@ namespace HelloWORD.Controllers
             mailer.IsHtml = true;
             mailer.Send();
 
+            ViewBag.Message = "Pomyślnie wysłano wiadomość! Dziękuję!";
             return View();
         }
 

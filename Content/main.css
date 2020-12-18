@@ -224,6 +224,11 @@ body {
     width: 100%;
 }
 
+.contact-email-message p {
+    color: #69940d;
+    font-weight: 700;
+}
+
 /* ----------- QUIZ 1 i 40 pytań ----------- */
 .form-quiz {
     width: 100%;

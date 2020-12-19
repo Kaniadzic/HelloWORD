@@ -35,6 +35,10 @@ namespace HelloWORD.Controllers
             ResultLogic resultLogic = new ResultLogic();
             int score = resultLogic.calculateResult(userAnswers);
 
+            // Sprawdzenie kategorii pytania
+            QuestionCategoryLogic questionCategoryLogic = new QuestionCategoryLogic();
+            string category = questionCategoryLogic.checkQuestionCategory(userAnswers.userAnswersList[0].Number);
+
             if (longQuiz)
             {
                 result = score + "/40";
@@ -51,14 +55,16 @@ namespace HelloWORD.Controllers
                 }
             }
 
-            return RedirectToAction("Result", "Exam", new { result = result});
+            return RedirectToAction("Result", "Exam", new { result = result, category = category, longQuiz = longQuiz});
         }
 
 
         [HttpGet]
-        public ActionResult Result(string result)
+        public ActionResult Result(string result, string category, bool longQuiz)
         {  
             ViewBag.Result = result;
+            ViewBag.Category = category;
+            ViewBag.LongQuiz = longQuiz;
 
             return View();
         }

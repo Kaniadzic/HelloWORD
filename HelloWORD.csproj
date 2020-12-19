@@ -140,6 +140,7 @@
     <Compile Include="Models\Entity\Question.cs" />
     <Compile Include="Models\Logic\InformationContext.cs" />
     <Compile Include="Models\Logic\InformationLogic.cs" />
+    <Compile Include="Models\Logic\QuestionCategoryLogic.cs" />
     <Compile Include="Models\Logic\QuestionContext.cs" />
     <Compile Include="Models\Logic\QuestionLogic.cs" />
     <Compile Include="Models\Logic\ResultLogic.cs" />

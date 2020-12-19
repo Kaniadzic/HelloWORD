@@ -5,6 +5,31 @@
 <main>
     <section class="d-flex flex-column align-items-center justify-content-center">
         <h2 class="h3 my-3 mt-md-5">Oto twój wynik</h2>
-        <h3 class="h4 text-center">@ViewBag.Result</h3>
+        @if (ViewBag.Result == "Dobrze!")
+        {
+            <h3 class="h4 text-center answer-correct" >@ViewBag.Result</h3>
+        }
+        else if (ViewBag.Result == "Źle!")
+        {
+            <h3 class="h4 text-center answer-incorrect">@ViewBag.Result</h3>
+        }
+        else
+        {
+            <h3 class="h4 text-center">@ViewBag.Result</h3>
+        }
+
+    </section>
+    <section class="d-flex flex-column align-items-center justify-content-center">
+        <h2 class="h5 my-3 mt-md-5">Zanim zaczniesz od nowa nie zapomnij przejrzeć odpowiedzi!</h2>
+
+
+        @if (ViewBag.LongQuiz == true)
+        {
+            @Html.ActionLink("Jeszcze raz", "Quiz", "Exam", new { category = ViewBag.Category, questions = 40 }, new { @class = "btn btn-warning mt-4 mb-3" })
+        }
+        else
+        {
+            @Html.ActionLink("Jeszcze raz", "Quiz", "Exam", new { category = ViewBag.Category, questions = 1 }, new { @class = "btn btn-warning mt-4 mb-3" })
+        }
     </section>
 </main>

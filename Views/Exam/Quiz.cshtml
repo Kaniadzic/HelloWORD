@@ -15,7 +15,6 @@
             <h2 class="h3 text-center mt-3 mt-md-5">Quiz @Model.Count() pytań</h2>
         }
 
-
         <p class="text-center px-5">
             Powodzenia!
         </p>
@@ -37,23 +36,25 @@
                         </div>
                     }
 
+
+                    @*  @TODO: dać required to każdego inputa typu radio  *@
                     <div class="quiz-answers d-flex align-items-center justify-content-start flex-column mt-2">
-                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="userAnswersList[@i].Answer" value="A" id="@String.Concat("AnswerA", Model.ElementAt(i).Number)">
-                            <label for="@String.Concat("AnswerA", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerA</label>
-                        </div>
-                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="userAnswersList[@i].Answer" value="B" id="@String.Concat("AnswerB", Model.ElementAt(i).Number)">
-                            <label for="@String.Concat("AnswerB", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerB</label>
-                        </div>
-                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="userAnswersList[@i].Answer" value="C" id="@String.Concat("AnswerC", Model.ElementAt(i).Number)">
-                            <label for="@String.Concat("AnswerC", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerC</label>
-                        </div>
-                        <div class="quiz-answer my-1 d-flex align-items-baseline pl-1 pt-2">
-                            <input type="radio" name="userAnswersList[@i].Answer" value="D" id="@String.Concat("AnswerD", Model.ElementAt(i).Number)">
-                            <label for="@String.Concat("AnswerD", Model.ElementAt(i).Number)" class="ml-1">@Model.ElementAt(i).AnswerD</label>
-                        </div>
+                        <label class="p-2 quiz-answer">
+                            <input type="radio" name="userAnswersList[@i].Answer" value="A">
+                            @Model.ElementAt(i).AnswerA
+                        </label>
+                        <label class="p-2 quiz-answer">
+                            <input type="radio" name="userAnswersList[@i].Answer" value="B">
+                            @Model.ElementAt(i).AnswerB
+                        </label>
+                        <label class="p-2 quiz-answer">
+                            <input type="radio" name="userAnswersList[@i].Answer" value="C">
+                            @Model.ElementAt(i).AnswerC
+                        </label>
+                        <label class="p-2 quiz-answer">
+                            <input type="radio" name="userAnswersList[@i].Answer" value="D">
+                            @Model.ElementAt(i).AnswerD
+                        </label>
                     </div>
                 </div>
             }

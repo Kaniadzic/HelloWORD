@@ -24,7 +24,43 @@ namespace HelloWORD.Controllers
         [HttpPost]
         public ActionResult Quiz(UserAnswersList userAnswers)
         {
-            return RedirectToAction("Result", "Quiz", new { result = 0});
+            bool longQuiz = false;
+            string result;
+
+            if (userAnswers.userAnswersList.Count() == 40)
+            {
+                longQuiz = true;
+            }
+
+            ResultLogic resultLogic = new ResultLogic();
+            int score = resultLogic.calculateResult(userAnswers);
+
+            if (longQuiz)
+            {
+                result = score + "/40";
+            }
+            else
+            {
+                if (score == 1)
+                {
+                    result = "Dobrze!";
+                }
+                else
+                {
+                    result = "Źle!";
+                }
+            }
+
+            return RedirectToAction("Result", "Exam", new { result = result});
+        }
+
+
+        [HttpGet]
+        public ActionResult Result(string result)
+        {  
+            ViewBag.Result = result;
+
+            return View();
         }
     }
 }

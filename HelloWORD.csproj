@@ -142,6 +142,7 @@
     <Compile Include="Models\Logic\InformationLogic.cs" />
     <Compile Include="Models\Logic\QuestionContext.cs" />
     <Compile Include="Models\Logic\QuestionLogic.cs" />
+    <Compile Include="Models\Logic\ResultLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +200,7 @@
     <Content Include="Views\Home\QuizInfo.cshtml" />
     <Content Include="Views\Home\ToS.cshtml" />
     <Content Include="Views\Exam\Quiz.cshtml" />
+    <Content Include="Views\Exam\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

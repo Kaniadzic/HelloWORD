@@ -36,7 +36,7 @@ namespace HelloWORD.Models.Logic
             // Pobranie z bazy odpowiedzi dla pytań i dodanie ich do listy poprawnych odpowiedzi
             for (int i=0; i < userAnswerList.userAnswersList.Count(); i++)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["InformationContext"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["QuestionContext"].ConnectionString;
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
@@ -58,7 +58,10 @@ namespace HelloWORD.Models.Logic
             }
 
 
-            // Sprawdzenie odpowiedzi i policzenie punktów
+            // Sprawdzenie odpowiedzi i policzenie punktów 
+            // jeżeli udzielono złej odpowiedzi pytanie zostaje dodane do listy złych odpowiedzi
+            List<UserAnswer> incorrectAnswers = new List<UserAnswer>();
+
             for (int i=0; i < userAnswerList.userAnswersList.Count(); i++)
             {
                 if (userAnswerList.userAnswersList[i].Answer == correctAnswers[i].Answer)
@@ -66,7 +69,6 @@ namespace HelloWORD.Models.Logic
                     score++;
                 }
             }
-
 
             return score;
         }

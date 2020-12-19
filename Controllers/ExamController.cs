@@ -32,8 +32,13 @@ namespace HelloWORD.Controllers
                 longQuiz = true;
             }
 
+            // Sprawdzenie ilości punktów
             ResultLogic resultLogic = new ResultLogic();
             int score = resultLogic.calculateResult(userAnswers);
+
+            // Zdobycie niepoprawnych odpowiedzi użytkownika
+            IncorrectAnswersLogic incorrectAnswersLogic = new IncorrectAnswersLogic();
+            List<QuestionsAndAnswers> qaList = incorrectAnswersLogic.getIncorrectAnswers(userAnswers);
 
             // Sprawdzenie kategorii pytania
             QuestionCategoryLogic questionCategoryLogic = new QuestionCategoryLogic();
@@ -55,18 +60,18 @@ namespace HelloWORD.Controllers
                 }
             }
 
-            return RedirectToAction("Result", "Exam", new { result = result, category = category, longQuiz = longQuiz});
+            return RedirectToAction("Result", "Exam", new { result = result, category = category, longQuiz = longQuiz, qaList = qaList});
         }
 
 
         [HttpGet]
-        public ActionResult Result(string result, string category, bool longQuiz)
+        public ActionResult Result(string result, string category, bool longQuiz, List<QuestionsAndAnswers> qaList)
         {  
             ViewBag.Result = result;
             ViewBag.Category = category;
             ViewBag.LongQuiz = longQuiz;
 
-            return View();
+            return View(qaList);
         }
     }
 }

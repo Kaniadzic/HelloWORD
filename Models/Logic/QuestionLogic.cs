@@ -20,7 +20,7 @@ namespace HelloWORD.Models.Logic
             List<int> usedIDs = new List<int>();
             Random rnd = new Random();
 
-            // Wybranie wszystkich id pytań z bazy
+            // Wybranie wszystkich numerów pytań z bazy
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("sp_SelectQuestionsNumbers", con);

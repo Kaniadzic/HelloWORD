@@ -60,7 +60,8 @@ namespace HelloWORD.Controllers
                 }
             }
 
-            return RedirectToAction("Result", "Exam", new { result = result, category = category, longQuiz = longQuiz, qaList = qaList});
+            // @TODO: przekazać jakoś listę qaList do Result
+            return RedirectToAction("Result", "Exam", new { result = result, category = category, longQuiz = longQuiz});
         }
 
 

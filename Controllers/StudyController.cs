@@ -17,6 +17,7 @@ namespace HelloWORD.Controllers
             List<LearnCategory> lessons;
 
             lessons = learnLogic.getLessons(category);
+            ViewBag.Category = category;
 
             return View(lessons);
         }
@@ -29,6 +30,7 @@ namespace HelloWORD.Controllers
             List<Lesson> lessons;
 
             lessons = learnLogic.getLesson(id);
+            ViewBag.Number = id;
 
             return View(lessons);
         }

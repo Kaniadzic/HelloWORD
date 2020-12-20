@@ -19,7 +19,7 @@ namespace HelloWORD.Models.Logic
             // Pobranie z bazy odpowiedzi dla pytań i dodanie ich do listy poprawnych odpowiedzi
             for (int i = 0; i < userAnswerList.userAnswersList.Count(); i++)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["QuestionContext"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
@@ -63,7 +63,7 @@ namespace HelloWORD.Models.Logic
                 qa.UserAnswer = incorrectAnswers[i].Answer;
                 qa.Number = incorrectAnswers[i].Number;
 
-                string connectionString = ConfigurationManager.ConnectionStrings["QuestionContext"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {

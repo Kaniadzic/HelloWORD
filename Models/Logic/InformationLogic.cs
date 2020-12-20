@@ -13,7 +13,7 @@ namespace HelloWORD.Models.Logic
     {
         public List<Information> getInformations()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["InformationContext"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
             List<Information> informations = new List<Information>();
 

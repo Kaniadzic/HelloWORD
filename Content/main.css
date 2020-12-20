@@ -23,6 +23,14 @@ body {
     .info-row > p {
         font-size: 14px;
     }
+
+    .lesson-element-link {
+        font-size: 14px;
+    }
+
+    .lesson-content {
+        font-size: 14px;
+    }
 }
 
 
@@ -280,4 +288,44 @@ body {
 
 .answer-incorrect {
     color: #940d0d;
+}
+
+
+/* ----------- NAUKA ----------- */
+
+.lesson-element {
+    border: 2px solid #69940d;
+    height: 128px;
+    transition: box-shadow .2s ease-out;
+    position: relative;
+}
+
+.lesson-element:hover {
+    box-shadow: inset 0 0 16px #69940d;
+}
+
+.lesson-element-link {
+    width: 100%;
+    height: 100%;
+    color: #69940d;
+    z-index: 1;
+    position: absolute;
+    font-weight: 700;
+}
+
+.lesson-element-link:hover {
+    text-decoration: none;
+    color: #69940d;
+}
+
+.lesson-element-picture {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+}
+
+.lesson-content-picture {
+    max-width: 720px;
+    max-height: 360px;
 }

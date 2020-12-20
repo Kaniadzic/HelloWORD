@@ -15,7 +15,7 @@ namespace HelloWORD.Models.Logic
         {
             List<LearnCategory> lessons = new List<LearnCategory>();
 
-            string connectionString = ConfigurationManager.ConnectionStrings["QuestionContext"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -46,7 +46,7 @@ namespace HelloWORD.Models.Logic
         {
             List<Lesson> lessons = new List<Lesson>();
 
-            string connectionString = ConfigurationManager.ConnectionStrings["QuestionContext"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {

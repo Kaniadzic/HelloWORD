@@ -209,6 +209,7 @@
     <Content Include="Views\Exam\Quiz.cshtml" />
     <Content Include="Views\Exam\Result.cshtml" />
     <Content Include="Views\Study\Learn.cshtml" />
+    <Content Include="Views\Study\Lesson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

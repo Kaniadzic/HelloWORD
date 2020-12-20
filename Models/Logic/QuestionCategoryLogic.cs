@@ -12,7 +12,7 @@ namespace HelloWORD.Models.Logic
     {
         public string checkQuestionCategory(int number)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["InformationContext"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
             string category = "";
 
             using (SqlConnection con = new SqlConnection(connectionString))

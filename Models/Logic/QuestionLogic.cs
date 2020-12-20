@@ -14,7 +14,7 @@ namespace HelloWORD.Models.Logic
         public List<Questions> getQuestion(string category, int questionsNumber)
         {
             // Zdefiniowanie potrzebnych obiektów, list etc.
-            string connectionString = ConfigurationManager.ConnectionStrings["QuestionContext"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
             List<Questions> questions = new List<Questions>();
             List<int> questionsIDs = new List<int>(); 
             List<int> usedIDs = new List<int>();

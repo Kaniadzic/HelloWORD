@@ -129,10 +129,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\ContactEmail.cs" />
+    <Compile Include="Models\Entity\LearnCategory.cs" />
+    <Compile Include="Models\Entity\Lesson.cs" />
     <Compile Include="Models\Entity\QuestionsAndAnswers.cs" />
     <Compile Include="Models\Entity\UserAnswer.cs" />
     <Compile Include="Models\Entity\UserAnswersList.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Models\Logic\IncorrectAnswersLogic.cs" />
     <Compile Include="Models\Logic\InformationContext.cs" />
     <Compile Include="Models\Logic\InformationLogic.cs" />
+    <Compile Include="Models\Logic\LearnLogic.cs" />
     <Compile Include="Models\Logic\QuestionCategoryLogic.cs" />
     <Compile Include="Models\Logic\QuestionContext.cs" />
     <Compile Include="Models\Logic\QuestionLogic.cs" />
@@ -204,6 +208,7 @@
     <Content Include="Views\Home\ToS.cshtml" />
     <Content Include="Views\Exam\Quiz.cshtml" />
     <Content Include="Views\Exam\Result.cshtml" />
+    <Content Include="Views\Study\Learn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

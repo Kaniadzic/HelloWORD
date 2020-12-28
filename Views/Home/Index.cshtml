@@ -4,11 +4,11 @@
 
 <main class="index-main">
     <section class="index-section">
-        <div class="m-0 row d-flex flex-column justify-content-start align-items-center">
+        <div class="m-0 mt-3 row d-flex flex-column justify-content-start align-items-center">
             <h1 class="mt-md-4">HelloWORD</h1>
             <h2 class="h4 mt-md-4 text-center"><span class="HelloWORD">HelloWORD</span> jest darmową aplikacją, która powstała żebym zdał licencjata</h2>
 
-            <p class="mt-md-4 mx-5 px-5 text-about text-justify">
+            <p class="mt-md-4 mx-3 mx-md-5 px-5 text-about text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Cras lobortis, mi laoreet commodo fringilla, urna urna porttitor lectus, tincidunt pulvinar elit libero
                 non elit. Etiam nisl ante, condimentum a tincidunt vel, dapibus commodo mi. Mauris nunc erat, vestibulum
@@ -29,22 +29,22 @@
         </div>
     </section>
 
-    <section class="index-section">
+    <section class="index-section mb-5 mb-md-0">
         <div class="content-upper d-md-flex">
-            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-3 mt-md-2">
-                <h3 class="text-center">Nauka</h3>
+            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-1 mt-md-2">
+                <h3 class="text-center d-none d-md-block">Nauka</h3>
                 <p class="text-center px-4 pt-3"><span class="HelloWORD">HelloWORD</span> umożliwia naukę na każdą kategorię prawa jazdy oraz naukę kodeksu drogowego. Przekonaj się, że nauka na prawo jazdy może być przyjemna!</p>
 
                 @Html.ActionLink("O nauce", "LearnInfo", "Home", new { @class = "btn btn-contact mt-3" })
             </div>
-            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-3 mt-md-2">
-                <h3 class="text-center">Kursy</h3>
+            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-1 mt-md-2">
+                <h3 class="text-center d-none d-md-block">Kursy</h3>
                 <p class="text-center px-4 pt-3">Jesteś właścicielem szkoły jazdy? Załóż konto i stwórz kurs dla swoich podopiecznych. Dzięki <span class="HelloWORD">HelloWORD</span> możesz za darmo założyć kurs, sprawdzać postępy uczniów oraz przeprowadzić egzamin wewnętrzny!</p>
 
                 @Html.ActionLink("Załóż darmowe konto!", "", "", new { @class = "btn btn-contact mt-3" })
             </div>
-            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-3 mt-md-2">
-                <h3 class="text-center">Testy</h3>
+            <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-1 mt-md-2">
+                <h3 class="text-center d-none d-md-block">Testy</h3>
                 <p class="text-center px-4 pt-3">Przed wypełnieniem egzaminu warto sprawdzić swoją wiedzę w mniej zobowiązujący sposób. Wybierz kategorię i spokojnie wypełnij test czterdziestu pytań.</p>
 
                 @Html.ActionLink("O testach", "QuizInfo", "Home", new { @class = "btn btn-contact mt-3" })
@@ -55,7 +55,7 @@
         </div>
     </section>
 
-    <section class="index-section d-flex">
+    <section class="index-section d-flex mt-5 mt-md-1">
         <div class="col-md-10 p-0 m-0">
             <div class="info-row d-flex align-items-center justify-content-center flex-column">
                 <h4 class="m-0 p-0 text-center"><span class="HelloWORD">HelloWORD</span> zostało stworzone przez jednego studenta w ramach pracy licencjackiej</h4>
@@ -70,7 +70,7 @@
                 @Html.ActionLink("O egzaminie", "About", "Home", new { @class = "btn btn-contact mt-3" })
             </div>
             <div class="info-row d-md-flex d-block align-items-center justify-content-center">
-                <div class="col-md-6 d-flex justify-content-center">
+                <div class="col-md-6 d-flex justify-content-center mt-3">
                     <h4 class="text-center">Polecane książki pomagające w nauce </h4>
                 </div>
                 <div class="col-md-6 d-flex justify-content-around">

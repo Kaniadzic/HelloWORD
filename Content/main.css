@@ -244,6 +244,7 @@ body {
 
 .quiz-element {
     width: 50%;
+    min-width: 300px;
 }
 
 .quiz-question {
@@ -251,6 +252,7 @@ body {
     width: 100%;
     background-color: #dddddd;
     border-radius: 3px;
+    min-height: 50px;
 }
 
 .quiz-answers {
@@ -260,6 +262,7 @@ body {
 .quiz-answer {
     width: 100%;
     height: 6vh;
+    min-height: 40px;
     background-color: #dddddd;
     border-radius: 3px;
     cursor: pointer;

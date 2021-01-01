@@ -32,10 +32,6 @@ namespace HelloWORD.Controllers
                 longQuiz = true;
             }
 
-            // Sprawdzenie ilości punktów
-            ResultLogic resultLogic = new ResultLogic();
-            int score = resultLogic.calculateResult(userAnswers);
-
             // Zdobycie niepoprawnych odpowiedzi użytkownika
             IncorrectAnswersLogic incorrectAnswersLogic = new IncorrectAnswersLogic();
             List<QuestionsAndAnswers> qaList = incorrectAnswersLogic.getIncorrectAnswers(userAnswers);
@@ -43,6 +39,10 @@ namespace HelloWORD.Controllers
             // Sprawdzenie kategorii pytania
             QuestionCategoryLogic questionCategoryLogic = new QuestionCategoryLogic();
             string category = questionCategoryLogic.checkQuestionCategory(userAnswers.userAnswersList[0].Number);
+
+            // Sprawdzenie ilości punktów
+            ResultLogic resultLogic = new ResultLogic();
+            int score = resultLogic.calculateResult(userAnswers);
 
             if (longQuiz)
             {

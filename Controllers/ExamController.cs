@@ -102,7 +102,6 @@ namespace HelloWORD.Controllers
 
             // Lista niepoprawnych pytań
             List<QuestionsAndAnswers> incorrectAnswers = (List<QuestionsAndAnswers>)System.Web.HttpContext.Current.Session["incorrectAnswers"];
-            System.Web.HttpContext.Current.Session["incorrectAnswers"] = null;
 
             return View(incorrectAnswers);
         }

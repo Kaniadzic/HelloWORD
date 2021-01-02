@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HelloWORD.Models.Entity;
 using System.Data.Entity;
 
+// To jest chyba niepotrzebne
 namespace HelloWORD.Models.Logic
 {
     public class InformationContext : DbContext

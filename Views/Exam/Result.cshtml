@@ -24,6 +24,67 @@
         <section class="d-flex flex-column align-items-center justify-content-center">
             <h2 class="h5 my-3 mt-md-5">Zanim zaczniesz od nowa nie zapomnij przejrzeć odpowiedzi!</h2>
 
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <div class="d-flex flex-column align-items-center justify-content-start quiz-element my-4">
+                    <div class="quiz-question d-flex text-left">
+                        <h5 class="pl-1 pt-1">@Model.ElementAt(i).Question</h5>
+                    </div>
+
+                    <div class="quiz-answers d-flex align-items-center justify-content-start flex-column mt-2">
+                        @if (Model.ElementAt(i).UserAnswer == "A")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-incorrect">
+                                @Model.ElementAt(i).AnswerA
+                            </label>
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "B")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-incorrect">
+                                @Model.ElementAt(i).AnswerB
+                            </label>
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "C")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-incorrect">
+                                @Model.ElementAt(i).AnswerC
+                            </label>
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "D")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-incorrect">
+                                @Model.ElementAt(i).AnswerD
+                            </label>
+                        }
+
+                        @if (Model.ElementAt(i).CorrectAnswer == "A")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-correct">
+                                @Model.ElementAt(i).AnswerA
+                            </label>
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "B")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-correct">
+                                @Model.ElementAt(i).AnswerB
+                            </label>
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "C")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-correct">
+                                @Model.ElementAt(i).AnswerC
+                            </label>
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "D")
+                        {
+                            <label class="p-2 quiz-answer-result quiz-answer-correct">
+                                @Model.ElementAt(i).AnswerD
+                            </label>
+                        }
+                    </div>
+                </div>
+            }
+
             @if (ViewBag.LongQuiz == true)
             {
                 @Html.ActionLink("Jeszcze raz", "Quiz", "Exam", new { category = ViewBag.Category, questions = 40 }, new { @class = "btn btn-warning mt-4 mb-3" })
@@ -32,15 +93,5 @@
             {
                 @Html.ActionLink("Jeszcze raz", "Quiz", "Exam", new { category = ViewBag.Category, questions = 1 }, new { @class = "btn btn-warning mt-4 mb-3" })
             }
-        </section>
-        <section class="d-flex flex-column align-items-center justify-content-center">
-            @*@foreach (var item in Model)
-            {
-                <p>Twoja odpowiedź: </p>
-                @Html.Display(item.UserAnswer)
-                <p>Poprawna odpowiedź: </p>
-                @Html.Display(item.CorrectAnswer)
-            }*@
-
-        </section>
+</section>
     </main>

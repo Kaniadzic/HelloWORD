@@ -269,7 +269,6 @@ body {
     transition: all .2s ease-in;
 }
 
-
 .quiz-answer:hover {
     background-color: #bbbbbb;
 }
@@ -291,6 +290,23 @@ body {
 
 .answer-incorrect {
     color: #940d0d;
+}
+
+.quiz-answer-result {
+    width: 100%;
+    height: 6vh;
+    min-height: 40px;
+    background-color: #dddddd;
+    border-radius: 3px;
+    transition: all .2s ease-in;
+}
+
+.quiz-answer-correct {
+    background-color: #69940d;
+}
+
+.quiz-answer-incorrect {
+    background-color: #940d0d;
 }
 
 

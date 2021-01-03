@@ -11,21 +11,26 @@
         <p class="h5 text-center mt-2 mt-md-3 mb-5 ">Nie samymi testami człowiek żyje. Warto zapoznać się z informacjami podanymi w lekcjach. Przerób dokładnie lekcje a następnie srawdź swoją wiedzę w teście albo egzaminie.</p>
 
         <div class="h-100 w-75 d-flex justify-content-center flex-wrap">
+            @if(Model.Count() == 0)
+            {
+                <p class="text-danger">Nie ma jeszcze żadnej lekcji dla tej kategorii! Proszę wrócić później.</p>
+            }
+
             @foreach (var item in Model)
             {
                 if (item.Picture == "unset")
                 {
                     <div class="col-md-5 p-0 m-3 lesson-element">
-                        @Html.ActionLink(item.Header, "Lesson", "Study", new { id = item.ID }, new { @class = "mt-2 lesson-element-link d-flex align-items-start justify-content-center text-center" })
+                        @Html.ActionLink(item.Header, "Lesson", "Study", new { id = item.ID }, new { @class = "pt-3 lesson-element-link d-flex align-items-start justify-content-center text-center" })
                         <img src="~/Content/images/placeholder.jpg" alt=" " class="lesson-element-picture"> 
                     </div>
                 }
                 else
                 {
-        <div class="col-md-5 p-0 m-3 lesson-element d-flex justify-content-start">
-            @Html.ActionLink(item.Header, "Lesson", "Study", new { id = item.ID }, new { @class = "mt-2 lesson-element-link d-flex align-items-start justify-content-center text-center" })
-            <img src="@item.Picture" alt=" " class="lesson-element-picture">
-        </div>
+                    <div class="col-md-5 p-0 m-3 lesson-element d-flex justify-content-start">
+                        @Html.ActionLink(item.Header, "Lesson", "Study", new { id = item.ID }, new { @class = "mt-2 lesson-element-link d-flex align-items-start justify-content-center text-center" })
+                        <img src="@item.Picture" alt=" " class="lesson-element-picture">
+                    </div>
                 }
             }
         </div>

@@ -22,6 +22,11 @@ namespace HelloWORD.Controllers
             // @TODO: dowiedzieć się czy lepiej jest zapisać listę w sesji czy pobierać ją ponownie z bazy
             System.Web.HttpContext.Current.Session["questionsList"] = questionsList;
 
+            if (questionsList.Count() == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View(questionsList);
         }
 

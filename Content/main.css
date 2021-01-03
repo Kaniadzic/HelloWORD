@@ -11,6 +11,14 @@ body {
     font-weight: 700;
 }
 
+.body-content {
+    min-height: 74vh;
+}
+
+.separator {
+    border-top: 1px solid #bbbbbb;
+}
+
 @media(max-width: 575px) {
     .text-about {
         font-size: 14px;
@@ -84,15 +92,6 @@ body {
 .text-about-bold {
     font-weight: 700;
     color: #58830c;
-}
-
-.separator {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid #69940d;
-    background-color: #69940d;
-    color: #69940d;
 }
 
 .category-slider {
@@ -307,6 +306,21 @@ body {
 
 .quiz-answer-incorrect {
     background-color: #940d0d;
+}
+
+.btn-result {
+    width: 196px;
+    background-color: #ebae1e;
+    color: #000000;
+}
+
+.btn-result:hover {
+    background-color: #bc8810;
+    color: #000000;
+}
+
+.btn-result:active {
+    box-shadow: none;
 }
 
 

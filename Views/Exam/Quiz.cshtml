@@ -20,6 +20,12 @@
         </p>
     </section>
     <section class="d-flex flex-column align-items-center justify-content-center">
+        @if (Model.Count() == 1)
+        {
+            var quiz = Model.ElementAt(0);
+            @Html.ActionLink("Wylosuj inne", "Quiz", "Exam", new { category = quiz.Category, questions = 1 }, new { @class = "btn btn-result mt-4 mb-3" })
+        }
+
         <form method="post" class="d-flex flex-column form-quiz align-items-center">
             @for (int i = 0; i < Model.Count(); i++)
             {
@@ -67,11 +73,5 @@
                 <input type="submit" class="btn btn-contact mt-4 mb-3" value="Zakończ test">
             }
         </form>
-
-        @if (Model.Count() == 1)
-        {
-            var quiz = Model.ElementAt(0);
-            @Html.ActionLink("Wylosuj inne", "Quiz", "Exam", new { category = quiz.Category, questions = 1 }, new { @class = "btn btn-warning mt-4 mb-3" })
-        }
     </section>
 </main>

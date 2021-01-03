@@ -78,13 +78,12 @@
     </nav>
 
     <div class="body-content">
-        @RenderBody()
-        <hr />
-
+        @RenderBody()  
     </div>
-    <footer class="d-flex flex-column main-footer">
+    <footer class="d-flex flex-column main-footer mt-3">
+        <span class="mx-3 mb-3 separator"></span>
         <p class="text-center text-muted ml-3">2020 - @DateTime.Now.Year &copy; Szymon Kania, Uniwersytet Ekonomiczny w Katowicach</p>
-        <p class="text-center text-muted mr-3">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "contact-link" }) | @Html.ActionLink("Regulamin", "ToS", "Home", new { area = "Home"}, new { @class = "contact-link" }) | <a class="contact-link" href="#">Facebook</a></p>
+        <p class="text-center text-muted mr-3">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "contact-link" }) | @Html.ActionLink("Regulamin", "ToS", "Home", new { area = "Home" }, new { @class = "contact-link" }) | <a class="contact-link" href="#">Facebook</a></p>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

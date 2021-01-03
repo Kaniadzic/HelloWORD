@@ -58,22 +58,21 @@ body {
 }
 
 .index-section {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /* ----------- INDEX - CONTENT ----------- */
 
 .content-upper {
-    height: 60%;
+    min-height: 60vh;
     width: 100%;
 }
 
 .content-lower {
-    height: 40%;
+    min-height: 40vh;
     width: 100%;
     border: 1px solid green;
 }
-
 
 
 /* ----------- INDEX - OGÓLNIE ----------- */

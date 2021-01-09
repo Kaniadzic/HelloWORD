@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg">
+    <nav class="navbar navbar-dark navbar-expand-lg d-flex justify-content-center">
         <div>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-menu">
                 <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@
                     <li class="mx-3 menu-item nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu-questions1"> 1 PYTANIE </a>
                         <div class="dropdown-menu" aria-labelledby="submenu-questions1">
-                            @Html.ActionLink("Kat. A", "Quiz", "Quiz", new { category = "A", questions = 1}, new { @class = "dropdown-item"})
+                            @Html.ActionLink("Kat. A", "Quiz", "Quiz", new { category = "A", questions = 1 }, new { @class = "dropdown-item" })
                             @Html.ActionLink("Kat. B", "Quiz", "Quiz", new { category = "B", questions = 1 }, new { @class = "dropdown-item" })
                             @Html.ActionLink("Kat. C", "Quiz", "Quiz", new { category = "C", questions = 1 }, new { @class = "dropdown-item" })
                             @Html.ActionLink("Kat. D", "Quiz", "Quiz", new { category = "D", questions = 1 }, new { @class = "dropdown-item" })
@@ -59,7 +59,7 @@
 
                     <li class="mx-3 nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu-learn"> NAUKA </a>
-                        <div class="dropdown-menu" aria-labelledby="submenu-learn">                        
+                        <div class="dropdown-menu" aria-labelledby="submenu-learn">
                             @Html.ActionLink("Kat. A", "Learn", "Study", new { category = "A" }, new { @class = "dropdown-item" })
                             @Html.ActionLink("Kat. B", "Learn", "Study", new { category = "B" }, new { @class = "dropdown-item" })
                             @Html.ActionLink("Kat. C", "Learn", "Study", new { category = "C" }, new { @class = "dropdown-item" })
@@ -69,8 +69,10 @@
                         </div>
                     </li>
 
-                    <li class="mx-3  my-2 menu-item nav-item">@Html.ActionLink("INFORMACJE", "About", "Home")</li>
-                    <li class="mx-3  my-2 menu-item nav-item">@Html.ActionLink("KONTAKT", "Contact", "Home")</li>
+                    <li class="mx-3 my-2 menu-item nav-item">@Html.ActionLink("INFORMACJE", "About", "Home")</li>
+                    <li class="mx-3 my-2 menu-item nav-item">@Html.ActionLink("KONTAKT", "Contact", "Home")</li>
+                    <li class="mx-3 my-2 menu-item nav-item">@Html.ActionLink("ZALOGUJ SIĘ", "Login", "User")</li>
+                    <li class="mx-3 my-2 menu-item nav-item">@Html.ActionLink("stwórz konto", "Create", "User")</li>
                 </ul>
             </div>
         </div>

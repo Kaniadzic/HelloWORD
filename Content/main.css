@@ -2,6 +2,11 @@
     font-family: 'Work Sans', sans-serif;
 }
 
+.nav-item {
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
 body {
     background-color: #f0f0f0;
 }
@@ -359,6 +364,6 @@ body {
 }
 
 .lesson-content-picture {
-    max-width: 720px;
+    max-width: 1024px;
     max-height: 360px;
 }

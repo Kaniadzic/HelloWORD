@@ -25,6 +25,7 @@ namespace HelloWORD.Models.Logic
             {
                 SqlCommand cmd = new SqlCommand("sp_SelectQuestionsNumbers", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Category", category);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -44,6 +45,8 @@ namespace HelloWORD.Models.Logic
                 questionsIDs.RemoveAt(randomNumber);
             }
 
+
+            // Wybranie pytań z bazy
             for (int i=0; i<usedIDs.Count; i++)
             {
                 using (SqlConnection con = new SqlConnection(connectionString))

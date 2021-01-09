@@ -23,13 +23,12 @@
             }
             else
             {
-                <div class="col-md-8 my-2 lesson-content">
-                    <img src="@item.Picture" class="lesson-content-picture">
-                    <p class="text-muted"> @item.Tooltip </p>
-                    <p> @item.Content </p>
+                <div class="d-flex flex-column justify-content-center align-items-center col-md-8 my-2 lesson-content">
+                    <img src="~/Content/images/@item.Picture" alt="~/Content/images/@item.Picture" class="lesson-content-picture">
+                    <p class="text-muted text-center"> @item.Tooltip </p>
+                    <p class="mb-3"> @item.Content </p>
                 </div>               
             }
-
         }
 
     </section>

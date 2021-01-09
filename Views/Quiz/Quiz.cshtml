@@ -37,13 +37,11 @@
 
                     @if (Model.ElementAt(i).Picture != "unset")
                     {
-                        <div class="quiz-picture">
-                            <img src="~/Content/images/@Model.ElementAt(i).Picture" alt="~/Content/images/placeholder.jpg" class="quiz-picture">
+                        <div class="quiz-picture mt-2">
+                            <img src="~/Content/images/@Model.ElementAt(i).Picture" alt="~/Content/images/@Model.ElementAt(i).Picture" class="quiz-picture">
                         </div>
                     }
 
-
-                    @*  @TODO: dać required to każdego inputa typu radio  *@
                     <div class="quiz-answers d-flex align-items-center justify-content-start flex-column mt-2">
                         <label class="p-2 quiz-answer">
                             <input type="radio" name="userAnswersList[@i].Answer" value="A">

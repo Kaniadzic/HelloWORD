@@ -14,5 +14,14 @@ namespace HelloWORD.Controllers
             ViewBag.Category = category;
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Exam(string category)
+        {
+
+
+
+            return View();
+        }
     }
 }

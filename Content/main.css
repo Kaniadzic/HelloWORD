@@ -247,7 +247,7 @@ body {
 }
 
 .quiz-question {
-    height: 8vh;
+    height: 100px;
     width: 100%;
     background-color: #dddddd;
     border-radius: 3px;

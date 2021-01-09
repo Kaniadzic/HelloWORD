@@ -23,7 +23,7 @@
         @if (Model.Count() == 1)
         {
             var quiz = Model.ElementAt(0);
-            @Html.ActionLink("Wylosuj inne", "Quiz", "Exam", new { category = quiz.Category, questions = 1 }, new { @class = "btn btn-result mt-4 mb-3" })
+            @Html.ActionLink("Wylosuj inne", "Quiz", "Quiz", new { category = quiz.Category, questions = 1 }, new { @class = "btn btn-result mt-4 mb-3" })
         }
 
         <form method="post" class="d-flex flex-column form-quiz align-items-center">

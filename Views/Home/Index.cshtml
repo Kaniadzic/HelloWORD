@@ -20,11 +20,11 @@
         </div>
         <div class="d-none d-md-flex align-items-center m-0 row w-100 category-slider-container mt-3">
             <div class="category-slider d-flex justify-content-around">
-                @Html.ActionLink("Kat. A", "Exam", "Exam", new { category = "A" }, new { @class = "category-slider-a category-slider-element d-flex align-items-center justify-content-center" })
-                @Html.ActionLink("Kat. B", "Exam", "Exam", new { category = "B" }, new { @class = "category-slider-b category-slider-element d-flex align-items-center justify-content-center" })
-                @Html.ActionLink("Kat. C", "Exam", "Exam", new { category = "C" }, new { @class = "category-slider-c category-slider-element d-flex align-items-center justify-content-center" })
-                @Html.ActionLink("Kat. D", "Exam", "Exam", new { category = "D" }, new { @class = "category-slider-d category-slider-element d-flex align-items-center justify-content-center" })
-                @Html.ActionLink("Kat. T", "Exam", "Exam", new { category = "T" }, new { @class = "category-slider-t category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. A", "Start", "Exam", new { category = "A" }, new { @class = "category-slider-a category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. B", "Start", "Exam", new { category = "B" }, new { @class = "category-slider-b category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. C", "Start", "Exam", new { category = "C" }, new { @class = "category-slider-c category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. D", "Start", "Exam", new { category = "D" }, new { @class = "category-slider-d category-slider-element d-flex align-items-center justify-content-center" })
+                @Html.ActionLink("Kat. T", "Start", "Exam", new { category = "T" }, new { @class = "category-slider-t category-slider-element d-flex align-items-center justify-content-center" })
             </div>
         </div>
     </section>
@@ -96,12 +96,11 @@
             <div>
                 <h5>Egzaminy</h5>
                 <ul>
-                    <li>@Html.ActionLink("Kat. A", "Exam", "Exam", new { category = "A" }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. B", "Exam", "Exam", new { category = "B" }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. C", "Exam", "Exam", new { category = "C" }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. D", "Exam", "Exam", new { category = "D" }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. T", "Exam", "Exam", new { category = "T" }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kodeks", "Exam", "Exam", new { category = "Kodeks" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. A", "Start", "Exam", new { category = "A" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. B", "Start", "Exam", new { category = "B" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. C", "Start", "Exam", new { category = "C" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. D", "Start", "Exam", new { category = "D" }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. T", "Start", "Exam", new { category = "T" }, new { @class = "contact-link" })</li>
                 </ul>
             </div>
             <div>
@@ -118,12 +117,12 @@
             <div>
                 <h5>40 pytań</h5>
                 <ul>
-                    <li>@Html.ActionLink("Kat. A", "Quiz", "Exam", new { category = "A", questions = 40 }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. B", "Quiz", "Exam", new { category = "B", questions = 40 }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. C", "Quiz", "Exam", new { category = "C", questions = 40 }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. D", "Quiz", "Exam", new { category = "D", questions = 40 }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kat. T", "Quiz", "Exam", new { category = "T", questions = 40 }, new { @class = "contact-link" })</li>
-                    <li>@Html.ActionLink("Kodeks", "Quiz", "Exam", new { category = "kodeks", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. A", "Quiz", "Quiz", new { category = "A", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. B", "Quiz", "Quiz", new { category = "B", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. C", "Quiz", "Quiz", new { category = "C", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. D", "Quiz", "Quiz", new { category = "D", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kat. T", "Quiz", "Quiz", new { category = "T", questions = 40 }, new { @class = "contact-link" })</li>
+                    <li>@Html.ActionLink("Kodeks", "Quiz", "Quiz", new { category = "kodeks", questions = 40 }, new { @class = "contact-link" })</li>
                 </ul>
             </div>
         </div>

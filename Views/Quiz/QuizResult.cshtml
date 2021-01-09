@@ -90,11 +90,11 @@
 
         @if (ViewBag.LongQuiz == true)
         {
-            @Html.ActionLink("Jeszcze raz", "Quiz", "Exam", new { category = ViewBag.Category, questions = 40 }, new { @class = "btn btn-result mt-4 mb-3" })
+            @Html.ActionLink("Jeszcze raz", "Quiz", "Quiz", new { category = ViewBag.Category, questions = 40 }, new { @class = "btn btn-result mt-4 mb-3" })
         }
         else
         {
-            @Html.ActionLink("Jeszcze raz", "Quiz", "Exam", new { category = ViewBag.Category, questions = 1 }, new { @class = "btn btn-result mt-4 mb-3" })
+            @Html.ActionLink("Jeszcze raz", "Quiz", "Quiz", new { category = ViewBag.Category, questions = 1 }, new { @class = "btn btn-result mt-4 mb-3" })
         }
     </section>
 </main>

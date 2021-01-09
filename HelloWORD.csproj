@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ExamController.cs" />
+    <Compile Include="Controllers\QuizController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudyController.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,10 +207,11 @@
     <Content Include="Views\Home\LearnInfo.cshtml" />
     <Content Include="Views\Home\QuizInfo.cshtml" />
     <Content Include="Views\Home\ToS.cshtml" />
-    <Content Include="Views\Exam\Quiz.cshtml" />
-    <Content Include="Views\Exam\Result.cshtml" />
+    <Content Include="Views\Quiz\Quiz.cshtml" />
+    <Content Include="Views\Quiz\QuizResult.cshtml" />
     <Content Include="Views\Study\Learn.cshtml" />
     <Content Include="Views\Study\Lesson.cshtml" />
+    <Content Include="Views\Exam\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

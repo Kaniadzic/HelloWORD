@@ -36,6 +36,12 @@ namespace HelloWORD.Models.Logic
                 }
             }
 
+            // Jeżeli nie ma żadnych questionsIDs to zwracamy pustą listę
+            if (questionsIDs.Count() == 0)
+            {
+                return questions;
+            }
+
             // Wybranie x losowych id pytań, gdzie x to questionsNumber
             while (usedIDs.Count < questionsNumber)
             {

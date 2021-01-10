@@ -18,14 +18,13 @@ namespace HelloWORD.Controllers
 
             questionsList = questionLogic.getQuestion(category, questions);
 
-            // Zapisanie listy pytań w sesji, przyda się to do stworzenia listy z niepoprawnymi odpowiedziami
-            // @TODO: dowiedzieć się czy lepiej jest zapisać listę w sesji czy pobierać ją ponownie z bazy
-            System.Web.HttpContext.Current.Session["questionsList"] = questionsList;
-
             if (questionsList.Count() == 0)
             {
                 return RedirectToAction("Index", "Home");
             }
+
+            // Zapisanie listy pytań w sesji, przyda się to do stworzenia listy z niepoprawnymi odpowiedziami
+            System.Web.HttpContext.Current.Session["questionsList"] = questionsList;
 
             return View(questionsList);
         }

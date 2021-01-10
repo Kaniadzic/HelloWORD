@@ -25,11 +25,25 @@ namespace HelloWORD.Controllers
             ExamQuestionLogic examLogic = new ExamQuestionLogic();
 
             // Listy pytań ogólnych i wyspecjalizowanych
-            List<TrafficQuestion> trafficQuestions = new List<TrafficQuestion>();
+            List<TrafficQuestion> trafficQuestions= new List<TrafficQuestion>();
+            List<TrafficQuestion> trafficQuestionsScore3 = new List<TrafficQuestion>();
+            List<TrafficQuestion> trafficQuestionsScore2 = new List<TrafficQuestion>();
+            List<TrafficQuestion> trafficQuestionsScore1 = new List<TrafficQuestion>();
             List<CategorizedQuestion> categorizedQuestions = new List<CategorizedQuestion>();
+            List<CategorizedQuestion> categorizedQuestionsScore3 = new List<CategorizedQuestion>();
+            List<CategorizedQuestion> categorizedQuestionsScore2 = new List<CategorizedQuestion>();
+            List<CategorizedQuestion> categorizedQuestionsScore1 = new List<CategorizedQuestion>();
 
-            trafficQuestions = examLogic.getTrafficQuestions(20);
-            categorizedQuestions = examLogic.getCategorizedQuestions(category, 12);
+            // @TODO: popytać czy da się lepiej zrobić wybieranie pytań a nie robić 6 list i je sklejać
+            trafficQuestionsScore3 = examLogic.getTrafficQuestions(10, 3);
+            trafficQuestionsScore2 = examLogic.getTrafficQuestions(6, 2);
+            trafficQuestionsScore1 = examLogic.getTrafficQuestions(4, 1);
+            categorizedQuestionsScore3 = examLogic.getCategorizedQuestions(category, 6, 3);
+            categorizedQuestionsScore2 = examLogic.getCategorizedQuestions(category, 4, 2);
+            categorizedQuestionsScore1 = examLogic.getCategorizedQuestions(category, 2, 1);
+            // Sklejanie list
+            trafficQuestions = trafficQuestionsScore3.Concat(trafficQuestionsScore2).Concat(trafficQuestionsScore1).ToList();
+            categorizedQuestions = categorizedQuestionsScore3.Concat(categorizedQuestionsScore2).Concat(categorizedQuestionsScore1).ToList();
 
             return View();
         }

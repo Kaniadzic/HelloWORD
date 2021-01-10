@@ -11,7 +11,7 @@ namespace HelloWORD.Models.Logic
 {
     public class ExamQuestionLogic
     {
-        public List<TrafficQuestion> getTrafficQuestions(int questionsNumber)
+        public List<TrafficQuestion> getTrafficQuestions(int questionsNumber, int questionsScore)
         {
             // Zdefiniowanie potrzebnych obiektów, list etc.
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
@@ -25,6 +25,7 @@ namespace HelloWORD.Models.Logic
             {
                 SqlCommand cmd = new SqlCommand("sp_SelectTrafficQuestionsnumbers", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Score", questionsScore);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -52,6 +53,7 @@ namespace HelloWORD.Models.Logic
                     SqlCommand cmd = new SqlCommand("sp_SelectExamTrafficQuestion", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Number", usedIDs[i]);
+                    cmd.Parameters.AddWithValue("Score", questionsScore);
 
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
@@ -62,6 +64,7 @@ namespace HelloWORD.Models.Logic
                         quest.Number = (int)rdr["ext_Number"];
                         quest.Answer = (string)rdr["ext_Answer"];
                         quest.Question = (string)rdr["ext_Question"];
+                        quest.Score = (int)rdr["ext_Score"];
                         quest.MediaType = (string)rdr["ext_MediaType"];
                         quest.MediaPath = (string)rdr["ext_MediaPath"];
 
@@ -73,7 +76,7 @@ namespace HelloWORD.Models.Logic
             return questions;
         }
 
-        public List<CategorizedQuestion> getCategorizedQuestions(string category, int questionsNumber)
+        public List<CategorizedQuestion> getCategorizedQuestions(string category, int questionsNumber, int questionsScore)
         {
             // Zdefiniowanie potrzebnych obiektów, list etc.
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
@@ -88,6 +91,7 @@ namespace HelloWORD.Models.Logic
                 SqlCommand cmd = new SqlCommand("sp_SelectCategorizedQuestionsNumbers", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("Category", category);
+                cmd.Parameters.AddWithValue("Score", questionsScore);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -116,6 +120,7 @@ namespace HelloWORD.Models.Logic
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Number", usedIDs[i]);
                     cmd.Parameters.AddWithValue("Category", category);
+                    cmd.Parameters.AddWithValue("Score", questionsScore);
 
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
@@ -127,6 +132,7 @@ namespace HelloWORD.Models.Logic
                         quest.Answer = (string)rdr["exc_Answer"];
                         quest.Question = (string)rdr["exc_Question"];
                         quest.Category = (string)rdr["exc_Category"];
+                        quest.Score = (int)rdr["exc_Score"];
                         quest.AnswerA = (string)rdr["exc_AnswerA"];
                         quest.AnswerB = (string)rdr["exc_AnswerB"];
                         quest.AnswerC = (string)rdr["exc_AnswerC"];
@@ -140,5 +146,6 @@ namespace HelloWORD.Models.Logic
 
             return questions;
         }
+
     }
 }

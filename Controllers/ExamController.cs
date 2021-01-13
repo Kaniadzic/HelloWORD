@@ -45,6 +45,8 @@ namespace HelloWORD.Controllers
             trafficQuestions = trafficQuestionsScore3.Concat(trafficQuestionsScore2).Concat(trafficQuestionsScore1).ToList();
             categorizedQuestions = categorizedQuestionsScore3.Concat(categorizedQuestionsScore2).Concat(categorizedQuestionsScore1).ToList();
 
+            System.Web.HttpContext.Current.Session["trafficQuestions"] = trafficQuestions;
+
             return View();
         }
     }

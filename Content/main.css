@@ -44,6 +44,10 @@ body {
     .lesson-content {
         font-size: 14px;
     }
+
+    .exam-top-text {
+        font-size: 11px;
+    }
 }
 
 
@@ -366,4 +370,49 @@ body {
 .lesson-content-picture {
     max-width: 1024px;
     max-height: 360px;
+}
+
+/* ----------- EGZAMIN ----------- */
+
+.exam-top-panel {
+    background-color: #dddddd;
+    min-height: 42px;
+}
+
+.exam-media {
+    background-color: #dddddd;
+    width: 520px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.exam-question {
+    height: 120px;
+    width: 520px;
+    border-radius: 5px;
+    background-color: #dddddd;
+}
+
+.exam-answers {
+    height: 120px;
+    width: 520px;
+}
+
+.exam-answer {
+    height: 33%;
+    width: 100%;
+    background-color: #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.exam-info-panel {
+    width: 35%;
+}
+
+.loadbar {
+    width: 80%;
+    border: 1px solid #000000;
+    text-align: center;
+    background-color: #dddddd;
 }

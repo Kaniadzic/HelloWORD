@@ -11,7 +11,7 @@ namespace HelloWORD.Models.Logic
 {
     public class ExamQuestionLogic
     {
-        public List<TrafficQuestion> getTrafficQuestions(int questionsNumber, int questionsScore)
+        private List<TrafficQuestion> getTrafficQuestions(int questionsNumber, int questionsScore)
         {
             // Zdefiniowanie potrzebnych obiektów, list etc.
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
@@ -76,7 +76,7 @@ namespace HelloWORD.Models.Logic
             return questions;
         }
 
-        public List<CategorizedQuestion> getCategorizedQuestions(string category, int questionsNumber, int questionsScore)
+        private List<CategorizedQuestion> getCategorizedQuestions(string category, int questionsNumber, int questionsScore)
         {
             // Zdefiniowanie potrzebnych obiektów, list etc.
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
@@ -145,6 +145,43 @@ namespace HelloWORD.Models.Logic
             }
 
             return questions;
+        }
+
+        public List<TrafficQuestion> createTrafficList()
+        {
+            ExamQuestionLogic examLogic = new ExamQuestionLogic();
+
+            List<TrafficQuestion> trafficQuestions = new List<TrafficQuestion>();
+            List<TrafficQuestion> trafficQuestionsScore3 = new List<TrafficQuestion>();
+            List<TrafficQuestion> trafficQuestionsScore2 = new List<TrafficQuestion>();
+            List<TrafficQuestion> trafficQuestionsScore1 = new List<TrafficQuestion>();
+
+            trafficQuestionsScore3 = examLogic.getTrafficQuestions(10, 3);
+            trafficQuestionsScore2 = examLogic.getTrafficQuestions(6, 2);
+            trafficQuestionsScore1 = examLogic.getTrafficQuestions(4, 1);
+
+            trafficQuestions = trafficQuestionsScore3.Concat(trafficQuestionsScore2).Concat(trafficQuestionsScore1).ToList();
+
+            return trafficQuestions;
+
+        }
+
+        public List<CategorizedQuestion> createCategorizedList(string category)
+        {
+            ExamQuestionLogic examLogic = new ExamQuestionLogic();
+
+            List<CategorizedQuestion> categorizedQuestions = new List<CategorizedQuestion>();
+            List<CategorizedQuestion> categorizedQuestionsScore3 = new List<CategorizedQuestion>();
+            List<CategorizedQuestion> categorizedQuestionsScore2 = new List<CategorizedQuestion>();
+            List<CategorizedQuestion> categorizedQuestionsScore1 = new List<CategorizedQuestion>();
+
+            categorizedQuestionsScore3 = examLogic.getCategorizedQuestions(category, 6, 3);
+            categorizedQuestionsScore2 = examLogic.getCategorizedQuestions(category, 4, 2);
+            categorizedQuestionsScore1 = examLogic.getCategorizedQuestions(category, 2, 1);
+
+            categorizedQuestions = categorizedQuestionsScore3.Concat(categorizedQuestionsScore2).Concat(categorizedQuestionsScore1).ToList();
+
+            return categorizedQuestions;
         }
 
     }

@@ -100,7 +100,7 @@ namespace HelloWORD.Models.Logic
                 {
                     questionsIDs.Add((int)rdr["exc_Number"]);
                 }
-            }
+            }      
 
             // Wybranie x losowych id pytań, gdzie x to questionsNumber
             while (usedIDs.Count < questionsNumber)

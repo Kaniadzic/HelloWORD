@@ -42,6 +42,13 @@ namespace HelloWORD.Controllers
         [HttpGet]
         public ActionResult Exam(string category)
         {
+            if (category == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.Category = category;
+
             return View();
         }
     }

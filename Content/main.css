@@ -449,3 +449,7 @@ body {
     position: absolute;
     left: 47%;
 }
+
+.exam-picture {
+    max-height: 100%;
+}

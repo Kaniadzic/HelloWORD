@@ -217,6 +217,7 @@ body {
     font-size: 22px;
     font-weight: 700;
     border: 2px solid #69940d;
+    padding: 32px 0 0 0;
     transition: all .2s ease-in;
 }
 
@@ -452,4 +453,31 @@ body {
 
 .exam-picture {
     max-height: 100%;
+}
+
+/* ----------- IKONKI ----------- */
+
+.icon-category-a, .icon-category-b, .icon-category-c, .icon-category-d, .icon-category-t {
+    background-size: 148px 96px;
+    background-repeat: no-repeat;
+}
+
+.icon-category-a {
+    background-image: url('images/a.png');
+}
+
+.icon-category-b {
+    background-image: url('images/b.png');
+}
+
+.icon-category-c {
+    background-image: url('images/c.png');
+}
+
+.icon-category-d {
+    background-image: url('images/d.png');
+}
+
+.icon-category-t {
+    background-image: url('images/t.png');
 }

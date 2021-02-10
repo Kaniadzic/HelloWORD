@@ -10,7 +10,7 @@
             Czas do końca: <span class="mr-3" id="examTime">mm:ss</span>
         </div>
         <div class="mr-md-5">
-            <button class="btn btn-danger">Zakończ</button>
+            <button class="btn btn-danger" id="examEnd">Zakończ</button>
         </div>
     </section>
     <section class="d-md-flex align-items-start justify-content-center">
@@ -21,13 +21,28 @@
             <div class="exam-question my-3">
                 lorem ipsum
             </div>
-            <div class="exam-answers d-flex justify-content-around">
-                <button class="exam-answer-traffic my-2 d-flex align-items-center justify-content-center" id="AnswerYes" value="true">Tak</button>
-                <button class="exam-answer-traffic my-2 d-flex align-items-center justify-content-center" id="AnswerNo" value="false">Nie</button>
+            <div class="exam-answers d-flex justify-content-start flex-column">
+                <label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
+                    <input type="radio" name="exam-answer-traffic" class="d-flex align-items-center" value="TAK" id="AnswerYes">
+                    TAK
+                </label>
+                <label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
+                    <input type="radio" name="exam-answer-traffic" class="d-flex align-items-center" value="NIE" id="AnswerNo">
+                    NIE
+                </label>
 
-                @*<div class="exam-answer-categorized my-2 d-flex align-items-center pl-2" id="AnswerA">A</div>
-                <div class="exam-answer-categorized my-2 d-flex align-items-center pl-2" id="AnswerB">B</div>
-                <div class="exam-answer-categorized my-2 d-flex align-items-center pl-2" id="AnswerC">C</div>*@
+                @*<label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
+                    <input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="A" id="AnswerA">
+                    A
+                </label>
+                <label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
+                    <input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="B" id="AnswerB">
+                    B
+                </label>
+                <label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
+                    <input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="C" id="AnswerC">
+                    C
+                </label>*@
             </div>
         </div>
 
@@ -52,6 +67,27 @@
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <script>
+    window.onload = addAlerts;
+
+    // alerty po kliknięciu 
+    function addAlerts() {
+        let menu = document.getElementsByClassName('nav-item');
+
+        for(let i = 0; i < menu.length; i++) {
+            menu[i].addEventListener('click', () => { leaveAlert('Ta akcja spowoduje porzucenie egzaminu! Czy chcesz kontynuować?') });
+        }
+
+        let examEnd = document.getElementById('examEnd');
+        examEnd.addEventListener('click', () => { leaveAlert('Ta akcja spowoduje zakończenie egzaminu! Czy chcesz kontynuować?') });
+    }
+
+    function leaveAlert(message) {
+        if (!window.confirm(message)) {
+            event.preventDefault();
+        }
+    }
+
+
     // zmienne z pytaniami(array) i kategorią
     let trafficQuestions;
     let categorizedQuestions;
@@ -91,13 +127,11 @@
     // załadowanie listy z pytaniami ogólnymi
     function initializeTrafficQuestions(data) {
         trafficQuestions = data;
-        console.log(trafficQuestions);
     }
 
     // załadowanie listy z pytaniami specjalnymi
     function initializeCategorizedQuestions(data) {
         categorizedQuestions = data;
-        console.log(categorizedQuestions);
     }
 
     function startExam() {
@@ -108,8 +142,6 @@
     // jeżeli trwa faza pytań specjalistycznych ładujemy pytanie z tablicy pytań specjalistycznych
     function nextStage() {
         if (trafficQuestionCounter < 20) {
-            console.log(trafficQuestionCounter);
-
             loadQuestion(trafficQuestions[trafficQuestionCounter]);            
             trafficQuestionCounter += 1;
 

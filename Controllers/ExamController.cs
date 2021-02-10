@@ -51,5 +51,11 @@ namespace HelloWORD.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult ExamResult()
+        {
+            return View();
+        }
     }
 }

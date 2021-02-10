@@ -8,7 +8,6 @@ namespace HelloWORD.Models.Entity
     public class TrafficQuestion
     {
         public int Number { get; set; }
-        public string Answer { get; set; }
         public string Question { get; set; }
         public int Score { get; set; }
         public string MediaType { get; set; }

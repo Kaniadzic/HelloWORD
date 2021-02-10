@@ -9,7 +9,6 @@ namespace HelloWORD.Models.Entity
     {
         public int Number { get; set; }
         public string Category { get; set; }
-        public string Answer { get; set; }
         public string Question { get; set; }
         public int Score { get; set; }
         public string AnswerA { get; set; }

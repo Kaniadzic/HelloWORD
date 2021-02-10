@@ -62,7 +62,6 @@ namespace HelloWORD.Models.Logic
                     {
                         TrafficQuestion quest = new TrafficQuestion();
                         quest.Number = (int)rdr["ext_Number"];
-                        quest.Answer = (string)rdr["ext_Answer"];
                         quest.Question = (string)rdr["ext_Question"];
                         quest.Score = (int)rdr["ext_Score"];
                         quest.MediaType = (string)rdr["ext_MediaType"];
@@ -129,7 +128,6 @@ namespace HelloWORD.Models.Logic
                     {
                         CategorizedQuestion quest = new CategorizedQuestion();
                         quest.Number = (int)rdr["exc_Number"];
-                        quest.Answer = (string)rdr["exc_Answer"];
                         quest.Question = (string)rdr["exc_Question"];
                         quest.Category = (string)rdr["exc_Category"];
                         quest.Score = (int)rdr["exc_Score"];
@@ -163,7 +161,6 @@ namespace HelloWORD.Models.Logic
             trafficQuestions = trafficQuestionsScore3.Concat(trafficQuestionsScore2).Concat(trafficQuestionsScore1).ToList();
 
             return trafficQuestions;
-
         }
 
         public List<CategorizedQuestion> createCategorizedList(string category)

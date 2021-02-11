@@ -30,19 +30,6 @@
                     <input type="radio" name="exam-answer-traffic" class="d-flex align-items-center" value="NIE" id="AnswerNo">
                     NIE
                 </label>
-
-                @*<label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
-                    <input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="A" id="AnswerA">
-                    A
-                </label>
-                <label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
-                    <input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="B" id="AnswerB">
-                    B
-                </label>
-                <label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
-                    <input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="C" id="AnswerC">
-                    C
-                </label>*@
             </div>
         </div>
 
@@ -57,8 +44,8 @@
             </div>
 
             <div class="d-flex mt-5">
-                <button class="btn btn-warning mr-4">START</button>
-                <button class="btn btn-success ml-4">DALEJ</button>
+                <button class="btn btn-warning mr-4" id="buttonStart">START</button>
+                <button class="btn btn-success ml-4" id="buttonNext">DALEJ</button>
             </div>
         </div>
     </section>
@@ -69,7 +56,7 @@
 <script>
     window.onload = addAlerts;
 
-    // alerty po kliknięciu 
+    // alerty po kliknięciu
     function addAlerts() {
         let menu = document.getElementsByClassName('nav-item');
 
@@ -94,7 +81,6 @@
     let category = '@ViewBag.Category';
 
     // zmienne do śledzenia stanu egzaminu
-    let categorizedPhase = 0;
     let trafficQuestionCounter = 0;
     let categorizedQuestionCounter = 0;
 
@@ -119,7 +105,7 @@
             }
         });
 
-        startExam();
+        setTimeout(() => { startExam(); }, 2000);
 
         return false;
     });
@@ -135,14 +121,18 @@
     }
 
     function startExam() {
+        addNextButtonListener();
         nextStage();
     }
 
     // sprawdzenie które pytanie ładujemy
-    // jeżeli trwa faza pytań specjalistycznych ładujemy pytanie z tablicy pytań specjalistycznych
     function nextStage() {
+        if (trafficQuestionCounter == 20) {
+            changeAnswersButtons();
+        }
+
         if (trafficQuestionCounter < 20) {
-            loadQuestion(trafficQuestions[trafficQuestionCounter]);            
+            loadQuestion(trafficQuestions[trafficQuestionCounter], false);
             trafficQuestionCounter += 1;
 
             let trafficProgress = document.getElementById('trafficProgress');
@@ -152,13 +142,15 @@
             let categorizedProgress = document.getElementById('categorizedProgress');
             categorizedProgress.innerText = categorizedQuestionCounter + 1;
 
-            loadQuestion(categorizedQuestions[categorizedQuestionCounter]);
+            loadQuestion(categorizedQuestions[categorizedQuestionCounter], true);
             categorizedQuestionCounter += 1;
         }
     }
 
     // załadowanie pytania (pierwszego lub kolejnego)
-    function loadQuestion(data) {
+    function loadQuestion(data, categorized) {
+        console.log(categorized);
+
         let question = document.querySelector('.exam-question');
         question.innerText = data.Question;
 
@@ -167,5 +159,50 @@
 
         let examPicture = document.querySelector('.exam-picture');
         examPicture.src = data.MediaPath;
+
+        if (categorized) {
+            let answerA = document.getElementById('LabelAnswerA');
+            let answerB = document.getElementById('LabelAnswerB');
+            let answerC = document.getElementById('LabelAnswerC');
+
+            answerA.innerHTML = '<input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="A" id="AnswerA">' + data.AnswerA;
+            answerB.innerHTML = '<input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="B" id="AnswerB">' + data.AnswerB;
+            answerC.innerHTML = '<input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="C" id="AnswerC">' + data.AnswerC;
+        }
+    }
+
+    // usunięcie odpowiedzi tak/nie i zastąpienie ich trzema polami na odpowiedzi
+    function changeAnswersButtons() {
+        let examAnswers = document.querySelector('.exam-answers');
+        examAnswers.innerHTML = null;
+
+        answerA = document.createElement("label");
+        answerA.className = "p-2 quiz-answer d-flex align-items-center justify-content-start";
+        answerA.id = "LabelAnswerA";
+        answerA.innerHTML = '<input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="A" id="AnswerA">';
+
+        answerB = document.createElement("label");
+        answerB.className = "p-2 quiz-answer d-flex align-items-center justify-content-start";
+        answerB.id = "LabelAnswerB";
+        answerB.innerHTML = '<input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="B" id="AnswerB">';
+
+        answerC = document.createElement("label");
+        answerC.className = "p-2 quiz-answer d-flex align-items-center justify-content-start";
+        answerC.id = "LabelAnswerC";
+        answerC.innerHTML = '<input type="radio" name="exam-answer-categorized" class="d-flex align-items-center" value="C" id="AnswerC">';
+
+        examAnswers.appendChild(answerA);
+        examAnswers.appendChild(answerB);
+        examAnswers.appendChild(answerC);
+    }
+
+    // dodanie akcji do przycisku "dalej"
+    function addNextButtonListener() {
+        let buttonNext = document.getElementById('buttonNext');
+        buttonNext.addEventListener('click', nextStage);
+    }
+
+    function saveAnswer() {
+
     }
 </script>

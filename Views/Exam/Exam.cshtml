@@ -84,6 +84,11 @@
     let trafficQuestionCounter = 0;
     let categorizedQuestionCounter = 0;
 
+    // tablica zapisująca odpowiedzi
+    let userAnswers = [];
+    let answersCount = 0;
+    let questionNumber;
+
     // pobranie list z pytaniami i start egzaminu
     $(document).ready(function () {
         $.ajax({
@@ -149,7 +154,7 @@
 
     // załadowanie pytania (pierwszego lub kolejnego)
     function loadQuestion(data, categorized) {
-        console.log(categorized);
+        questionNumber = data.Number;
 
         let question = document.querySelector('.exam-question');
         question.innerText = data.Question;
@@ -199,10 +204,45 @@
     // dodanie akcji do przycisku "dalej"
     function addNextButtonListener() {
         let buttonNext = document.getElementById('buttonNext');
+        buttonNext.addEventListener('click', saveAnswer);
         buttonNext.addEventListener('click', nextStage);
     }
 
+    // zapisanie odpowiedzi po kliknięciu "dalej"
     function saveAnswer() {
+        let answerYes = document.getElementById("AnswerYes");
+        let answerNo = document.getElementById("AnswerNo");
 
+        if (answerYes != null && answerNo != null) {
+            if (answerYes.checked) {
+                userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: "yes" };
+            }
+            else if (answerNo.checked) {
+                userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: "no" };
+            }
+            else {
+                userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: null };
+            }
+        }
+        else {
+            let answerA = document.getElementById('AnswerA');
+            let answerB = document.getElementById('AnswerB');
+            let answerC = document.getElementById('AnswerC');
+
+            if (answerA.checked) {
+                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: "A" };
+            }
+            else if (answerB.checked) {
+                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: "B" };
+            }
+            else if (answerC.checked) {
+                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: "C" };
+            }
+            else {
+                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: null };
+            }
+        }    
+
+        answersCount += 1;
     }
 </script>

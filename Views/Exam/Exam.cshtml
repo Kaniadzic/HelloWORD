@@ -7,7 +7,7 @@
         <div class="ml-md-5 exam-top-text">
             Kategoria: <span class="mr-3 HelloWORD" id="examCategory">@ViewBag.Category</span>
             Wartość punktowa: <span class="mr-3" id="examScore">X</span>
-            Czas do końca: <span class="mr-3" id="examTime">mm:ss</span>
+            Czas do końca: <span class="mr-3" id="examTime">25:00</span>
         </div>
         <div class="mr-md-5">
             <button class="btn btn-danger" id="examEnd">Zakończ</button>
@@ -74,6 +74,24 @@
         }
     }
 
+    // główny licznik czasu
+    let mainTime = 1500;
+    let examTime = document.getElementById('examTime');
+    
+    function mainTimer() {
+        console.log(mainTime);
+        mainTime -= 1;
+
+        if (mainTime < 0) {
+            finalizeExam();
+        }
+        else {
+            examTime.innerText = Math.floor(mainTime / 60).toString() + ':' + (mainTime % 60).toString();
+
+            setTimeout(mainTimer, 1000);
+        }
+    }
+
     // zmienne z pytaniami(array) i kategorią
     let trafficQuestions;
     let categorizedQuestions;
@@ -129,6 +147,7 @@
         let buttonStart = document.getElementById('buttonStart');
         buttonStart.disabled = false;
 
+        mainTimer();
         addNextButtonListener();
         nextStage();
     }
@@ -304,6 +323,5 @@
         examQuestion.classList.add('align-items-center');
         examQuestion.classList.add('justify-content-center');
         examAnswers.innerHTML = null;
-
     } 
 </script>

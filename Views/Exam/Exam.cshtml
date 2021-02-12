@@ -16,10 +16,10 @@
     <section class="d-md-flex align-items-start justify-content-center">
         <div class="d-flex flex-column justify-content-around mr-3">
             <div class="exam-media d-flex align-items-center justify-content-center">
-                <img src="~/Content/images/placeholder.jpg" alt="To pytanie nie ma obrazka" class="exam-picture">
+                <img src="~/Content/images/wait.jpg" alt="To pytanie nie ma obrazka" class="exam-picture">
             </div>
-            <div class="exam-question my-3">
-                lorem ipsum
+            <div class="exam-question my-3 p-2">
+                Trwa ładowanie pytania...
             </div>
             <div class="exam-answers d-flex justify-content-start flex-column">
                 <label class="p-2 quiz-answer d-flex align-items-center justify-content-start">
@@ -44,8 +44,8 @@
             </div>
 
             <div class="d-flex mt-5">
-                <button class="btn btn-warning mr-4" id="buttonStart">START</button>
-                <button class="btn btn-success ml-4" id="buttonNext">DALEJ</button>
+                <button class="btn btn-warning mr-4" id="buttonStart" disabled>START</button>
+                <button class="btn btn-success ml-4" id="buttonNext" disabled>DALEJ</button>
             </div>
         </div>
     </section>
@@ -61,11 +61,11 @@
         let menu = document.getElementsByClassName('nav-item');
 
         for(let i = 0; i < menu.length; i++) {
-            menu[i].addEventListener('click', () => { leaveAlert('Ta akcja spowoduje porzucenie egzaminu! Czy chcesz kontynuować?') });
+            menu[i].addEventListener('click', function (event) { leaveAlert('Ta akcja spowoduje porzucenie egzaminu! Czy chcesz kontynuować?') });
         }
 
         let examEnd = document.getElementById('examEnd');
-        examEnd.addEventListener('click', () => { leaveAlert('Ta akcja spowoduje zakończenie egzaminu! Czy chcesz kontynuować?') });
+        examEnd.addEventListener('click', function (event) { leaveAlert('Ta akcja spowoduje zakończenie egzaminu! Czy chcesz kontynuować?') });
     }
 
     function leaveAlert(message) {
@@ -73,7 +73,6 @@
             event.preventDefault();
         }
     }
-
 
     // zmienne z pytaniami(array) i kategorią
     let trafficQuestions;
@@ -110,6 +109,7 @@
             }
         });
 
+        // TODO: normalny async i await
         setTimeout(() => { startExam(); }, 2000);
 
         return false;
@@ -126,6 +126,9 @@
     }
 
     function startExam() {
+        let buttonStart = document.getElementById('buttonStart');
+        buttonStart.disabled = false;
+
         addNextButtonListener();
         nextStage();
     }
@@ -134,6 +137,12 @@
     function nextStage() {
         if (trafficQuestionCounter == 20) {
             changeAnswersButtons();
+        }
+
+        if (categorizedQuestionCounter == 12) {
+            finalizeExam();
+
+            return false;
         }
 
         if (trafficQuestionCounter < 20) {
@@ -154,6 +163,8 @@
 
     // załadowanie pytania (pierwszego lub kolejnego)
     function loadQuestion(data, categorized) {
+        disableNextButton();
+        startTrafficQuestionTimeCounter();
         questionNumber = data.Number;
 
         let question = document.querySelector('.exam-question');
@@ -216,9 +227,11 @@
         if (answerYes != null && answerNo != null) {
             if (answerYes.checked) {
                 userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: "yes" };
+                answerYes.checked = false;
             }
             else if (answerNo.checked) {
                 userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: "no" };
+                answerNo.checked = false;
             }
             else {
                 userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: null };
@@ -245,4 +258,52 @@
 
         answersCount += 1;
     }
+
+    // zarządzanie buttonami
+    function disableNextButton() {
+        let buttonNext = document.getElementById('buttonNext');
+        buttonNext.disabled = true;
+
+        let buttonStart = document.getElementById('buttonStart');
+        buttonStart.addEventListener('click', enableButtonNext);
+    }
+
+    function enableButtonNext() {
+        let buttonNext = document.getElementById('buttonNext');
+        buttonNext.disabled = false;
+    }
+
+    function disableButtonStart() {
+        let buttonStart = document.getElementById('buttonStart');
+        buttonStart.disabled = true;
+    }
+
+    // licznik czasu dla pytań
+    function startTrafficQuestionTimeCounter() {
+        
+       
+        
+    }
+
+    // koniec egzaminu
+    function finalizeExam() {
+        let examEnd = document.getElementById('examEnd');
+        examEnd.classList.remove('btn-danger');
+        examEnd.classList.add('btn-success');
+
+        disableNextButton();
+        disableButtonStart();
+
+        let examMedia = document.querySelector('.exam-media');
+        let examQuestion = document.querySelector('.exam-question');
+        let examAnswers = document.querySelector('.exam-answers');
+
+        examMedia.innerHTML = "Kliknij Zakończ aby przejść do wyników";
+        examQuestion.innerHTML = "Na pewno poszło dobrze :)";
+        examQuestion.classList.add('d-flex');
+        examQuestion.classList.add('align-items-center');
+        examQuestion.classList.add('justify-content-center');
+        examAnswers.innerHTML = null;
+
+    } 
 </script>

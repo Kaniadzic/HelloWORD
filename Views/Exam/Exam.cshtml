@@ -83,6 +83,7 @@
     // główny licznik czasu
     let mainTime = 1500;
     let examTime = document.getElementById('examTime');
+    let mainTimeFunction;
     
     function mainTimer() {
         mainTime -= 1;
@@ -93,8 +94,20 @@
         else {
             examTime.innerText = Math.floor(mainTime / 60).toString() + ':' + (mainTime % 60).toString();
 
-            setTimeout(mainTimer, 1000);
+            mainTimeFunction = setTimeout(mainTimer, 1000);
         }
+    }
+
+    // zmiana długości paska czasu
+    let loadbarProgress = document.getElementById('loadbarProgress');
+    let loadBarWidth = 100;
+    function changeTimeBarWidth(loadBarWidth) {
+        loadbarProgress.style.width = loadBarWidth.toString() + "%";
+    }
+
+    function resetLoadbar() {
+        loadBarWidth = 100;
+        changeTimeBarWidth(loadBarWidth);
     }
 
     // licznik czasu dla pytań
@@ -117,7 +130,9 @@
     }
 
     function timerTraffic() {
-        loadbarText.innerText = readTimeTraffic;
+        loadbarText.innerText = readTimeTraffic;  
+        loadBarWidth -= 5;
+        changeTimeBarWidth(loadBarWidth);
 
         readTimeTraffic -= 1;
 
@@ -131,6 +146,8 @@
 
     function timerCategorized() {
         loadbarText.innerText = readTimeCategorized;
+        loadBarWidth -= 2;
+        changeTimeBarWidth(loadBarWidth);
 
         readTimeCategorized -= 1;
 
@@ -144,9 +161,12 @@
 
     function timerAnswer() {
         loadbarText.innerText = answerTime;
+        loadBarWidth -= 6.66;
+        changeTimeBarWidth(loadBarWidth);
 
         if (answerTime == 15) {
             questionTimerText.innerText = "Czas na udzielenie odpowiedzi";
+            resetLoadbar();
         }
 
         answerTime -= 1;
@@ -166,6 +186,8 @@
         readTimeCategorized = 50;
         answerTime = 15;
     }
+
+    
 
     // zmienne z pytaniami(array) i kategorią
     let trafficQuestions;
@@ -230,6 +252,7 @@
 
     // sprawdzenie które pytanie ładujemy
     function nextStage() {
+        resetLoadbar();
         resetTimer();
         questionTimer();
 
@@ -381,6 +404,7 @@
     // koniec egzaminu
     function finalizeExam() {
         clearTimeout(timeFunction);
+        clearTimeout(mainTimeFunction);
         readTimeTraffic = 0;
         readTimeCategorized = 0;
         answerTime = 0;

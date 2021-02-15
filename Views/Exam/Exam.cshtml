@@ -10,7 +10,7 @@
             Czas do końca: <span class="mr-3" id="examTime">25:00</span>
         </div>
         <div class="mr-md-5">
-            <button class="btn btn-danger" id="examEnd">Zakończ</button>
+            @Html.ActionLink("Zakończ", "ExamResult", "Exam",  new { @class = "btn btn-danger", id = "examEnd" })
         </div>
     </section>
     <section class="d-md-flex align-items-start justify-content-center">

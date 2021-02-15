@@ -37,7 +37,7 @@
             <p class="h5">Postęp części podstawowej: <span id="trafficProgress">0</span>/20</p>
             <p class="h5">Postęp części specjalistycznej: <span id="categorizedProgress">0</span>/12</p>
 
-            <p id="questionTimer" class="mt-5">Czas na zapoznanie się z pytaniem</p>
+            <p id="questionTimerText" class="mt-5">Czas na zapoznanie się z pytaniem</p>
             <div class="loadbar d-flex justify-content-start">
                 <div id="loadbarProgress"></div>
                 <div id="loadbarText">XX</div>
@@ -55,6 +55,12 @@
 
 <script>
     window.onload = addAlerts;
+
+    // dodanie akcji wyjścia do przycisku zakończ
+    function addLeaveActionToButtonEnd() {
+        let examEnd = document.getElementById('examEnd');
+        examEnd.addEventListener('click', finalizeExam);
+    }
 
     // alerty po kliknięciu
     function addAlerts() {
@@ -79,7 +85,6 @@
     let examTime = document.getElementById('examTime');
     
     function mainTimer() {
-        console.log(mainTime);
         mainTime -= 1;
 
         if (mainTime < 0) {
@@ -90,6 +95,76 @@
 
             setTimeout(mainTimer, 1000);
         }
+    }
+
+    // licznik czasu dla pytań
+    let readTimeTraffic = 20;
+    let readTimeCategorized = 50;
+    let answerTime = 15;
+    let timeFunction;
+    let loadbarText = document.getElementById('loadbarText');
+    let questionTimerText = document.getElementById('questionTimerText');
+
+    function questionTimer() {
+        questionTimerText.innerText = "Czas na zapoznanie się z pytaniem";
+
+        if (categorizedQuestionCounter == 0) {
+            timerTraffic();
+        }
+        else if (categorizedQuestionCounter != 0) {
+            timerCategorized();
+        }
+    }
+
+    function timerTraffic() {
+        loadbarText.innerText = readTimeTraffic;
+
+        readTimeTraffic -= 1;
+
+        if (readTimeTraffic == -1) {
+            timerAnswer();
+        }
+        else {
+            timeFunction = setTimeout(questionTimer, 1000);
+        }
+    }
+
+    function timerCategorized() {
+        loadbarText.innerText = readTimeCategorized;
+
+        readTimeCategorized -= 1;
+
+        if (readTimeCategorized == -1) {
+            timerAnswer();
+        }
+        else {
+            timeFunction = setTimeout(questionTimer, 1000);
+        }
+    }
+
+    function timerAnswer() {
+        loadbarText.innerText = answerTime;
+
+        if (answerTime == 15) {
+            questionTimerText.innerText = "Czas na udzielenie odpowiedzi";
+        }
+
+        answerTime -= 1;
+
+        if (answerTime == -1) {
+            saveAnswer();
+            nextStage();
+        }
+        else {
+            timeFunction = setTimeout(timerAnswer, 1000);
+        }
+    }
+
+    function resetTimer() {
+        clearTimeout(timeFunction);
+        readTimeTraffic = 20;
+        readTimeCategorized = 50;
+        answerTime = 15;
     }
 
     // zmienne z pytaniami(array) i kategorią
@@ -147,6 +222,7 @@
         let buttonStart = document.getElementById('buttonStart');
         buttonStart.disabled = false;
 
+        addLeaveActionToButtonEnd();
         mainTimer();
         addNextButtonListener();
         nextStage();
@@ -154,6 +230,9 @@
 
     // sprawdzenie które pytanie ładujemy
     function nextStage() {
+        resetTimer();
+        questionTimer();
+
         if (trafficQuestionCounter == 20) {
             changeAnswersButtons();
         }
@@ -183,7 +262,6 @@
     // załadowanie pytania (pierwszego lub kolejnego)
     function loadQuestion(data, categorized) {
         disableNextButton();
-        startTrafficQuestionTimeCounter();
         questionNumber = data.Number;
 
         let question = document.querySelector('.exam-question');
@@ -284,12 +362,15 @@
         buttonNext.disabled = true;
 
         let buttonStart = document.getElementById('buttonStart');
-        buttonStart.addEventListener('click', enableButtonNext);
+        buttonStart.addEventListener('click', enableButtonNext); 
     }
 
     function enableButtonNext() {
         let buttonNext = document.getElementById('buttonNext');
         buttonNext.disabled = false;
+
+        clearTimeout(timeFunction);
+        timerAnswer();
     }
 
     function disableButtonStart() {
@@ -297,15 +378,13 @@
         buttonStart.disabled = true;
     }
 
-    // licznik czasu dla pytań
-    function startTrafficQuestionTimeCounter() {
-        
-       
-        
-    }
-
     // koniec egzaminu
     function finalizeExam() {
+        clearTimeout(timeFunction);
+        readTimeTraffic = 0;
+        readTimeCategorized = 0;
+        answerTime = 0;
+
         let examEnd = document.getElementById('examEnd');
         examEnd.classList.remove('btn-danger');
         examEnd.classList.add('btn-success');

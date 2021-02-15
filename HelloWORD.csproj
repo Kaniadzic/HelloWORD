@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Models\Entity\CategorizedQuestion.cs" />
     <Compile Include="Models\Entity\ContactEmail.cs" />
+    <Compile Include="Models\Entity\ExamAnswer.cs" />
     <Compile Include="Models\Entity\LearnCategory.cs" />
     <Compile Include="Models\Entity\Lesson.cs" />
     <Compile Include="Models\Entity\QuestionsAndAnswers.cs" />
@@ -216,6 +217,7 @@
     <Content Include="Views\Study\Lesson.cshtml" />
     <Content Include="Views\Exam\Start.cshtml" />
     <Content Include="Views\Exam\Exam.cshtml" />
+    <Content Include="Views\Exam\ExamResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

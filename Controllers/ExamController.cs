@@ -39,6 +39,16 @@ namespace HelloWORD.Controllers
             return Json(categorizedQuestions, JsonRequestBehavior.AllowGet);
         }
 
+        // @TODO: przekazanie wyników i ich obliczenie
+        [HttpPost]
+        public ActionResult SaveUserAnswers(List<ExamAnswer> userAnswers)
+        {
+            // zapisanie odpowiedzi w sesji
+            System.Web.HttpContext.Current.Session["userAnswers"] = userAnswers;
+
+            return Json(userAnswers, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public ActionResult Exam(string category)
         {
@@ -52,9 +62,13 @@ namespace HelloWORD.Controllers
             return View();
         }
 
+
+        // @TODO: przekazanie wyników i ich obliczenie
         [HttpGet]
         public ActionResult ExamResult()
         {
+            object userAnswers = System.Web.HttpContext.Current.Session["userAnswers"];
+
             return View();
         }
     }

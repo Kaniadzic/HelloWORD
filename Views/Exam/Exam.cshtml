@@ -84,7 +84,7 @@
     let mainTime = 1500;
     let examTime = document.getElementById('examTime');
     let mainTimeFunction;
-    
+
     function mainTimer() {
         mainTime -= 1;
 
@@ -130,7 +130,7 @@
     }
 
     function timerTraffic() {
-        loadbarText.innerText = readTimeTraffic;  
+        loadbarText.innerText = readTimeTraffic;
         loadBarWidth -= 5;
         changeTimeBarWidth(loadBarWidth);
 
@@ -186,8 +186,6 @@
         readTimeCategorized = 50;
         answerTime = 15;
     }
-
-    
 
     // zmienne z pytaniami(array) i kategorią
     let trafficQuestions;
@@ -374,8 +372,7 @@
             else {
                 userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: null };
             }
-        }    
-
+        }
         answersCount += 1;
     }
 
@@ -385,7 +382,7 @@
         buttonNext.disabled = true;
 
         let buttonStart = document.getElementById('buttonStart');
-        buttonStart.addEventListener('click', enableButtonNext); 
+        buttonStart.addEventListener('click', enableButtonNext);
     }
 
     function enableButtonNext() {
@@ -426,5 +423,25 @@
         examQuestion.classList.add('align-items-center');
         examQuestion.classList.add('justify-content-center');
         examAnswers.innerHTML = null;
-    } 
+
+        saveUserAnswers(userAnswers);
+    }
+
+    // zapisanie odpowiedzi w sesji
+    function saveUserAnswers(answers) {
+        $.ajax({
+            url: '@Url.Action("SaveUserAnswers")',
+            type: 'POST',
+            cache: false,
+            dataType: "JSON",
+            data: JSON.stringify({
+                userAnswers : answers
+            }),
+            failure: function () {
+                let examQuestion = document.querySelector('.exam-question');
+                examQuestion.classList.add("text-danger");
+                examQuestion.innerText = "Wystąpił błąd. Zapis odpowiedzi nie powiódł się.";
+            }
+        });
+    }
 </script>

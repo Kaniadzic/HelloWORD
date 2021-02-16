@@ -10,7 +10,10 @@
             Czas do końca: <span class="mr-3" id="examTime">25:00</span>
         </div>
         <div class="mr-md-5">
-            @Html.ActionLink("Zakończ", "ExamResult", "Exam",  new { @class = "btn btn-danger", id = "examEnd" })
+            <form method="post" action="ExamResult">
+                <input type="hidden" id="hiddenAnswers" name="examAnswers">
+                <input type="submit" class="btn btn-danger" value="Zakończ" id="examEnd">
+            </form>
         </div>
     </section>
     <section class="d-md-flex align-items-start justify-content-center">
@@ -195,11 +198,21 @@
     // zmienne do śledzenia stanu egzaminu
     let trafficQuestionCounter = 0;
     let categorizedQuestionCounter = 0;
-
-    // tablica zapisująca odpowiedzi
-    let userAnswers = [];
     let answersCount = 0;
     let questionNumber;
+
+    // tablica z odpowiedziami użytkownika
+    let userAnswers = [];
+
+    function createUserAnswersArray() {
+        for (let i = 0; i < 20; i++) {
+            userAnswers[i] = { number: trafficQuestions[i].Number, type: "Traffic", answer: null };
+        }
+
+        for (let i = 0; i < 12; i++) {
+            userAnswers[20 + i] = { number: categorizedQuestions[i].Number, type: "Categorized", answer: null };
+        }
+    }
 
     // pobranie list z pytaniami i start egzaminu
     $(document).ready(function () {
@@ -242,6 +255,7 @@
         let buttonStart = document.getElementById('buttonStart');
         buttonStart.disabled = false;
 
+        createUserAnswersArray();
         addLeaveActionToButtonEnd();
         mainTimer();
         addNextButtonListener();
@@ -344,15 +358,15 @@
 
         if (answerYes != null && answerNo != null) {
             if (answerYes.checked) {
-                userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: "yes" };
+                userAnswers[answersCount].answer = "YES";
                 answerYes.checked = false;
             }
             else if (answerNo.checked) {
-                userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: "no" };
+                userAnswers[answersCount].answer = "NO";
                 answerNo.checked = false;
             }
             else {
-                userAnswers[answersCount] = { number: questionNumber, type: "traffic", answer: null };
+                userAnswers[answersCount].answer = null;
             }
         }
         else {
@@ -361,16 +375,16 @@
             let answerC = document.getElementById('AnswerC');
 
             if (answerA.checked) {
-                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: "A" };
+                userAnswers[answersCount].answer = "A";
             }
             else if (answerB.checked) {
-                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: "B" };
+                userAnswers[answersCount].answer = "B";
             }
             else if (answerC.checked) {
-                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: "C" };
+                userAnswers[answersCount].answer = "c";
             }
             else {
-                userAnswers[answersCount] = { number: questionNumber, type: "categorized", answer: null };
+                userAnswers[answersCount].answer = null;
             }
         }
         answersCount += 1;
@@ -427,21 +441,9 @@
         saveUserAnswers(userAnswers);
     }
 
-    // zapisanie odpowiedzi w sesji
+    // zapisanie odpowiedzi
     function saveUserAnswers(answers) {
-        $.ajax({
-            url: '@Url.Action("SaveUserAnswers")',
-            type: 'POST',
-            cache: false,
-            dataType: "JSON",
-            data: JSON.stringify({
-                userAnswers : answers
-            }),
-            failure: function () {
-                let examQuestion = document.querySelector('.exam-question');
-                examQuestion.classList.add("text-danger");
-                examQuestion.innerText = "Wystąpił błąd. Zapis odpowiedzi nie powiódł się.";
-            }
-        });
+        let hiddenAnswers = document.getElementById('hiddenAnswers');
+        hiddenAnswers.value = JSON.stringify(answers);
     }
 </script>

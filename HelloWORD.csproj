@@ -137,6 +137,7 @@
     <Compile Include="Models\Entity\CategorizedQuestion.cs" />
     <Compile Include="Models\Entity\ContactEmail.cs" />
     <Compile Include="Models\Entity\ExamAnswer.cs" />
+    <Compile Include="Models\Entity\ExamAnswersList.cs" />
     <Compile Include="Models\Entity\LearnCategory.cs" />
     <Compile Include="Models\Entity\Lesson.cs" />
     <Compile Include="Models\Entity\QuestionsAndAnswers.cs" />

@@ -1,10 +1,12 @@
 ﻿using HelloWORD.Models.Entity;
 using HelloWORD.Models.Logic;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace HelloWORD.Controllers
 {
@@ -39,16 +41,6 @@ namespace HelloWORD.Controllers
             return Json(categorizedQuestions, JsonRequestBehavior.AllowGet);
         }
 
-        // @TODO: przekazanie wyników i ich obliczenie
-        [HttpPost]
-        public ActionResult SaveUserAnswers(List<ExamAnswer> userAnswers)
-        {
-            // zapisanie odpowiedzi w sesji
-            System.Web.HttpContext.Current.Session["userAnswers"] = userAnswers;
-
-            return Json(userAnswers, JsonRequestBehavior.AllowGet);
-        }
-
         [HttpGet]
         public ActionResult Exam(string category)
         {
@@ -64,10 +56,10 @@ namespace HelloWORD.Controllers
 
 
         // @TODO: przekazanie wyników i ich obliczenie
-        [HttpGet]
-        public ActionResult ExamResult()
+        [HttpPost]
+        public ActionResult ExamResult(string examAnswers)
         {
-            object userAnswers = System.Web.HttpContext.Current.Session["userAnswers"];
+            var answers = JsonConvert.DeserializeObject<List<ExamAnswer>>(examAnswers);
 
             return View();
         }

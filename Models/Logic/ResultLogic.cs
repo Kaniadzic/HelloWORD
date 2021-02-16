@@ -72,5 +72,89 @@ namespace HelloWORD.Models.Logic
 
             return score;
         }
+
+        public int calculateExamResult(List<ExamAnswer> examAnswers)
+        {
+            int userScore = 0;
+
+            for (int i=0; i < examAnswers.Count(); i++)
+            {
+                userScore += checkExamAnswer(examAnswers[i].Number, examAnswers[i].Type, examAnswers[i].Answer);
+            }
+
+            return userScore;
+        }
+
+        // sprawdzamy czy odpowiedź jest dobra
+        // jesli tak dodajemy jej wartość punktową do wyniku egzaminu
+        // jeśli nie dodajemy pytanie do listy złych odpowiedzi
+        public int checkExamAnswer(int number, string type, string answer = null)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+            int answerScore = 0;
+            string correctAnswer = null;
+
+            if (number == null || number < 0)
+            {
+                return 0;
+            }
+
+            if (type == "Traffic")
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_SelectTrafficCorrectAnswer", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Number", number);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        answerScore = (int)rdr["ext_Score"];
+                        correctAnswer = (string)rdr["ext_CorrectAnswer"];
+                    }
+                }   
+
+                if (answer == correctAnswer)
+                {
+                    return answerScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else if (type == "Categorized")
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_SelectCategorizedCorrectAnswer", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Number", number);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        answerScore = (int)rdr["exc_Score"];
+                        correctAnswer = (string)rdr["exc_CorrectAnswer"];
+                    }
+                }
+
+                if (answer == correctAnswer)
+                {
+                    return answerScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

@@ -54,12 +54,19 @@ namespace HelloWORD.Controllers
             return View();
         }
 
-
-        // @TODO: przekazanie wyników i ich obliczenie
         [HttpPost]
         public ActionResult ExamResult(string examAnswers)
         {
-            var answers = JsonConvert.DeserializeObject<List<ExamAnswer>>(examAnswers);
+            var userAnswers = JsonConvert.DeserializeObject<List<ExamAnswer>>(examAnswers);
+            bool examPassed = false;
+
+            ResultLogic resultLogic = new ResultLogic();
+            int userScore = resultLogic.calculateExamResult(userAnswers);
+
+            if (userScore >= 68)
+            {
+                examPassed = true;
+            }
 
             return View();
         }

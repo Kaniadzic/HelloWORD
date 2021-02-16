@@ -116,7 +116,7 @@ namespace HelloWORD.Models.Logic
                     }
                 }   
 
-                if (answer == correctAnswer)
+                if (answer == correctAnswer && answerScore > 0)
                 {
                     return answerScore;
                 }
@@ -142,7 +142,7 @@ namespace HelloWORD.Models.Logic
                     }
                 }
 
-                if (answer == correctAnswer)
+                if (answer == correctAnswer && answerScore > 0)
                 {
                     return answerScore;
                 }

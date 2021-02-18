@@ -68,6 +68,9 @@ namespace HelloWORD.Controllers
                 examPassed = true;
             }
 
+            ViewBag.Score = userScore;
+            ViewBag.ExamPassed = examPassed;
+
             return View();
         }
     }

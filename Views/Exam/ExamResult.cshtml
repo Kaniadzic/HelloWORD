@@ -1,6 +1,37 @@
-﻿@{
+﻿
+
+@{
     ViewBag.Title = "Wynik egzaminu";
 }
 
-<h2>Oto wynik:</h2>
+<main>
+    <section class="d-flex flex-column align-items-center justify-content-center">
+        <h2 class="h3 my-2 mt-md-5">
+            Wynik egzaminu:
+            @if (ViewBag.ExamPassed == true)
+            {
+                <span class="answer-correct">zaliczony</span>
+            }
+            else 
+            {
+                <span class="answer-incorrect">niezaliczony</span>
+            }
+        </h2>
+        <h2 class="h3 my-2">
+            Ilość punktów: 
+            @if (ViewBag.ExamPassed == true)
+            {
+                <span class="h4 text-center answer-correct">@ViewBag.Score/74</span>
+            }
+            else if (ViewBag.ExamPassed == false)
+            {
+                <span class="h4 text-center answer-incorrect">@ViewBag.Score/74</span>
+            }
+            else
+            {
+                <span class="h4 text-center">@ViewBag.Score/74</span>
+            }      
+        </h2>
+    </section>
 
+</main>

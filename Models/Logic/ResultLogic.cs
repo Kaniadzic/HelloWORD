@@ -88,7 +88,7 @@ namespace HelloWORD.Models.Logic
         // sprawdzamy czy odpowiedź jest dobra
         // jesli tak dodajemy jej wartość punktową do wyniku egzaminu
         // jeśli nie dodajemy pytanie do listy złych odpowiedzi
-        public int checkExamAnswer(int number, string type, string answer = null)
+        private int checkExamAnswer(int number, string type, string answer = null)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
             int answerScore = 0;

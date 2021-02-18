@@ -140,6 +140,7 @@
     <Compile Include="Models\Entity\LearnCategory.cs" />
     <Compile Include="Models\Entity\Lesson.cs" />
     <Compile Include="Models\Entity\QuestionsAndAnswers.cs" />
+    <Compile Include="Models\Entity\QuestionsAndAnswersExam.cs" />
     <Compile Include="Models\Entity\TrafficQuestion.cs" />
     <Compile Include="Models\Entity\UserAnswer.cs" />
     <Compile Include="Models\Entity\UserAnswersList.cs" />

@@ -75,7 +75,7 @@ namespace HelloWORD.Models.Logic
 
         public int calculateExamResult(List<ExamAnswer> examAnswers)
         {
-            int userScore = 0;
+            int userScore = 0;      
 
             for (int i=0; i < examAnswers.Count(); i++)
             {
@@ -87,12 +87,12 @@ namespace HelloWORD.Models.Logic
 
         // sprawdzamy czy odpowiedź jest dobra
         // jesli tak dodajemy jej wartość punktową do wyniku egzaminu
-        // jeśli nie dodajemy pytanie do listy złych odpowiedzi
         private int checkExamAnswer(int number, string type, string answer = null)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
             int answerScore = 0;
             string correctAnswer = null;
+            string question, mediaType, mediaPath;           
 
             if (number == null || number < 0)
             {
@@ -113,8 +113,11 @@ namespace HelloWORD.Models.Logic
                     {
                         answerScore = (int)rdr["ext_Score"];
                         correctAnswer = (string)rdr["ext_CorrectAnswer"];
+                        question = (string)rdr["ext_Question"];
+                        mediaType = (string)rdr["ext_MediaType"];
+                        mediaPath = (string)rdr["ext_MediaPath"];
                     }
-                }   
+                }
 
                 if (answer == correctAnswer && answerScore > 0)
                 {
@@ -139,6 +142,9 @@ namespace HelloWORD.Models.Logic
                     {
                         answerScore = (int)rdr["exc_Score"];
                         correctAnswer = (string)rdr["exc_CorrectAnswer"];
+                        question = (string)rdr["exc_Question"];
+                        mediaType = (string)rdr["exc_MediaType"];
+                        mediaPath = (string)rdr["exc_MediaPath"];
                     }
                 }
 
@@ -155,6 +161,84 @@ namespace HelloWORD.Models.Logic
             {
                 return 0;
             }
+        }
+
+        public List<QuestionsAndAnswersExam> getExamQuestionsWithUserAnswers(List<ExamAnswer> examAnswers)
+        {
+            List<QuestionsAndAnswersExam> qaExam = new List<QuestionsAndAnswersExam>();
+
+            for (int i=0; i < examAnswers.Count(); i++)
+            {
+                getExamQuestionWithAnswer(qaExam, examAnswers[i].Number, examAnswers[i].Type, examAnswers[i].Answer);
+            }
+            
+            return qaExam;
+        }
+
+        // dodajemy pytanie z odpowiedzią do listy pytań i odpowiedzi
+        private void getExamQuestionWithAnswer(List<QuestionsAndAnswersExam> qaExam, int number, string type, string answer = null)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+            int answerScore;
+            string correctAnswer, question, mediaType, mediaPath;
+
+            if (type == "Traffic")
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_SelectTrafficCorrectAnswer", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Number", number);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        answerScore = (int)rdr["ext_Score"];
+                        correctAnswer = (string)rdr["ext_CorrectAnswer"];
+                        question = (string)rdr["ext_Question"];
+                        mediaType = (string)rdr["ext_MediaType"];
+                        mediaPath = (string)rdr["ext_MediaPath"];
+
+                        addQuestionAndAnswerExam(qaExam, question, correctAnswer, answer, answerScore, mediaType, mediaPath);
+                    }
+                }
+            }
+            else if (type == "Categorized")
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_SelectCategorizedCorrectAnswer", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Number", number);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        answerScore = (int)rdr["exc_Score"];
+                        correctAnswer = (string)rdr["exc_CorrectAnswer"];
+                        question = (string)rdr["exc_Question"];
+                        mediaType = (string)rdr["exc_MediaType"];
+                        mediaPath = (string)rdr["exc_MediaPath"];
+
+                        addQuestionAndAnswerExam(qaExam, question, correctAnswer, answer, answerScore, mediaType, mediaPath);
+                    }
+                }
+            }
+        }
+
+        private void addQuestionAndAnswerExam(List<QuestionsAndAnswersExam> qaExam, string question, string correctAnswer, string userAnswer, int score, string mediaType = "Picture", string mediaPath = "unset")
+        {
+            QuestionsAndAnswersExam qa = new QuestionsAndAnswersExam();
+            qa.Question = question;
+            qa.CorrectAnswer = correctAnswer;
+            qa.UserAnswer = userAnswer;
+            qa.Score = score;
+            qa.MediaType = mediaType;
+            qa.MediaPath = mediaPath;
+
+            qaExam.Add(qa);
         }
     }
 }

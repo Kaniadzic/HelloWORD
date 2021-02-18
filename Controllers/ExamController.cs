@@ -62,6 +62,7 @@ namespace HelloWORD.Controllers
 
             ResultLogic resultLogic = new ResultLogic();
             int userScore = resultLogic.calculateExamResult(userAnswers);
+            List<QuestionsAndAnswersExam> qaExam = resultLogic.getExamQuestionsWithUserAnswers(userAnswers);
 
             if (userScore >= 68)
             {
@@ -71,7 +72,7 @@ namespace HelloWORD.Controllers
             ViewBag.Score = userScore;
             ViewBag.ExamPassed = examPassed;
 
-            return View();
+            return View(qaExam);
         }
     }
 }

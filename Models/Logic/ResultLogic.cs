@@ -50,7 +50,7 @@ namespace HelloWORD.Models.Logic
                     {
                         UserAnswer answer = new UserAnswer();
                         answer.Number = userAnswerList.userAnswersList[i].Number;
-                        answer.Answer = (string)rdr["que_QuestionAnswer"];
+                        answer.Answer = (string)rdr["que_CorrectAnswer"];
 
                         correctAnswers.Add(answer);
                     }

@@ -33,7 +33,7 @@ namespace HelloWORD.Models.Logic
                     {
                         UserAnswer answer = new UserAnswer();
                         answer.Number = userAnswerList.userAnswersList[i].Number;
-                        answer.Answer = (string)rdr["que_QuestionAnswer"];
+                        answer.Answer = (string)rdr["que_CorrectAnswer"];
 
                         correctAnswers.Add(answer);
                     }
@@ -75,7 +75,7 @@ namespace HelloWORD.Models.Logic
 
                     while (rdr.Read())
                     {
-                        qa.CorrectAnswer = (string)rdr["que_QuestionAnswer"];
+                        qa.CorrectAnswer = (string)rdr["que_CorrectAnswer"];
 
                         qaList.Add(qa);
                     }

@@ -181,6 +181,7 @@ namespace HelloWORD.Models.Logic
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
             int answerScore;
             string correctAnswer, question, mediaType, mediaPath;
+            string answerA, answerB, answerC;
 
             if (type == "Traffic")
             {
@@ -221,14 +222,17 @@ namespace HelloWORD.Models.Logic
                         question = (string)rdr["exc_Question"];
                         mediaType = (string)rdr["exc_MediaType"];
                         mediaPath = (string)rdr["exc_MediaPath"];
+                        answerA = (string)rdr["exc_AnswerA"];
+                        answerB = (string)rdr["exc_AnswerB"];
+                        answerC = (string)rdr["exc_AnswerC"];
 
-                        addQuestionAndAnswerExam(qaExam, question, correctAnswer, answer, answerScore, mediaType, mediaPath);
+                        addQuestionAndAnswerExam(qaExam, question, correctAnswer, answer, answerScore, mediaType, mediaPath, answerA, answerB, answerC);
                     }
                 }
             }
         }
 
-        private void addQuestionAndAnswerExam(List<QuestionsAndAnswersExam> qaExam, string question, string correctAnswer, string userAnswer, int score, string mediaType = "Picture", string mediaPath = "unset")
+        private void addQuestionAndAnswerExam(List<QuestionsAndAnswersExam> qaExam, string question, string correctAnswer, string userAnswer, int score, string mediaType = "Picture", string mediaPath = "unset", string answerA = "", string answerB = "", string answerC ="")
         {
             QuestionsAndAnswersExam qa = new QuestionsAndAnswersExam();
             qa.Question = question;
@@ -237,6 +241,9 @@ namespace HelloWORD.Models.Logic
             qa.Score = score;
             qa.MediaType = mediaType;
             qa.MediaPath = mediaPath;
+            qa.AnswerA = answerA;
+            qa.AnswerB = answerB;
+            qa.AnswerC = answerC;
 
             qaExam.Add(qa);
         }

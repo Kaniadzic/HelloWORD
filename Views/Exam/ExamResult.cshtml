@@ -57,10 +57,40 @@
                 @if (Model.ElementAt(i).UserAnswer == Model.ElementAt(i).CorrectAnswer)
                 {
                     <div class="exam-user-answer my-2 d-flex align-items-center justify-content-center quiz-answer-correct quiz-answer-result">
-                        @Model.ElementAt(i).UserAnswer
+                        @if (Model.ElementAt(i).UserAnswer == "A")
+                        {
+                            @Model.ElementAt(i).AnswerA
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "B")
+                        {
+                            @Model.ElementAt(i).AnswerB
+                        }
+                        else if (Model.ElementAt(i).UserAnswer == "C")
+                        {
+                            @Model.ElementAt(i).AnswerC
+                        }
+                        else
+                        {
+                            @Model.ElementAt(i).CorrectAnswer
+                        }
                     </div>
                     <div class="my-2 d-flex align-items-center justify-content-center quiz-answer-correct quiz-answer-result">
-                        @Model.ElementAt(i).CorrectAnswer
+                        @if (Model.ElementAt(i).CorrectAnswer == "A")
+                        {
+                            @Model.ElementAt(i).AnswerA
+                        }
+                        else if (Model.ElementAt(i).CorrectAnswer == "B")
+                        {
+                            @Model.ElementAt(i).AnswerB
+                        }
+                        else if (Model.ElementAt(i).CorrectAnswer == "C")
+                        {
+                            @Model.ElementAt(i).AnswerC
+                        }
+                        else
+                        {
+                            @Model.ElementAt(i).CorrectAnswer
+                        }
                     </div>
                 }
                 else
@@ -74,13 +104,42 @@
                     else
                     {
                         <div class="my-2 d-flex align-items-center justify-content-center quiz-answer-incorrect quiz-answer-result">
-                            @Model.ElementAt(i).UserAnswer
+                            @if (Model.ElementAt(i).UserAnswer == "A")
+                            {
+                                @Model.ElementAt(i).AnswerA
+                            }
+                            else if (Model.ElementAt(i).UserAnswer == "B")
+                            {
+                                @Model.ElementAt(i).AnswerB
+                            }
+                            else if (Model.ElementAt(i).UserAnswer == "C")
+                            {
+                                @Model.ElementAt(i).AnswerC
+                            }
+                            else
+                            {
+                                @Model.ElementAt(i).CorrectAnswer
+                            }
                         </div>
                     }
-
-                    <div class="exam-correct-answer my-2 d-flex align-items-center justify-content-center quiz-answer-correct quiz-answer-result">
-                        @Model.ElementAt(i).CorrectAnswer
-                    </div>
+                        <div class="exam-correct-answer my-2 d-flex align-items-center justify-content-center quiz-answer-correct quiz-answer-result">
+                            @if (Model.ElementAt(i).CorrectAnswer == "A")
+                            {
+                                @Model.ElementAt(i).AnswerA
+                            }
+                            else if (Model.ElementAt(i).CorrectAnswer == "B")
+                            {
+                                @Model.ElementAt(i).AnswerB
+                            }
+                            else if (Model.ElementAt(i).CorrectAnswer == "C")
+                            {
+                                @Model.ElementAt(i).AnswerC
+                            }
+                            else
+                            {
+                                @Model.ElementAt(i).CorrectAnswer
+                            }
+                        </div>
                 }
             </div>
         }

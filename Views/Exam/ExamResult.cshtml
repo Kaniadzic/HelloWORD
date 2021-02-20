@@ -12,13 +12,13 @@
             {
                 <span class="answer-correct">zaliczony</span>
             }
-            else 
+            else
             {
                 <span class="answer-incorrect">niezaliczony</span>
             }
         </h2>
         <h2 class="h3 my-2">
-            Ilość punktów: 
+            Ilość punktów:
             @if (ViewBag.ExamPassed == true)
             {
                 <span class="h4 text-center answer-correct">@ViewBag.Score/74</span>
@@ -30,8 +30,61 @@
             else
             {
                 <span class="h4 text-center">@ViewBag.Score/74</span>
-            }      
+            }
         </h2>
     </section>
+    <section class="d-flex flex-column align-items-center justify-content-center">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="my-5">
+                <div class="d-flex justify-content-center align-items-center exam-result-info">
+                    @if (i < 20)
+                    {
+                        <p>Pytanie ogólne. Wartość punktowa @Model.ElementAt(i).Score</p>
+                    }
+                    else
+                    {
+                        <p>Pytanie kategoryzowane. Wartość punktowa @Model.ElementAt(i).Score</p>
+                    }
+                </div>
+                <div class="exam-media d-flex align-items-center justify-content-center">
+                    <img src="~/Content/images/@Model.ElementAt(i).MediaPath" alt="To pytanie nie ma obrazka" class="exam-picture">
+                </div>
+                <div class="exam-question my-2 p-4 d-flex align-items-center justify-content-between">
+                    @Model.ElementAt(i).Question
+                </div>
 
+                @if (Model.ElementAt(i).UserAnswer == Model.ElementAt(i).CorrectAnswer)
+                {
+                    <div class="exam-user-answer my-2 d-flex align-items-center justify-content-center quiz-answer-correct quiz-answer-result">
+                        @Model.ElementAt(i).UserAnswer
+                    </div>
+                    <div class="my-2 d-flex align-items-center justify-content-center quiz-answer-correct quiz-answer-result">
+                        @Model.ElementAt(i).CorrectAnswer
+                    </div>
+                }
+                else
+                {
+                    if (Model.ElementAt(i).UserAnswer == null)
+                    {
+                        <div class="my-2 d-flex align-items-center justify-content-center quiz-answer-incorrect quiz-answer-result">
+                            Nie udzielono odpowiedzi!
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="my-2 d-flex align-items-center justify-content-center quiz-answer-incorrect quiz-answer-result">
+                            @Model.ElementAt(i).UserAnswer
+                        </div>
+                    }
+
+                    <div class="exam-correct-answer my-2 d-flex align-items-center justify-content-center quiz-answer-correct quiz-answer-result">
+                        @Model.ElementAt(i).CorrectAnswer
+                    </div>
+                }
+            </div>
+        }
+
+        @Html.ActionLink("Powrót do menu", "Index", "Home", new { }, new { @class = "btn btn-warning mt-5" })
+    </section>
 </main>

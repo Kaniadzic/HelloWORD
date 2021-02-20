@@ -423,7 +423,6 @@ body {
     background-color: #bbbbbb;
 }
 
-
 .exam-info-panel {
     width: 35%;
 }
@@ -444,7 +443,6 @@ body {
     background-color: #69940d;
     transition: .1s ease-in all;
 }
-
 
 #loadbarText {
     position: absolute;
@@ -480,4 +478,11 @@ body {
 
 .icon-category-t {
     background-image: url('images/t.png');
+}
+
+/* -----------WYNIKI EGZAMINU ----------- */
+
+.exam-result-info {
+    font-weight: 700;
+    font-size: 18px;
 }

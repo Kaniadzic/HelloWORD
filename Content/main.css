@@ -205,7 +205,6 @@ body {
     height: 100%;
 }
 
-
 .info-learn-element {
     width: 100%;
     height: 300px;
@@ -485,4 +484,24 @@ body {
 .exam-result-info {
     font-weight: 700;
     font-size: 18px;
+}
+
+/* -----------WYPEŁNIACZ ----------- */
+
+.filler-upper, .filler-center, .filler-lower {
+    font-family: 'Times New Roman';
+}
+
+.filler-upper {
+    color: red;
+    font-style: italic; 
+}
+
+.filler-center {
+    text-transform: uppercase;
+}
+
+.filler-lower {
+    color: blue;
+    font-weight: bold;
 }

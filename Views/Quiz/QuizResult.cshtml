@@ -40,6 +40,13 @@
                     <h5 class="pl-1 pt-1">@Model.ElementAt(i).Question</h5>
                 </div>
 
+                @if (Model.ElementAt(i).Picture != "unset")
+                {
+                    <div class="quiz-picture mt-2">
+                        <img src="~/Content/images/@Model.ElementAt(i).Picture" alt="~/Content/images/@Model.ElementAt(i).Picture" class="quiz-picture">
+                    </div>
+                }
+
                 <div class="quiz-answers d-flex align-items-center justify-content-start flex-column mt-2">
                     @if (Model.ElementAt(i).UserAnswer == "A")
                     {
@@ -92,15 +99,15 @@
                     }
                 </div>
             </div>
-        }
+            }
 
-        @if (ViewBag.LongQuiz == true)
-        {
-            @Html.ActionLink("Jeszcze raz", "Quiz", "Quiz", new { category = ViewBag.Category, questions = 40 }, new { @class = "btn btn-result mt-4 mb-3" })
-        }
-        else
-        {
-            @Html.ActionLink("Jeszcze raz", "Quiz", "Quiz", new { category = ViewBag.Category, questions = 1 }, new { @class = "btn btn-result mt-4 mb-3" })
-        }
-    </section>
+            @if (ViewBag.LongQuiz == true)
+            {
+                @Html.ActionLink("Jeszcze raz", "Quiz", "Quiz", new { category = ViewBag.Category, questions = 40 }, new { @class = "btn btn-result mt-4 mb-3" })
+            }
+            else
+            {
+                @Html.ActionLink("Jeszcze raz", "Quiz", "Quiz", new { category = ViewBag.Category, questions = 1 }, new { @class = "btn btn-result mt-4 mb-3" })
+            }
+        </section>
 </main>

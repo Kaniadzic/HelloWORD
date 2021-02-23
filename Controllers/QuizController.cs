@@ -84,6 +84,7 @@ namespace HelloWORD.Controllers
                         incorrectAnswers[j].AnswerB = questionsList[i].AnswerB;
                         incorrectAnswers[j].AnswerC = questionsList[i].AnswerC;
                         incorrectAnswers[j].AnswerD = questionsList[i].AnswerD;
+                        incorrectAnswers[j].Picture = questionsList[i].Picture;
                         break;
                     }
                 }

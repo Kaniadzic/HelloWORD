@@ -8,8 +8,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/main.css")
+    @Styles.Render("~/Content/cookies.css")
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/cookies.js")"></script>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg">
@@ -77,6 +80,12 @@
             </div>
         </div>
     </nav>
+
+    <div class="cookies-alert align-items-center justify-content-center flex-column" id="cookiesAlert">
+        <p class="text-center">Ta strona używa plików cookies. Korzystanie z niej jest równoznaczne z akceptacją @Html.ActionLink("regulaminu", "ToS", "Home", new { area = "Home" }, new { @class = "contact-link" })</p>
+
+        <button class="btn btn-success" id="acceptCookies">Rozumiem</button>
+    </div>
 
     <div class="body-content">
         @RenderBody()  

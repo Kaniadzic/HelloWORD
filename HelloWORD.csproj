@@ -131,6 +131,7 @@
     <Compile Include="Controllers\QuizController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudyController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,7 +167,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cookies.css" />
+    <Content Include="Content\images\a.png" />
+    <Content Include="Content\images\b.png" />
+    <Content Include="Content\images\c.png" />
+    <Content Include="Content\images\d.png" />
     <Content Include="Content\images\placeholder.jpg" />
+    <Content Include="Content\images\t.png" />
     <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -221,6 +227,7 @@
     <Content Include="Views\Exam\Start.cshtml" />
     <Content Include="Views\Exam\Exam.cshtml" />
     <Content Include="Views\Exam\ExamResult.cshtml" />
+    <Content Include="Views\User\Logon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,15 +1,17 @@
-﻿@{
+﻿@model HelloWORD.Models.Entity.UserLoginData
+
+@{
     ViewBag.Title = "Panel logowania";
 }
 
 <div class="d-flex justify-content-center">
-    <form class="d-flex align-items-center justify-content-center flex-column mt-2 mt-md-5 user-login-form">
+    <form class="d-flex align-items-center justify-content-center flex-column mt-2 mt-md-5 user-login-form" method="post">
         <div>
-            <label for="login">Login</label>
-            <input type="text" class="form-control" id="login" placeholder="twój login" required>
+            <label for="Login">Login</label>
+            <input type="text" class="form-control" id="Login" placeholder="twój login" required name="Login">
 
-            <label for="password">Hasło</label>
-            <input type="text" class="form-control" id="password" placeholder="twoje hasło" required>
+            <label for="Password">Hasło</label>
+            <input type="password" class="form-control" id="Password" placeholder="twoje hasło" required name="Password">
         </div>
 
         <div class="justify-content-center mt-2 mt-md-4">

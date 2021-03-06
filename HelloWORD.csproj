@@ -229,6 +229,7 @@
     <Content Include="Views\Exam\Exam.cshtml" />
     <Content Include="Views\Exam\ExamResult.cshtml" />
     <Content Include="Views\User\Logon.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

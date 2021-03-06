@@ -4,23 +4,25 @@
     ViewBag.Title = "Panel logowania";
 }
 
-<div class="d-flex justify-content-center">
-    <form class="d-flex align-items-center justify-content-center flex-column mt-2 mt-md-5 user-login-form" method="post">
-        <div>
-            <label for="Login">Login</label>
-            <input type="text" class="form-control" id="Login" placeholder="twój login" required name="Login">
+<main>
+    <div class="d-flex justify-content-center">
+        <form class="d-flex align-items-center justify-content-center flex-column mt-2 mt-md-5 user-login-form" method="post">
+            <div>
+                <label for="Login">Login</label>
+                <input type="text" class="form-control" id="Login" placeholder="twój login" required name="Login">
 
-            <label for="Password">Hasło</label>
-            <input type="password" class="form-control" id="Password" placeholder="twoje hasło" required name="Password">
-        </div>
+                <label for="Password">Hasło</label>
+                <input type="password" class="form-control" id="Password" placeholder="twoje hasło" required name="Password">
+            </div>
 
-        <div class="justify-content-center mt-2 mt-md-4">
-            <button type="submit" class="btn btn-success">Zaloguj</button>
-        </div>
+            <div class="justify-content-center mt-2 mt-md-4">
+                <button type="submit" class="btn btn-success">Zaloguj</button>
+            </div>
 
-        <div class="d-flex align-items-center mt-2 mt-md-4">
-            @Html.ActionLink("Nowe konto", "Register", "User", new { @class = "contact-link mr-2" })
-            @Html.ActionLink("Reset hasła", "ForgottenPassword", "User", new { @class = "contact-link text-danger ml-2" })
-        </div>
-    </form>
-</div>
+            <div class="d-flex align-items-center mt-2 mt-md-4">
+                @Html.ActionLink("Nowe konto", "Register", "User", new { @class = "contact-link mr-2" })
+                @Html.ActionLink("Reset hasła", "ForgottenPassword", "User", new { @class = "contact-link text-danger ml-2" })
+            </div>
+        </form>
+    </div>
+</main>

@@ -1,4 +1,5 @@
 ﻿using HelloWORD.Models.Entity;
+using HelloWORD.Models.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,21 @@ namespace HelloWORD.Controllers
         [HttpPost]
         public ActionResult Register(UserRegistrationData userRegistrationData)
         {
-            userRegistrationData.CreationDate = DateTime.Now;
+            if (userRegistrationData.Password != userRegistrationData.RepeatPassword)
+            {
+                ViewBag.Error = "Wprowadzone hasła nie są takie same!";
+                return View();
+            }
+            else if (userRegistrationData.Email != userRegistrationData.RepeatEmail)
+            {
+                ViewBag.Error = "Podane adresy email nie są takie same!";
+                return View();
+            }
 
+            UserLogic userLogic = new UserLogic();
+            userRegistrationData = userLogic.PrepareUserRegistrationData(userRegistrationData);
+
+            ViewBag.Error = "Jest ok";
             return View();
         }
     }

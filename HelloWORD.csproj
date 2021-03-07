@@ -160,6 +160,7 @@
     <Compile Include="Models\Logic\QuestionContext.cs" />
     <Compile Include="Models\Logic\QuestionLogic.cs" />
     <Compile Include="Models\Logic\ResultLogic.cs" />
+    <Compile Include="Models\Logic\UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,9 +5,11 @@
 <main>
     <div class="d-flex justify-content-center">
         <form class="d-flex align-items-center justify-content-center flex-column mt-2 mt-md-5 user-login-form" method="post">
-            <div class="d-flex justify-content-center align-items-start flex-column">
-                <label for="Login">Login</label>
-                <input type="text" class="form-control" id="Login" placeholder="twój login" required name="Login">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <div class="d-flex flex-column mt-2 mt-md-3 w-100">
+                    <label for="Login">Login</label>
+                    <input type="text" class="form-control" id="Login" placeholder="twój login" required name="Login">
+                </div>
 
                 <div class="d-flex mt-2 mt-md-3">
                     <div class="mr-1">
@@ -16,7 +18,7 @@
                     </div>
                     <div class="ml-1">
                         <label for="PasswordRepeat">Powtórz hasło</label>
-                        <input type="password" class="form-control" id="PasswordRepeat" placeholder="twoje hasło" required name="PasswordRepeat">
+                        <input type="password" class="form-control" id="PasswordRepeat" placeholder="twoje hasło" required name="RepeatPassword">
                     </div>
                 </div>
 
@@ -29,6 +31,24 @@
                         <label for="LastName">Nazwisko</label>
                         <input type="text" class="form-control" id="LastName" placeholder="twoje nazwisko" required name="LastName">
                     </div>
+                </div>
+
+                <div class="d-flex mt-2 mt-md-3">
+                    <div class="mr-1">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="Email" placeholder="twój email" required name="Email">
+                    </div>
+                    <div class="ml-1">
+                        <label for="EmailRepeat">Powtórz email</label>
+                        <input type="email" class="form-control" id="EmailRepeat" placeholder="twój email" required name="RepeatEmail">
+                    </div>
+                </div>
+
+                <div class="d-flex mt-2 mt-md-3">
+                    <input class="form-check-input" type="checkbox" id="tos" required>
+                    <label class="form-check-label" for="tos">
+                        Akceptuję postanowienia @Html.ActionLink("regulaminu", "ToS", "Home", new { area = "Home" }, new { @class = "contact-link" })
+                    </label>
                 </div>
             </div>
 

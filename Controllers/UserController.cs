@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelloWORD.Models.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,10 +20,18 @@ namespace HelloWORD.Controllers
         {
             return View();
         }
-        
+
         [HttpGet]
         public ActionResult Register()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(UserRegistrationData userRegistrationData)
+        {
+            userRegistrationData.CreationDate = DateTime.Now;
+
             return View();
         }
     }

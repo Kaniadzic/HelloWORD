@@ -43,10 +43,23 @@ namespace HelloWORD.Controllers
             }
 
             UserLogic userLogic = new UserLogic();
+            // Przygotowanie danych użytkownika
             userRegistrationData = userLogic.PrepareUserRegistrationData(userRegistrationData);
 
-            ViewBag.Error = "Jest ok";
-            return View();
+            // Sprawdzenie czy jest już w bazie użytkownik o podanym loginie lub adresie email
+            int userCount = userLogic.CheckExistingUsers(userRegistrationData.Login, userRegistrationData.Email);
+            if(userCount == 0)
+            {
+                userLogic.CreateUser(userRegistrationData);
+
+                ViewBag.Error = "Dodano użytkownika!";
+                return View();
+            }
+            else
+            {
+                ViewBag.Error = "Użytkownik o podanym loginie lub adresie email już istnieje w bazie!";
+                return View();
+            }
         }
     }
 }

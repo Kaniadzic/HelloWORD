@@ -99,7 +99,13 @@ namespace HelloWORD.Models.Logic
                 {
                     questionsIDs.Add((int)rdr["exc_Number"]);
                 }
-            }      
+            }    
+            
+            // Jeżeli nie ma żadnych pytań to zwracamy pustą liste
+            if (questionsIDs.Count == 0)
+            {
+                return questions;
+            }
 
             // Wybranie x losowych id pytań, gdzie x to questionsNumber
             while (usedIDs.Count < questionsNumber)

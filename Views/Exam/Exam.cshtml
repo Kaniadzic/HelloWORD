@@ -250,6 +250,10 @@
     // załadowanie listy z pytaniami specjalnymi
     function initializeCategorizedQuestions(data) {
         categorizedQuestions = data;
+
+        if (categorizedQuestions.length == 0) {
+            window.location.href = "/Home/Index";
+        }
     }
 
     function startExam() {

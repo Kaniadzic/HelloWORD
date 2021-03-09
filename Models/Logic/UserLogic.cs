@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Security.Cryptography;
-using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
@@ -19,19 +17,9 @@ namespace HelloWORD.Models.Logic
             userRegistrationData.RepeatPassword = "";
             userRegistrationData.RepeatEmail = "";
 
-            // hashowanie haseł
-            using (SHA256 sha = SHA256.Create())
-            {
-                byte[] hashedPassword = sha.ComputeHash(Encoding.UTF8.GetBytes(userRegistrationData.Password));
+            HashLogic hashLogic = new HashLogic();
 
-                StringBuilder builder = new StringBuilder();
-                for(int i=0; i<hashedPassword.Length; i++)
-                {
-                    builder.Append(hashedPassword[i].ToString("x2"));
-                }
-
-                userRegistrationData.Password = builder.ToString();
-            }
+            userRegistrationData.Password = hashLogic.HashString(userRegistrationData.Password);
   
             return userRegistrationData;
         }

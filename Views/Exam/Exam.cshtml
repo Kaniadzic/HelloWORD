@@ -80,6 +80,7 @@
     function leaveAlert(message) {
         if (!window.confirm(message)) {
             event.preventDefault();
+            event.stopImmediatePropagation();
         }
     }
 

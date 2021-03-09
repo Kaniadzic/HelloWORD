@@ -216,6 +216,12 @@
 
     // pobranie list z pytaniami i start egzaminu
     $(document).ready(function () {
+        generateQuestions();
+
+        return false;
+    });
+
+    async function generateQuestions() {
         $.ajax({
             url: '@Url.Action("GenerateTrafficQuestions")',
             cache: false,
@@ -233,13 +239,8 @@
             success: function (data) {
                 initializeCategorizedQuestions(data);
             }
-        });
-
-        // TODO: normalny async i await
-        setTimeout(() => { startExam(); }, 2000);
-
-        return false;
-    });
+        }).then(startExam);
+    }
 
     // załadowanie listy z pytaniami ogólnymi
     function initializeTrafficQuestions(data) {

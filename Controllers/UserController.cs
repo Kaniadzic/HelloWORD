@@ -19,8 +19,11 @@ namespace HelloWORD.Controllers
         }
 
         [HttpPost]
-        public ActionResult Logon(string login, string password)
+        public ActionResult Logon(UserLoginData userLoginData)
         {
+            UserLogic userLogic = new UserLogic();
+            int userID = userLogic.LoginUser(userLoginData);
+
             return View();
         }
 

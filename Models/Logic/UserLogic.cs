@@ -67,5 +67,33 @@ namespace HelloWORD.Models.Logic
 
             return userCount;
         }
+
+        public int LoginUser(UserLoginData userLoginData)
+        {
+            int userID = -1;
+
+            HashLogic hashLogic = new HashLogic();
+            userLoginData.Password = hashLogic.HashString(userLoginData.Password);
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_SelectLoggingUserID", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Login", userLoginData.Login);
+                cmd.Parameters.AddWithValue("Password", userLoginData.Password);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    userID = (int)rdr["usr_ID"];
+                }
+            }
+
+            return userID;
+        }
     }
 }

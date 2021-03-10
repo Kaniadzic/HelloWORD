@@ -11,8 +11,10 @@ namespace HelloWORD.Controllers
     public class UserController : Controller
     {
         [HttpGet]
-        public ActionResult Logon()
+        public ActionResult Logon(string alert = "")
         {
+            ViewBag.Alert = alert;
+
             return View();
         }
 
@@ -33,12 +35,12 @@ namespace HelloWORD.Controllers
         {
             if (userRegistrationData.Password != userRegistrationData.RepeatPassword)
             {
-                ViewBag.Error = "Wprowadzone hasła nie są takie same!";
+                ViewBag.Alert = "Wprowadzone hasła nie są takie same!";
                 return View();
             }
             else if (userRegistrationData.Email != userRegistrationData.RepeatEmail)
             {
-                ViewBag.Error = "Podane adresy email nie są takie same!";
+                ViewBag.Alert = "Podane adresy email nie są takie same!";
                 return View();
             }
 
@@ -52,12 +54,12 @@ namespace HelloWORD.Controllers
             {
                 userLogic.CreateUser(userRegistrationData);
 
-                ViewBag.Error = "Dodano użytkownika!";
-                return View();
+                ViewBag.Alert = "Możesz zalogować się na swoje konto!";
+                return RedirectToAction("Logon", "User", new { alert = ViewBag.Alert});
             }
             else
             {
-                ViewBag.Error = "Użytkownik o podanym loginie lub adresie email już istnieje w bazie!";
+                ViewBag.Alert = "Użytkownik o podanym loginie lub adresie email już istnieje w bazie!";
                 return View();
             }
         }

@@ -1,4 +1,5 @@
-﻿using HelloWORD.Models.Entity;
+﻿using CaptchaMvc.HtmlHelpers;
+using HelloWORD.Models.Entity;
 using HelloWORD.Models.Logic;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,13 @@ namespace HelloWORD.Controllers
             else if (userRegistrationData.Email != userRegistrationData.RepeatEmail)
             {
                 ViewBag.Alert = "Podane adresy email nie są takie same!";
+                return View();
+            }
+
+            // captcha CaptchaMvc.Mvc5
+            if (!this.IsCaptchaValid("bolo faja"))
+            {
+                ViewBag.Alert = "Proszę poprawnie uzupełnić Captcha!";
                 return View();
             }
 

@@ -4,7 +4,8 @@
 
 <main>
     <div class="d-flex justify-content-center">
-        <form class="d-flex align-items-center justify-content-center flex-column my-2 my-md-5 user-login-form" method="post">
+        @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @enctype = "multipart/form-data", @id="fromCaptcha", @class= "d-flex align-items-center justify-content-center flex-column my-2 my-md-5 user-login-form" }))
+        {
             <div class="d-flex justify-content-center align-items-center flex-column">
                 <div class="d-flex flex-column mt-2 mt-md-3 w-100">
                     <label for="Login">Login</label>
@@ -53,9 +54,9 @@
             </div>
 
             <div class="justify-content-center mt-2 mt-md-4">
-                <button type="submit" class="btn btn-success">Zarejestruj</button>
+                <button type="submit" class="btn btn-contact">Zarejestruj</button>
             </div>
-        </form>
+        }
     </div>
     <div class="d-flex justify-content-center">
         <p class="h4 text-warning text-center">@ViewBag.Alert</p>

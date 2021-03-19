@@ -37,6 +37,13 @@ namespace HelloWORD.Controllers
         [HttpPost]
         public ActionResult Register(UserRegistrationData userRegistrationData)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Alert = "Proszę poprawnie uzupełnić formularz!";
+                return View();
+            }
+
+            // @TODO: zrobić walidacje
             if (userRegistrationData.Password != userRegistrationData.RepeatPassword)
             {
                 ViewBag.Alert = "Wprowadzone hasła nie są takie same!";

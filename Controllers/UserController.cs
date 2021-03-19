@@ -37,28 +37,30 @@ namespace HelloWORD.Controllers
         [HttpPost]
         public ActionResult Register(UserRegistrationData userRegistrationData)
         {
-            if (!ModelState.IsValid)
+            // captcha CaptchaMvc.Mvc5
+            if (!this.IsCaptchaValid(""))
             {
-                ViewBag.Alert = "Proszę poprawnie uzupełnić formularz!";
+                ModelState.AddModelError("InvalidCaptcha", "Proszę poprawnie uzupełnić Captcha!");
+                ViewBag.Alert = "Proszę poprawnie uzupełnić Captcha!";
                 return View();
             }
 
-            // @TODO: zrobić walidacje
             if (userRegistrationData.Password != userRegistrationData.RepeatPassword)
             {
+                ModelState.AddModelError("DifferentPasswords", "Wprowadzone hasła nie są takie same!");
                 ViewBag.Alert = "Wprowadzone hasła nie są takie same!";
                 return View();
             }
             else if (userRegistrationData.Email != userRegistrationData.RepeatEmail)
             {
+                ModelState.AddModelError("DifferentEmails", "Podane adresy email nie są takie same!");
                 ViewBag.Alert = "Podane adresy email nie są takie same!";
                 return View();
             }
 
-            // captcha CaptchaMvc.Mvc5
-            if (!this.IsCaptchaValid("bolo faja"))
+            if (!ModelState.IsValid)
             {
-                ViewBag.Alert = "Proszę poprawnie uzupełnić Captcha!";
+                ViewBag.Alert = "Proszę poprawnie uzupełnić formularz!";
                 return View();
             }
 

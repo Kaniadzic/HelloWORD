@@ -80,14 +80,16 @@ body {
 
 /* ----------- INDEX - CONTENT ----------- */
 
+.content-upper, .content-lower {
+    width: 100%;
+}
+
 .content-upper {
     min-height: 60vh;
-    width: 100%;
 }
 
 .content-lower {
     min-height: 40vh;
-    width: 100%;
     border: 1px solid green;
 }
 
@@ -135,11 +137,12 @@ body {
     opacity: 0.7;
     color: #000000;
     text-decoration: none;
+    text-shadow: 1px 1px 1px #ffffff;
     transform: translateX(16px);
 }
 
 .category-slider-a {
-    background-image: url('/Content/images/a.png');
+    background-image: url('images/a.png');
 }
 
 .category-slider-b {

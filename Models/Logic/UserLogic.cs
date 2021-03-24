@@ -95,5 +95,15 @@ namespace HelloWORD.Models.Logic
 
             return userID;
         }
+
+        public void SaveUserIdSession(int id)
+        {
+            System.Web.HttpContext.Current.Session["userID"] = id;
+        }
+
+        public void Logout()
+        {
+            System.Web.HttpContext.Current.Session["userID"] = null;
+        }
     }
 }

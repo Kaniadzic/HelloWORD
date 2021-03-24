@@ -24,7 +24,23 @@ namespace HelloWORD.Controllers
         {
             UserLogic userLogic = new UserLogic();
             int userID = userLogic.LoginUser(userLoginData);
+            userLogic.SaveUserIdSession(userID);
 
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            UserLogic userLogic = new UserLogic();
+            userLogic.Logout();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet] 
+        public ActionResult Panel()
+        {
             return View();
         }
 

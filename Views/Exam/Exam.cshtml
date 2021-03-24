@@ -230,8 +230,10 @@
             success: function (data) {
                 initializeTrafficQuestions(data);
             }
-        });
+        }).then(generateCategorizedQuestions);
+    }
 
+    function generateCategorizedQuestions() {
         $.ajax({
             url: '@Url.Action("GenerateCategorizedQuestions")',
             cache: false,

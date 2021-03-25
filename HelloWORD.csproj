@@ -238,6 +238,7 @@
     <Content Include="Views\Exam\ExamResult.cshtml" />
     <Content Include="Views\User\Logon.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Panel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

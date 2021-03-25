@@ -41,6 +41,12 @@ namespace HelloWORD.Controllers
         [HttpGet] 
         public ActionResult Panel()
         {
+            // jeżeli ID użytkownika nie jest zapisane w sesji to przekierowujemy do menu głównego
+            if (System.Web.HttpContext.Current.Session["userID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 

@@ -1,7 +1,29 @@
-﻿
-@{
-    ViewBag.Title = "Panel";
+﻿@{
+    ViewBag.Title = "Panel użytkownika";
 }
 
-<h2>Panel</h2>
+    <main>
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-around p-1 p-md-5" style="border-bottom: 1px dashed red;">
+            <p class="h3">Witaj </p>
+        </div>
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-around p-1 p-md-5">
+            <div class="d-flex align-items-center justify-content-center flex-column text-uppercase my-2 my-md-0">
+                <p class="h4">Edycja konta</p>
+
+                @Html.ActionLink(".","Edit", "User", new { id = ViewBag.ID }, new { @class = "user-panel-button user-panel-button-config d-flex justify-content-center align-items-center" })
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center flex-column text-uppercase my-2 my-md-0">
+                <p class="h4">Kup pytania</p>
+
+                @Html.ActionLink(".", "Buy", "User", new { }, new { @class = "user-panel-button user-panel-button-database d-flex justify-content-center align-items-center" })
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center flex-column text-uppercase my-2 my-md-0">
+                <p class="h4">Historia nauki</p>
+
+                @Html.ActionLink(".", "History", "User", new { id = ViewBag.ID }, new { @class = "user-panel-button user-panel-button-history d-flex justify-content-center align-items-center" })
+            </div>
+        </div>
+    </main>
 

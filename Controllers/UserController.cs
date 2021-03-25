@@ -38,7 +38,7 @@ namespace HelloWORD.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpGet] 
+        [HttpGet]
         public ActionResult Panel()
         {
             // jeżeli ID użytkownika nie jest zapisane w sesji to przekierowujemy do menu głównego
@@ -47,6 +47,38 @@ namespace HelloWORD.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            ViewBag.ID = System.Web.HttpContext.Current.Session["userID"];
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult History(int id)
+        {
+            // jeżeli ID użytkownika nie jest zapisane w sesji to przekierowujemy do menu głównego
+            if (System.Web.HttpContext.Current.Session["userID"] == null || id <= 0 || id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            // jeżeli ID użytkownika nie jest zapisane w sesji to przekierowujemy do menu głównego
+            if (System.Web.HttpContext.Current.Session["userID"] == null || id <= 0 || id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Buy()
+        {
             return View();
         }
 

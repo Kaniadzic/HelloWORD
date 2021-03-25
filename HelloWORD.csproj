@@ -151,6 +151,7 @@
     <Compile Include="Models\Entity\UserLoginData.cs" />
     <Compile Include="Models\Entity\UserRegistrationData.cs" />
     <Compile Include="Models\Entity\UserShowData.cs" />
+    <Compile Include="Models\Entity\UserUpdateData.cs" />
     <Compile Include="Models\Logic\ExamQuestionLogic.cs" />
     <Compile Include="Models\Logic\Gmailer.cs" />
     <Compile Include="Models\Entity\Information.cs" />
@@ -239,6 +240,8 @@
     <Content Include="Views\User\Logon.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Panel.cshtml" />
+    <Content Include="Views\User\Buy.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -56,7 +56,7 @@ namespace HelloWORD.Controllers
         public ActionResult History(int id)
         {
             // jeżeli ID użytkownika nie jest zapisane w sesji to przekierowujemy do menu głównego
-            if (System.Web.HttpContext.Current.Session["userID"] == null || id <= 0 || id == null)
+            if (System.Web.HttpContext.Current.Session["userID"] == null || id <= 0 || id == null || id != (int)System.Web.HttpContext.Current.Session["userID"])
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -68,12 +68,24 @@ namespace HelloWORD.Controllers
         public ActionResult Edit(int id)
         {
             // jeżeli ID użytkownika nie jest zapisane w sesji to przekierowujemy do menu głównego
-            if (System.Web.HttpContext.Current.Session["userID"] == null || id <= 0 || id == null)
+            if (System.Web.HttpContext.Current.Session["userID"] == null || id <= 0 || id == null || id != (int)System.Web.HttpContext.Current.Session["userID"])
             {
                 return RedirectToAction("Index", "Home");
             }
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(UserUpdateData updateData)
+        {
+            HashLogic hashLogic = new HashLogic();
+            updateData.password = hashLogic.HashString(updateData.password);
+
+            UserLogic userLogic = new UserLogic();
+            userLogic.UpdateUser(updateData);
+
+            return RedirectToAction("Panel", "User");
         }
 
         [HttpGet]

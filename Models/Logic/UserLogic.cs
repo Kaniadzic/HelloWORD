@@ -101,6 +101,25 @@ namespace HelloWORD.Models.Logic
             System.Web.HttpContext.Current.Session["userID"] = id;
         }
 
+        public void UpdateUser(UserUpdateData updateData)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_UpdateUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("ID", updateData.id);
+                cmd.Parameters.AddWithValue("Password", updateData.password);
+                cmd.Parameters.AddWithValue("FirstName", updateData.firstName);
+                cmd.Parameters.AddWithValue("LastName", updateData.lastName);
+                cmd.Parameters.AddWithValue("Email", updateData.email);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+            }
+        }
+
         public void Logout()
         {
             System.Web.HttpContext.Current.Session["userID"] = null;

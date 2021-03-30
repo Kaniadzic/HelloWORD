@@ -1,6 +1,6 @@
-﻿window.onload = dupa;
+﻿window.onload = addAlerts;
 
-function dupa() {
+function addAlerts() {
     let buttons = document.querySelectorAll(".premium-panel");
 
     for (let i = 0; i < buttons.length; i++) {

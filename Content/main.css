@@ -559,3 +559,34 @@ body {
 .user-panel-button-history {
     background-image: url("data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2286%22%20height%3D%2286%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-journal-check%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M10.854%206.146a.5.5%200%200%201%200%20.708l-3%203a.5.5%200%200%201-.708%200l-1.5-1.5a.5.5%200%201%201%20.708-.708L7.5%208.793l2.646-2.647a.5.5%200%200%201%20.708%200z%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M3%200h10a2%202%200%200%201%202%202v12a2%202%200%200%201-2%202H3a2%202%200%200%201-2-2v-1h1v1a1%201%200%200%200%201%201h10a1%201%200%200%200%201-1V2a1%201%200%200%200-1-1H3a1%201%200%200%200-1%201v1H1V2a2%202%200%200%201%202-2z%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M1%205v-.5a.5.5%200%200%201%201%200V5h.5a.5.5%200%200%201%200%201h-2a.5.5%200%200%201%200-1H1zm0%203v-.5a.5.5%200%200%201%201%200V8h.5a.5.5%200%200%201%200%201h-2a.5.5%200%200%201%200-1H1zm0%203v-.5a.5.5%200%200%201%201%200v.5h.5a.5.5%200%200%201%200%201h-2a.5.5%200%200%201%200-1H1z%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E");
 }
+
+/* ----------- PREMIUM KUPOWANIE ----------- */
+
+.premium-panel {
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 1px 3px 3px #333333;
+    transition: all .2s ease-in-out;
+}
+
+.premium-panel:hover {
+    box-shadow: 1px 3px 3px #69940d;
+    border: 1px solid #69940d;
+}
+
+.premium-panel::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    position: absolute;
+    left: -90px;
+    clip-path: polygon(60% 0, 100% 50%, 60% 100%, 60% 70%, 0 70%, 0 30%, 60% 30%);
+    transition: all .3s ease-in-out;
+}
+
+.premium-panel:hover::before {
+    background-color: #69940d;
+    transform: translateX(30px);
+}

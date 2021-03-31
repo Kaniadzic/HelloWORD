@@ -6,8 +6,14 @@ function addAlerts() {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", showAlert);
     }
+
+    document.getElementById("buyAlertButton").addEventListener("click", hideAlert);
 }
 
 function showAlert() {
-    window.alert("Ta funkcja zostanie zaimplementowana w pełnej, komercyjnej wersji oprogramowania HelloWORD");
+    $("#buyAlert").show();
+}
+
+function hideAlert() {
+    $("#buyAlert").hide();
 }

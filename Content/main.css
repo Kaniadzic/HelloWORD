@@ -590,3 +590,12 @@ body {
     background-color: #69940d;
     transform: translateX(30px);
 }
+
+.buy-alert {
+    position: absolute;
+    box-shadow: 3px 5px 5px #000000;
+    background-color: #ffffff;
+    border-radius: 2px;
+    z-index: 1;
+    display: none;
+}

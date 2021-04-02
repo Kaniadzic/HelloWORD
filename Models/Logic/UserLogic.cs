@@ -107,10 +107,9 @@ namespace HelloWORD.Models.Logic
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("sp_UpdateUser", con);
+                SqlCommand cmd = new SqlCommand("sp_UpdateUserData", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("ID", updateData.id);
-                cmd.Parameters.AddWithValue("Password", updateData.password);
                 cmd.Parameters.AddWithValue("FirstName", updateData.firstName);
                 cmd.Parameters.AddWithValue("LastName", updateData.lastName);
                 cmd.Parameters.AddWithValue("Email", updateData.email);
@@ -118,6 +117,32 @@ namespace HelloWORD.Models.Logic
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
             }
+        }
+
+        public UserUpdateData SelectUserData(int id)
+        {
+            UserUpdateData userData = new UserUpdateData();
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_SelectUserData", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("ID", id);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    userData.firstName = (string)rdr["usr_FirstName"];
+                    userData.lastName = (string)rdr["usr_LastName"];
+                    userData.email = (string)rdr["usr_Email"];
+                    userData.repeatEmail = (string)rdr["usr_Email"];
+                }
+            }
+
+            return userData;
         }
 
         public void Logout()

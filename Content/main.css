@@ -514,7 +514,7 @@ body {
 
 /* -----------FORMULARZ LOGOWANIA ----------- */
 
-.user-login-form {
+.user-login-form, .user-edit-form {
     border: 1px solid #f7f7f7;
     border-radius: 5px;
     padding: 24px 42px;

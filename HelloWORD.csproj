@@ -203,6 +203,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\buyAlerts.js" />
     <Content Include="Scripts\cookies.js" />
+    <Content Include="Scripts\examAlerts.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

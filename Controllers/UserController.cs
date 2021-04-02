@@ -73,14 +73,26 @@ namespace HelloWORD.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            UserLogic userLogic = new UserLogic();
+            UserUpdateData userData = userLogic.SelectUserData(id);
+
+            return View(userData);
         }
 
         [HttpPost]
         public ActionResult Edit(UserUpdateData updateData)
         {
-            HashLogic hashLogic = new HashLogic();
-            updateData.password = hashLogic.HashString(updateData.password);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Alert = "Proszę poprawnie uzupełnić formularz!";
+                return View();
+            }
+            else if (updateData.email != updateData.repeatEmail)
+            {
+                ModelState.AddModelError("DifferentEmails", "Podane adresy email nie są takie same!");
+                ViewBag.Alert = "Podane adresy email nie są takie same!";
+                return View();
+            }
 
             UserLogic userLogic = new UserLogic();
             userLogic.UpdateUser(updateData);

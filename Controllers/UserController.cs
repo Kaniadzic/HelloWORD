@@ -97,7 +97,8 @@ namespace HelloWORD.Controllers
             UserLogic userLogic = new UserLogic();
             userLogic.UpdateUser(updateData);
 
-            return RedirectToAction("Panel", "User");
+            ViewBag.Alert = "Edycja zakończyła się sukcesem!"; 
+            return View();
         }
 
         [HttpGet]

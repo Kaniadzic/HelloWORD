@@ -9,8 +9,32 @@
             <p class="h4 text-warning text-center">@ViewBag.Alert</p>
         </div>
 
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            
+        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-around">
+            <table class="table table-striped table-bordered mt-2 mt-md-5 user-data-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Oto twoje obecne dane</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="col">Imię</th>
+                        <th scope="col">@Model.firstName</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Nazwisko</th>
+                        <th scope="col">@Model.lastName</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Adres email</th>
+                        <th scope="col">@Model.email</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Data założenia konta</th>
+                        <th scope="col">11-11-1111</th>
+                    </tr>
+                </tbody>
+            </table>
 
             @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "fromCaptcha", @class = "d-flex align-items-center justify-content-center flex-column mt-2 mt-md-5 user-edit-form" }))
             {

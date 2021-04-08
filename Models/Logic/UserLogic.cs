@@ -139,6 +139,7 @@ namespace HelloWORD.Models.Logic
                     userData.lastName = (string)rdr["usr_LastName"];
                     userData.email = (string)rdr["usr_Email"];
                     userData.repeatEmail = (string)rdr["usr_Email"];
+                    userData.creationDate = (DateTime)rdr["usr_CreationDate"];
                 }
             }
 

@@ -26,5 +26,7 @@ namespace HelloWORD.Models.Entity
         [Required]
         [Display(Name = "Powtórz email")]
         public string repeatEmail { get; set; }
+
+        public DateTime creationDate { get; set; }
     }
 }

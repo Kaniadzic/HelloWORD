@@ -31,7 +31,10 @@
                     </tr>
                     <tr>
                         <th scope="col">Data założenia konta</th>
-                        <th scope="col">11-11-1111</th>
+                        <th scope="col">@Model.creationDate</th>
+                    </tr>
+                    <tr>
+                        <th scope="col" colspan="2">Chcesz zobaczyć swoją historię nauki? Wejdź @Html.ActionLink("tutaj", "History", "User", new { id = Model.id }, new { @class = "contact-link" })</th>
                     </tr>
                 </tbody>
             </table>
@@ -66,7 +69,7 @@
                 <div class="justify-content-center mt-2 mt-md-4">
                     <button type="submit" class="btn btn-contact" id="EditSubmit">Zapisz</button>
                 </div>
-                }
-            </div>
+            }
+        </div>
     </main>
 

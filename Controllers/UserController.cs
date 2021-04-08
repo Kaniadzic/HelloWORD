@@ -24,9 +24,15 @@ namespace HelloWORD.Controllers
         {
             UserLogic userLogic = new UserLogic();
             int userID = userLogic.LoginUser(userLoginData);
-            userLogic.SaveUserIdSession(userID);
 
-            return RedirectToAction("Index", "Home");
+            if (userID > 0)
+            {
+                userLogic.SaveUserIdSession(userID);
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.Alert = "Podano niewłaściwy login lub hasło!";
+            return View();
         }
 
         [HttpGet]
@@ -75,6 +81,7 @@ namespace HelloWORD.Controllers
 
             UserLogic userLogic = new UserLogic();
             UserUpdateData userData = userLogic.SelectUserData(id);
+            userData.id = id;
 
             return View(userData);
         }

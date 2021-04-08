@@ -71,7 +71,7 @@ namespace HelloWORD.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string alert="")
         {
             // jeżeli ID użytkownika nie jest zapisane w sesji to przekierowujemy do menu głównego
             if (System.Web.HttpContext.Current.Session["userID"] == null || id <= 0 || id == null || id != (int)System.Web.HttpContext.Current.Session["userID"])
@@ -83,6 +83,8 @@ namespace HelloWORD.Controllers
             UserUpdateData userData = userLogic.SelectUserData(id);
             userData.id = id;
 
+            ViewBag.Alert = alert;
+
             return View(userData);
         }
 
@@ -91,21 +93,18 @@ namespace HelloWORD.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Alert = "Proszę poprawnie uzupełnić formularz!";
-                return View();
+                return RedirectToAction("Edit", "User", new { id = updateData.id, alert = "Proszę poprawnie uzupełnić formularz!" });
             }
             else if (updateData.email != updateData.repeatEmail)
             {
                 ModelState.AddModelError("DifferentEmails", "Podane adresy email nie są takie same!");
-                ViewBag.Alert = "Podane adresy email nie są takie same!";
-                return View();
+                return RedirectToAction("Edit", "User", new { id = updateData.id, alert = "Podane adresy email nie są takie same!" });
             }
 
             UserLogic userLogic = new UserLogic();
             userLogic.UpdateUser(updateData);
 
-            ViewBag.Alert = "Edycja zakończyła się sukcesem!"; 
-            return View();
+            return RedirectToAction("Edit", "User", new { id = updateData.id, alert = "Edycja zakończyła się sukcesem!" });
         }
 
         [HttpGet]

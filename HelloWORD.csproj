@@ -148,6 +148,7 @@
     <Compile Include="Models\Entity\TrafficQuestion.cs" />
     <Compile Include="Models\Entity\UserAnswer.cs" />
     <Compile Include="Models\Entity\UserAnswersList.cs" />
+    <Compile Include="Models\Entity\UserHistory.cs" />
     <Compile Include="Models\Entity\UserLoginData.cs" />
     <Compile Include="Models\Entity\UserRegistrationData.cs" />
     <Compile Include="Models\Entity\UserShowData.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Models\Entity\Information.cs" />
     <Compile Include="Models\Entity\Question.cs" />
     <Compile Include="Models\Logic\HashLogic.cs" />
+    <Compile Include="Models\Logic\HistoryLogic.cs" />
     <Compile Include="Models\Logic\IncorrectAnswersLogic.cs" />
     <Compile Include="Models\Logic\InformationContext.cs" />
     <Compile Include="Models\Logic\InformationLogic.cs" />

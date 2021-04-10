@@ -11,13 +11,13 @@ namespace HelloWORD.Models.Logic
 {
     public class HistoryLogic
     {
-        public void AddHistory(UserHistory userData)
+        public void InsertUserHistory(UserHistory userData)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("sp_SelectQuestionsNumbers", con);
+                SqlCommand cmd = new SqlCommand("sp_CreateHistory", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("UserID", userData.UserID);
                 cmd.Parameters.AddWithValue("Date", userData.Date);

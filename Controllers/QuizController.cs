@@ -93,6 +93,22 @@ namespace HelloWORD.Controllers
             // Zapisanie listy niepoprawnych odpowiedzi w sesji
             System.Web.HttpContext.Current.Session["incorrectAnswers"] = incorrectAnswers;
 
+            // Dodanie histori nauki (tylko dla testu długiego)
+            if (System.Web.HttpContext.Current.Session["userID"] != null && longQuiz)
+            {
+                UserHistory userHistory = new UserHistory();
+                userHistory.UserID = (int)System.Web.HttpContext.Current.Session["userID"];
+                userHistory.Category = category;
+                userHistory.Date = DateTime.Now;
+                userHistory.Type = "Quiz";
+                userHistory.Score = score;
+
+                userHistory.Passed = false;
+
+                HistoryLogic historyLogic = new HistoryLogic();
+                historyLogic.InsertUserHistory(userHistory);
+            }
+
             return RedirectToAction("QuizResult", "Quiz", new { result = result, category = category, longQuiz = longQuiz});
         }
 

@@ -72,6 +72,24 @@ namespace HelloWORD.Controllers
             ViewBag.Score = userScore;
             ViewBag.ExamPassed = examPassed;
 
+            // Dodanie histori nauki 
+            QuestionCategoryLogic questionCategoryLogic = new QuestionCategoryLogic();
+            string category = questionCategoryLogic.checkExamQuestionCategory(userAnswers[31].Number);
+
+            if (System.Web.HttpContext.Current.Session["userID"] != null)
+            {
+                UserHistory userHistory = new UserHistory();
+                userHistory.UserID = (int)System.Web.HttpContext.Current.Session["userID"];
+                userHistory.Category = category;
+                userHistory.Date = DateTime.Now;
+                userHistory.Type = "Exam";
+                userHistory.Score = userScore;
+                userHistory.Passed = examPassed;
+
+                HistoryLogic historyLogic = new HistoryLogic();
+                historyLogic.InsertUserHistory(userHistory);
+            }
+
             return View(qaExam);
         }
     }

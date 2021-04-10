@@ -31,5 +31,27 @@ namespace HelloWORD.Models.Logic
 
             return category;
         }
+
+        public string checkExamQuestionCategory(int number)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+            string category = "";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_CheckExamQuestionCategory", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Number", number);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    category = (string)rdr["exc_Category"];
+                }
+            }
+
+            return category;
+        }
     }
 }

@@ -103,6 +103,7 @@ namespace HelloWORD.Controllers
                 userHistory.Type = "Quiz";
                 userHistory.Score = score;
 
+                // passed jest na false ponieważ dla quizów nie ma dobrze/źle 
                 userHistory.Passed = false;
 
                 HistoryLogic historyLogic = new HistoryLogic();

@@ -11,8 +11,10 @@ namespace HelloWORD.Models.Logic
 {
     public class QuestionLogic
     {
-        public List<Questions> getQuestion(string category, int questionsNumber)
+        public List<Questions> getQuestion(string category, int questionsNumber, bool premium = false)
         {
+            // Premium jest false, ta funkcja nie będzie implementowana w całości
+
             // Zdefiniowanie potrzebnych obiektów, list etc.
             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
             List<Questions> questions = new List<Questions>();
@@ -26,6 +28,7 @@ namespace HelloWORD.Models.Logic
                 SqlCommand cmd = new SqlCommand("sp_SelectQuestionsNumbers", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("Category", category);
+                cmd.Parameters.AddWithValue("Premium", premium);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -61,6 +64,7 @@ namespace HelloWORD.Models.Logic
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Category", category);
                     cmd.Parameters.AddWithValue("Number", usedIDs[i]);
+                    cmd.Parameters.AddWithValue("Premium", premium);
 
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();

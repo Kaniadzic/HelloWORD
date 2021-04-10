@@ -244,6 +244,7 @@
     <Content Include="Views\User\Panel.cshtml" />
     <Content Include="Views\User\Buy.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

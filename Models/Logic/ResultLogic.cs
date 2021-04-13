@@ -203,6 +203,8 @@ namespace HelloWORD.Models.Logic
 
                         addQuestionAndAnswerExam(qaExam, question, correctAnswer, answer, answerScore, mediaType, mediaPath);
                     }
+
+                    con.Close();
                 }
             }
             else if (type == "Categorized")

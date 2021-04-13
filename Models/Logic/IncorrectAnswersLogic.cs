@@ -37,6 +37,8 @@ namespace HelloWORD.Models.Logic
 
                         correctAnswers.Add(answer);
                     }
+
+                    con.Close();
                 }
             }
 
@@ -79,6 +81,8 @@ namespace HelloWORD.Models.Logic
 
                         qaList.Add(qa);
                     }
+
+                    con.Close();
                 }
             }
 

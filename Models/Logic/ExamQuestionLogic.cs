@@ -34,6 +34,8 @@ namespace HelloWORD.Models.Logic
                 {
                     questionsIDs.Add((int)rdr["ext_Number"]);
                 }
+
+                con.Close();
             }
 
             // Wybranie x losowych id pytań, gdzie x to questionsNumber
@@ -69,6 +71,8 @@ namespace HelloWORD.Models.Logic
 
                         questions.Add(quest);
                     }
+
+                    con.Close();
                 }
             }
 
@@ -99,6 +103,8 @@ namespace HelloWORD.Models.Logic
                 {
                     questionsIDs.Add((int)rdr["exc_Number"]);
                 }
+
+                con.Close();
             }    
             
             // Jeżeli nie ma żadnych pytań to zwracamy pustą liste
@@ -145,6 +151,8 @@ namespace HelloWORD.Models.Logic
 
                         questions.Add(quest);
                     }
+
+                    con.Close();
                 }
             }
 

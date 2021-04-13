@@ -27,6 +27,8 @@ namespace HelloWORD.Models.Logic
                 {
                     category = (string)rdr["que_Category"];
                 }
+
+                con.Close();
             }
 
             return category;
@@ -49,6 +51,8 @@ namespace HelloWORD.Models.Logic
                 {
                     category = (string)rdr["exc_Category"];
                 }
+
+                con.Close();
             }
 
             return category;

@@ -36,6 +36,8 @@ namespace HelloWORD.Models.Logic
 
                     lessons.Add(lesson);
                 }
+
+                con.Close();
             }
 
             return lessons;

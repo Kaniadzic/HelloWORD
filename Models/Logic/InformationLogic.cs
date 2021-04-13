@@ -32,6 +32,8 @@ namespace HelloWORD.Models.Logic
 
                     informations.Add(information);
                 }
+
+                con.Close();
             }
 
             return informations;

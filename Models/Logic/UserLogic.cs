@@ -41,6 +41,7 @@ namespace HelloWORD.Models.Logic
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
+                con.Close();
             }
         }
 
@@ -63,6 +64,8 @@ namespace HelloWORD.Models.Logic
                 {
                     userCount++;
                 }
+
+                con.Close();
             }
 
             return userCount;
@@ -91,6 +94,8 @@ namespace HelloWORD.Models.Logic
                 {
                     userID = (int)rdr["usr_ID"];
                 }
+
+                con.Close();
             }
 
             return userID;
@@ -116,6 +121,7 @@ namespace HelloWORD.Models.Logic
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
+                con.Close();
             }
         }
 
@@ -141,6 +147,8 @@ namespace HelloWORD.Models.Logic
                     userData.repeatEmail = (string)rdr["usr_Email"];
                     userData.creationDate = (DateTime)rdr["usr_CreationDate"];
                 }
+
+                con.Close();
             }
 
             return userData;

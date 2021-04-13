@@ -48,6 +48,11 @@ body {
     .exam-top-text {
         font-size: 11px;
     }
+
+    .book {
+        width: 96px;
+        height: 128px;
+    }
 }
 
 
@@ -202,8 +207,8 @@ body {
 
 .book {
     background-color: #000000;
-    width: 136px;
-    height: 182px;
+    width: 128px;
+    height: 168px;
 }
 
 .book > a > img {

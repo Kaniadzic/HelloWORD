@@ -29,7 +29,7 @@
         <form method="post" class="d-flex flex-column form-quiz align-items-center">
             @for (int i = 0; i < Model.Count(); i++)
             {
-                <div class="d-flex flex-column align-items-center justify-content-start quiz-element my-4">
+                <div class="d-flex flex-column align-items-center justify-content-start quiz-element my-5">
                     <input type="hidden" name="userAnswersList[@i].Number" value="@Model.ElementAt(i).Number">
                     <div class="quiz-question d-flex text-left">
                         <h5 class="pl-1 pt-1">@Model.ElementAt(i).Question</h5>
@@ -37,7 +37,7 @@
 
                     @if (Model.ElementAt(i).Picture != "unset")
                     {
-                        <div class="quiz-picture mt-2">
+                        <div class="mt-2">
                             <img src="~/Content/images/@Model.ElementAt(i).Picture" alt="~/Content/images/@Model.ElementAt(i).Picture" class="quiz-picture">
                         </div>
                     }

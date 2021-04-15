@@ -38,22 +38,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 0; i < Model.Count; i++)
+                    @if (Model.Count > 0)
                     {
-                        if (Model.ElementAt(i).Type == "Quiz")
+                        for (int i = 0; i < Model.Count; i++)
                         {
-                            <tr>
-                                <td scope="col">
-                                    @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day
-                                </td>
-                                <td scope="col">
-                                    @Model.ElementAt(i).Category
-                                </td>
-                                <td scope="col">
-                                    @Model.ElementAt(i).Score/40
-                                </td>
-                            </tr>
+                            if (Model.ElementAt(i).Type == "Quiz")
+                            {
+                                <tr>
+                                    <td scope="col">
+                                        @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day
+                                    </td>
+                                    <td scope="col">
+                                        @Model.ElementAt(i).Category
+                                    </td>
+                                    <td scope="col">
+                                        @Model.ElementAt(i).Score/40
+                                    </td>
+                                </tr>
+                            }
                         }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3">
+                                <p class="small text-center">Nie ukończono jeszcze żadnego quizu! Skorzystaj z opcji generowania pytań na pasku menu aby rozpocząć quiz.</p>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -89,32 +100,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 0; i < Model.Count; i++)
+                    @if (Model.Count > 0)
                     {
-                        if (Model.ElementAt(i).Type == "Exam")
+                        for (int i = 0; i < Model.Count; i++)
                         {
-                    <tr>
-                        <td scope="col">
-                            @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day 
-                        </td>
-                        <td scope="col">
-                            @Model.ElementAt(i).Category
-                        </td>
-                        <td scope="col">
-                            @Model.ElementAt(i).Score
-                        </td>
-                        <td scope="col">
-                            @if (@Model.ElementAt(i).Passed)
+                            if (Model.ElementAt(i).Type == "Exam")
                             {
-                                <span class="answer-correct">Zdany</span>
+                                <tr>
+                                    <td scope="col">
+                                        @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day
+                                    </td>
+                                    <td scope="col">
+                                        @Model.ElementAt(i).Category
+                                    </td>
+                                    <td scope="col">
+                                        @Model.ElementAt(i).Score
+                                    </td>
+                                    <td scope="col">
+                                        @if (@Model.ElementAt(i).Passed)
+                                        {
+                                            <span class="answer-correct">Zdany</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="answer-incorrect">Nie zdany</span>
+                                        }
+                                    </td>
+                                </tr>
                             }
-                            else
-                            {
-                                <span class="answer-incorrect">Nie zdany</span>
-                            }
-                        </td>
-                    </tr>
                         }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4">
+                                <p class="text-center small">Nie ukończono jeszcze żadnego egzaminu! Możesz to zrobić @Html.ActionLink("tutaj", "QuizInfo", "Home", new { }, new { @class = "contact-link" })</p>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>

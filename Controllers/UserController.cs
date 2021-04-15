@@ -67,7 +67,11 @@ namespace HelloWORD.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            List<UserHistory> userHistories = new List<UserHistory>();
+            UserLogic userLogic = new UserLogic();
+            userHistories = userLogic.GetUserHistories(id);
+
+            return View(userHistories);
         }
 
         [HttpGet]

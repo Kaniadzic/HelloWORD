@@ -18,23 +18,23 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="col">Imię</th>
-                        <th scope="col">@Model.firstName</th>
+                        <td scope="col">Imię</td>
+                        <td scope="col">@Model.firstName</td>
                     </tr>
                     <tr>
-                        <th scope="col">Nazwisko</th>
-                        <th scope="col">@Model.lastName</th>
+                        <td scope="col">Nazwisko</td>
+                        <td scope="col">@Model.lastName</td>
                     </tr>
                     <tr>
-                        <th scope="col">Adres email</th>
-                        <th scope="col">@Model.email</th>
+                        <td scope="col">Adres email</td>
+                        <td scope="col">@Model.email</td>
                     </tr>
                     <tr>
-                        <th scope="col">Data założenia konta</th>
-                        <th scope="col">@Model.creationDate</th>
+                        <td scope="col">Data założenia konta</td>
+                        <td scope="col">@Model.creationDate</td>
                     </tr>
                     <tr>
-                        <th scope="col" colspan="2">Chcesz zobaczyć swoją historię nauki? Wejdź @Html.ActionLink("tutaj", "History", "User", new { id = Model.id }, new { @class = "contact-link" })</th>
+                        <td scope="col" colspan="2">Chcesz zobaczyć swoją historię nauki? Wejdź @Html.ActionLink("tutaj", "History", "User", new { id = Model.id }, new { @class = "contact-link" })</td>
                     </tr>
                 </tbody>
             </table>

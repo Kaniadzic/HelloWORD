@@ -612,3 +612,13 @@ body {
     z-index: 1;
     display: none;
 }
+
+/* ----------- BUTTON ----------- */
+
+.btn-category {
+    width: 36px;
+}
+
+.btn-category-k {
+    width: 82px;
+}

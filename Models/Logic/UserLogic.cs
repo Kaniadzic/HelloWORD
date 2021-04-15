@@ -158,5 +158,38 @@ namespace HelloWORD.Models.Logic
         {
             System.Web.HttpContext.Current.Session["userID"] = null;
         }
+
+        public List<UserHistory> GetUserHistories(int userID)
+        {
+            List<UserHistory> userHistories = new List<UserHistory>();
+            UserHistory userHistoryRecord = new UserHistory();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_SelectHistory", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("UserID", userID);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    userHistoryRecord = new UserHistory();
+                    userHistoryRecord.UserID = userID;
+                    userHistoryRecord.Date = (DateTime)rdr["ush_Date"];
+                    userHistoryRecord.Category = (string)rdr["ush_Category"];
+                    userHistoryRecord.Type = (string)rdr["ush_Type"];
+                    userHistoryRecord.Score = (int)rdr["ush_Score"];
+                    userHistoryRecord.Passed = (bool)rdr["ush_Passed"];
+
+                    userHistories.Add(userHistoryRecord);
+                }
+            }
+
+            return userHistories;
+        }
     }
 }

@@ -4,12 +4,11 @@
     ViewBag.Title = "Historia nauki";
 }
 
-<link href="css/addons/datatables.min.css" rel="stylesheet">
-
 @section Scripts
 {
     <script src="@Url.Content("~/Scripts/tableSort.js")"></script>
-    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 }
 
 
@@ -18,17 +17,8 @@
         <p class="h4 text-warning text-center">@ViewBag.Alert</p>
     </div>
 
-    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-around">
-        <div class="d-flex flex-column align-items-center justify-content-center">
-            @*<div>
-                    <span>Filtr kategorii</span>
-                    <button class="btn btn-contact btn-category" id="quizA">A</button>
-                    <button class="btn btn-contact btn-category" id="quizB">B</button>
-                    <button class="btn btn-contact btn-category" id="quizC">C</button>
-                    <button class="btn btn-contact btn-category" id="quizD">D</button>
-                    <button class="btn btn-contact btn-category" id="quizT">T</button>
-                    <button class="btn btn-contact btn-category btn-category-k" id="quizK">Kodeks</button>
-                </div>*@
+    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-center mt-4">
+        <div class="d-flex flex-column align-items-center justify-content-center mx-5">
             <table class="table table-striped table-bordered user-data-table mt-2" id="quizTable">
                 <thead>
                     <tr>
@@ -61,7 +51,7 @@
                                         @Model.ElementAt(i).Category
                                     </td>
                                     <td scope="col">
-                                        @Model.ElementAt(i).Score/40
+                                        @Model.ElementAt(i).Score
                                     </td>
                                 </tr>
                             }
@@ -79,16 +69,8 @@
             </table>
         </div>
 
-        <div class="d-flex flex-column align-items-center justify-content-center">
-            <div>
-                <span>Filtr kategorii</span>
-                <button class="btn btn-contact btn-category" id="examA">A</button>
-                <button class="btn btn-contact btn-category" id="examB">B</button>
-                <button class="btn btn-contact btn-category" id="examC">C</button>
-                <button class="btn btn-contact btn-category" id="examD">D</button>
-                <button class="btn btn-contact btn-category" id="examT">T</button>
-            </div>
-            <table class="table table-striped table-bordered mt-2 user-data-table">
+        <div class="d-flex flex-column align-items-center justify-content-center mx-5">
+            <table class="table table-striped table-bordered mt-2 user-data-table" id="examTable">
                 <thead>
                     <tr>
                         <th colspan="4">Oto twoja historia egzaminów</th>

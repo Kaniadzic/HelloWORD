@@ -622,3 +622,16 @@ body {
 .btn-category-k {
     width: 82px;
 }
+
+/* ----------- DATA TABLES ----------- */
+
+.dataTables_wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+}
+
+.dataTables_paginate {
+    margin: 8px 0;
+}

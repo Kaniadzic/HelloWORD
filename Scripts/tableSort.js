@@ -1,4 +1,4 @@
-﻿function dupa() {
+﻿function tableSort() {
     $('#quizTable').DataTable({
         paging: true,
         searching: false,
@@ -28,4 +28,4 @@
     });
 }
 
-window.onload = dupa;
+window.onload = tableSort;

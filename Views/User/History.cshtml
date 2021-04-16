@@ -17,120 +17,123 @@
         <p class="h4 text-warning text-center">@ViewBag.Alert</p>
     </div>
 
-    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-center mt-4">
-        <div class="d-flex flex-column align-items-center justify-content-center mx-5">
-            <table class="table table-striped table-bordered user-data-table mt-2" id="quizTable">
-                <thead>
-                    <tr>
-                        <th colspan="3">Oto twoja historia quizów</th>
-                    </tr>
-                    <tr>
-                        <th id="quizDateSort">
-                            Data
-                        </th>
-                        <th id="quizCategorySort">
-                            Kategoria
-                        </th>
-                        <th id="quizScoreSort">
-                            Punkty
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.Count > 0)
-                    {
-                        for (int i = 0; i < Model.Count; i++)
+    <div class="d-flex flex-column flex-md-row justify-content-start align-items-start justify-content-md-center mt-4">
+        <div class="d-flex flex-column justify-content-start align-items-start">
+            <div class="d-flex flex-column align-items-center justify-content-center mx-5">
+                <table class="table table-striped table-bordered user-data-table mt-2" id="quizTable">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Oto twoja historia quizów</th>
+                        </tr>
+                        <tr>
+                            <th id="quizDateSort">
+                                Data
+                            </th>
+                            <th id="quizCategorySort">
+                                Kategoria
+                            </th>
+                            <th id="quizScoreSort">
+                                Punkty
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
                         {
-                            if (Model.ElementAt(i).Type == "Quiz")
+                            for (int i = 0; i < Model.Count; i++)
                             {
-                                <tr>
-                                    <td scope="col">
-                                        @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day
-                                    </td>
-                                    <td scope="col">
-                                        @Model.ElementAt(i).Category
-                                    </td>
-                                    <td scope="col">
-                                        @Model.ElementAt(i).Score
-                                    </td>
-                                </tr>
+                                if (Model.ElementAt(i).Type == "Quiz")
+                                {
+                                    <tr>
+                                        <td scope="col">
+                                            @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day
+                                        </td>
+                                        <td scope="col">
+                                            @Model.ElementAt(i).Category
+                                        </td>
+                                        <td scope="col">
+                                            @Model.ElementAt(i).Score
+                                        </td>
+                                    </tr>
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="3">
-                                <p class="small text-center">Nie ukończono jeszcze żadnego quizu! Skorzystaj z opcji generowania pytań na pasku menu aby rozpocząć quiz.</p>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                        else
+                        {
+                            <tr>
+                                <td colspan="3">
+                                    <p class="small text-center">Nie ukończono jeszcze żadnego quizu! Skorzystaj z opcji generowania pytań na pasku menu aby rozpocząć quiz.</p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-        <div class="d-flex flex-column align-items-center justify-content-center mx-5">
-            <table class="table table-striped table-bordered mt-2 user-data-table" id="examTable">
-                <thead>
-                    <tr>
-                        <th colspan="4">Oto twoja historia egzaminów</th>
-                    </tr>
-                    <tr>
-                        <th>
-                            Data
-                        </th>
-                        <th>
-                            Kategoria
-                        </th>
-                        <th>
-                            Punkty
-                        </th>
-                        <th>
-                            Zdano
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.Count > 0)
-                    {
-                        for (int i = 0; i < Model.Count; i++)
+        <div class="d-flex flex-column justify-content-start align-items-start">
+            <div class="d-flex flex-column align-items-center justify-content-center mx-5">
+                <table class="table table-striped table-bordered mt-2 user-data-table" id="examTable">
+                    <thead>
+                        <tr>
+                            <th colspan="4">Oto twoja historia egzaminów</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Data
+                            </th>
+                            <th>
+                                Kategoria
+                            </th>
+                            <th>
+                                Punkty
+                            </th>
+                            <th>
+                                Zdano
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
                         {
-                            if (Model.ElementAt(i).Type == "Exam")
+                            for (int i = 0; i < Model.Count; i++)
                             {
-                                <tr>
-                                    <td scope="col">
-                                        @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day
-                                    </td>
-                                    <td scope="col">
-                                        @Model.ElementAt(i).Category
-                                    </td>
-                                    <td scope="col">
-                                        @Model.ElementAt(i).Score
-                                    </td>
-                                    <td scope="col">
-                                        @if (@Model.ElementAt(i).Passed)
-                                        {
-                                            <span class="answer-correct">Zdany</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="answer-incorrect">Nie zdany</span>
-                                        }
-                                    </td>
-                                </tr>
+                                if (Model.ElementAt(i).Type == "Exam")
+                                {
+                                    <tr>
+                                        <td scope="col">
+                                            @Model.ElementAt(i).Date.Year-@Model.ElementAt(i).Date.Month-@Model.ElementAt(i).Date.Day
+                                        </td>
+                                        <td scope="col">
+                                            @Model.ElementAt(i).Category
+                                        </td>
+                                        <td scope="col">
+                                            @Model.ElementAt(i).Score
+                                        </td>
+                                        <td scope="col">
+                                            @if (@Model.ElementAt(i).Passed)
+                                            {
+                                                <span class="answer-correct">Zdany</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="answer-incorrect">Nie zdany</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4">
-                                <p class="text-center small">Nie ukończono jeszcze żadnego egzaminu! Możesz to zrobić @Html.ActionLink("tutaj", "QuizInfo", "Home", new { }, new { @class = "contact-link" })</p>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                        else
+                        {
+                            <tr>
+                                <td colspan="4">
+                                    <p class="text-center small">Nie ukończono jeszcze żadnego egzaminu! Możesz to zrobić @Html.ActionLink("tutaj", "QuizInfo", "Home", new { }, new { @class = "contact-link" })</p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>

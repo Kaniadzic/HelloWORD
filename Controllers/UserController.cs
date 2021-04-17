@@ -172,5 +172,17 @@ namespace HelloWORD.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult EditPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditPassword(int userID)
+        {
+            return View();
+        }
     }
 }

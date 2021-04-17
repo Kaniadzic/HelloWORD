@@ -36,6 +36,9 @@
                     <tr>
                         <td scope="col" colspan="2">Chcesz zobaczyć swoją historię nauki? Wejdź @Html.ActionLink("tutaj", "History", "User", new { id = Model.id }, new { @class = "contact-link" })</td>
                     </tr>
+                    <tr>
+                        <td scope="col" colspan="2">Chcesz zmienić swoje hasło? Wejdź  @Html.ActionLink("tutaj", "EditPassword", "User", new { @class = "contact-link text-danger" })</td>
+                    </tr>  
                 </tbody>
             </table>
 

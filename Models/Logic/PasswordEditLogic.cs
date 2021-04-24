@@ -32,7 +32,17 @@ namespace HelloWORD.Models.Logic
 
         private string generateCode()
         {
-            return "dupaaa";
+            char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789".ToCharArray();
+            string code="";
+            Random rnd = new Random();
+
+            for (int i=0; i<6 ;i++)
+            {
+                short rand = (short)rnd.Next(chars.Length);
+                code += chars[rand];
+            }
+            
+            return code;
         }
 
         private void insertCode(string userEmail, string code)

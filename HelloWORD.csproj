@@ -233,7 +233,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\LearnInfo.cshtml" />
-    <Content Include="Views\Home\QuizInfo.cshtml" />
     <Content Include="Views\Home\ToS.cshtml" />
     <Content Include="Views\Quiz\Quiz.cshtml" />
     <Content Include="Views\Quiz\QuizResult.cshtml" />
@@ -249,6 +248,7 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\History.cshtml" />
     <Content Include="Views\User\EditPassword.cshtml" />
+    <Content Include="Views\Home\ExamInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -57,7 +57,7 @@ namespace HelloWORD.Controllers
             return View();
         }
 
-        public ActionResult QuizInfo()
+        public ActionResult ExamInfo()
         {
             return View();
         }

@@ -9,11 +9,10 @@
             <h2 class="h4 mt-md-4 text-center"><span class="HelloWORD">HelloWORD</span> jest darmową aplikacją do nauki na prawo jazdy.</h2>
 
             <p class="mt-md-4 mx-3 mx-md-5 px-5 text-about text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Cras lobortis, mi laoreet commodo fringilla, urna urna porttitor lectus, tincidunt pulvinar elit libero
-                non elit. Etiam nisl ante, condimentum a tincidunt vel, dapibus commodo mi. Mauris nunc erat, vestibulum
-                a eleifend at, tempor sit amet odio. Donec convallis diam ac enim fermentum volutpat. Maecenas consectetur
-                consectetur lorem at molestie.
+                HelloWORD powstało na potrzeby pracy licencjackiej. Autorem jest Szymon Kania, student trzeciego roku na Uniwersytecie Ekonomicznym w Katowicach.
+                Głównym założeniem HelloWORD jest to aby aplikację można było hostować w sieci www z dostępem dla każdego lub w sieciach lokalnych. 
+                Aplikacja może zarabiać na siebie poprzez udzielanie dostępu do pełnej bazy pytań (w modelu ogólnodostępnym) albo może być sprzedawana 
+                ośrodkom nauki jazdy z pełną bazą pytań. 
             </p>
 
             <h3 class="h4 mt-md-4 text-center text-about-bold d-none d-md-block">Już teraz sprawdź swoją wiedzę!</h3>
@@ -44,10 +43,10 @@
                 @Html.ActionLink("Załóż darmowe konto!", "Register", "User", new { }, new { @class = "btn btn-contact mt-3" })
             </div>
             <div class="col-md-4 d-md-flex flex-column align-items-center text-center mt-1 mt-md-2">
-                <h3 class="text-center d-none d-md-block">Testy</h3>
-                <p class="text-center px-4 pt-3">Przed wypełnieniem egzaminu warto sprawdzić swoją wiedzę w mniej zobowiązujący sposób. Wybierz kategorię i spokojnie wypełnij test czterdziestu pytań.</p>
+                <h3 class="text-center d-none d-md-block">Egzaminy</h3>
+                <p class="text-center px-4 pt-3">Przed egzaminem ważna jest praktyka. W <span class="HelloWORD">HelloWORD</span> możesz przerabiać egzaminy, które są takie same jak w ośrodku!</p>
 
-                @Html.ActionLink("O testach", "QuizInfo", "Home", new { @class = "btn btn-contact mt-3" })
+                @Html.ActionLink("O egzaminach", "ExamInfo", "Home", new { @class = "btn btn-contact mt-3" })
             </div>
         </div>
         <div class="content-lower d-none d-md-flex">

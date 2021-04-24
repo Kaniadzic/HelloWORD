@@ -2,7 +2,7 @@
     ViewBag.Title = "Egzamin";
 }
 
-<main>
+<main class="d-flex flex-column align-items-center justify-content-center">
     <section class="d-flex flex-column align-items-center justify-content-center">
         <h2 class="h3 text-center mt-3 mt-md-5">Oto egzamin kategorii @ViewBag.Category</h2>
         <p class="text-center px-5">
@@ -12,6 +12,9 @@
             Egzamin jest zgodny z Rozporządzeniem Ministra Infrastruktury i Budownictwa z dnia 24 lutego 2016 roku w sprawie egzaminowania osób
             ubiegających się o uprawnienia do kierowania pojazdami, szkolenia, egzaminowania i uzyskiwania uprawnień przez egzaminatorów
             oraz wzorów dokumentów stosowanych w tych sprawach oraz z zapisami ustawy z dnia 10 stycznia 2013 roku o kierujących pojazdami.
+        </p>
+        <p>
+            Więcej informacji o egzaminie możesz uzyskać w zakładce @Html.ActionLink("INFORMACJE", "About", "Home", new { }, new { @class = "contact-link"})
         </p>
 
         @Html.ActionLink("Rozpocznij egzamin", "Exam", "Exam", new { category = ViewBag.Category }, new { @class = "btn btn-contact mt-5" })

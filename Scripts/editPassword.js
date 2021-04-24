@@ -1,6 +1,6 @@
-﻿window.onload = dupa;
+﻿window.onload = addPasswordResetFunctionality;
 
-function dupa() {
+function addPasswordResetFunctionality() {
     let buttonCode = document.getElementById('buttonCode');
     buttonCode.addEventListener('click', () => { showAlert(buttonCode) });
 }

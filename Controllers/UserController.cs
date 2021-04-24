@@ -180,7 +180,7 @@ namespace HelloWORD.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditPassword(int userID)
+        public ActionResult EditPassword(int dupa)
         {
             return View();
         }

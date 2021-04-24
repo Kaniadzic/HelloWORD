@@ -7,6 +7,12 @@ function addPasswordResetFunctionality() {
 }
 
 function showAlert(buttonCode) {
+    if (document.getElementById('userData').value == "") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return false;
+    }
+
     let buttonPost = document.getElementById('buttonPost');
     buttonCode.classList.add('d-none');
     buttonPost.classList.remove('d-none');
@@ -17,9 +23,20 @@ function showAlert(buttonCode) {
     let codeAlertButton = document.getElementById('codeAlertButton');
     codeAlertButton.addEventListener('click', () => { codeAlert.hide() });
     codeAlertButton.addEventListener('click', () => { buttonPost.disabled = false });
+
+    let inputs = document.querySelectorAll('.form-control');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].disabled = false;
+    }
 }
 
 function sendCode() {
+    if (document.getElementById('userData').value == "") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return false;
+    }
+
     $.ajax({
         url: "SendPasswordResetCode",
         cache: false,

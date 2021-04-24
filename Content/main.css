@@ -169,7 +169,7 @@ body {
 /* ----------- INDEX - INFO ----------- */
 
 .info-row {
-    height: 33%;
+    min-height: 33%;
     width: 100%;
 }
 

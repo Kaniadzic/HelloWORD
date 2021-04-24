@@ -184,5 +184,11 @@ namespace HelloWORD.Controllers
         {
             return View();
         }
+
+        public void SendPasswordResetCode(string userEmail)
+        {
+            PasswordEditLogic passwordEditLogic = new PasswordEditLogic();
+            passwordEditLogic.sendCode(userEmail);
+        }
     }
 }

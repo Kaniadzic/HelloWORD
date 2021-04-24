@@ -23,7 +23,7 @@ namespace HelloWORD.Models.Entity
         static GMailer()
         {
             GmailHost = "smtp.gmail.com";
-            GmailPort = 25;
+            GmailPort = 587;
             GmailSSL = true;
         }
 
@@ -43,6 +43,7 @@ namespace HelloWORD.Models.Entity
                 message.Body = Body;
                 message.IsBodyHtml = IsHtml;
                 smtp.Send(message);
+                smtp.Dispose();
             }
         }
     }

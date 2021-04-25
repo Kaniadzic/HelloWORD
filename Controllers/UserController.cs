@@ -180,8 +180,20 @@ namespace HelloWORD.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditPassword(int dupa)
+        public ActionResult EditPassword(UserPassword userPassword)
         {
+            PasswordEditLogic peLogic = new PasswordEditLogic();
+            if (peLogic.verifyPasswordEditData(userPassword) == false)
+            {
+                ModelState.AddModelError("IncorrectForm","Niepoprawnie uzupełniony formularz!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Alert = "Proszę poprawnie uzupełnić formularz!";
+                return View();
+            }
+
             return View();
         }
 

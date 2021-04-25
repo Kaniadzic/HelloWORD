@@ -150,6 +150,7 @@
     <Compile Include="Models\Entity\UserAnswersList.cs" />
     <Compile Include="Models\Entity\UserHistory.cs" />
     <Compile Include="Models\Entity\UserLoginData.cs" />
+    <Compile Include="Models\Entity\UserPassword.cs" />
     <Compile Include="Models\Entity\UserRegistrationData.cs" />
     <Compile Include="Models\Entity\UserShowData.cs" />
     <Compile Include="Models\Entity\UserUpdateData.cs" />

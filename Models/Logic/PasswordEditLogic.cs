@@ -118,9 +118,34 @@ namespace HelloWORD.Models.Logic
         }
 
         // sprawdzenie czy kod autoryzacyjny jest poprawny i wciąż ważny
-        private bool verifyAuthCode(int id, string code)
+        private bool verifyAuthCode(int userID, string userCode)
         {
-            return true;
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+            string authCode = "";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_CheckAuthCode", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("UserID", userID);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    authCode = (string)rdr["lpa_Code"];
+                }
+                con.Close();
+            }
+
+            if (authCode == userCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // sprawdzenie czy nowe hasła są takie same

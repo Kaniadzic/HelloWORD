@@ -74,6 +74,7 @@ namespace HelloWORD.Models.Logic
                 return false;
             }
 
+            updateUserPassword(userData.newPassword, userData.userData);
             return true;
         }
 
@@ -159,6 +160,25 @@ namespace HelloWORD.Models.Logic
             }
 
             return true;
+        }
+
+        // zmiana hasła
+        private void updateUserPassword(string password, string email)
+        {
+            HashLogic hashLogic = new HashLogic();
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_UpdateUserPassword", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Email", email);
+                cmd.Parameters.AddWithValue("Password", hashLogic.HashString(password));
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                con.Close();
+            }
         }
     }
 }

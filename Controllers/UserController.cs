@@ -194,6 +194,7 @@ namespace HelloWORD.Controllers
                 return View();
             }
 
+            ViewBag.Alert = "Hasło zostało zresetowane!";
             return View();
         }
 

@@ -254,7 +254,7 @@
     function initializeCategorizedQuestions(data) {
         categorizedQuestions = data;
 
-        if (categorizedQuestions.length == 0) {
+        if (categorizedQuestions.length == 0 || categorizedQuestions.length < 12) {
             window.location.href = "/Home/Index";
         }
     }

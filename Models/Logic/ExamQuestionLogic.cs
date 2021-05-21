@@ -107,8 +107,8 @@ namespace HelloWORD.Models.Logic
                 con.Close();
             }    
             
-            // Jeżeli nie ma żadnych pytań to zwracamy pustą liste
-            if (questionsIDs.Count == 0)
+            // Jeżeli nie ma żadnych pytań albo jest ich zbyt mało w bazie to zwracamy pustą liste
+            if (questionsIDs.Count == 0 || questionsIDs.Count < 12)
             {
                 return questions;
             }
